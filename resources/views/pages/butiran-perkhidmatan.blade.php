@@ -3,6 +3,15 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b>{{ session()->get('success') }}</span>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="col-12 text-right">
