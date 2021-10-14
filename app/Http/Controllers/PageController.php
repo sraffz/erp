@@ -25,6 +25,7 @@ class PageController extends Controller
         $hospital = DB::table('hospital')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $bilrawatan = DB::table('papar_bil_rawatan')->get();
+        $pentadbir = DB::table('pentadbir')->get();
         
         $jabatan = DB::table('jabatan')->get();
         $jawatan = DB::table('jawatan')->get();
@@ -34,7 +35,7 @@ class PageController extends Controller
             return view("pages.{$page}", 
             compact('bilrawatan', 'peribadi2', 'peribadi', 'perkhidmatan', 
             'jabatan', 'jawatan', 'hubungan', 'perkhidmatan_pesara', 'hospital', 
-            'pembekal', 'kategorituntutan', 'perubatan'));
+            'pembekal', 'kategorituntutan', 'perubatan', 'pentadbir'));
         }
         return abort(404);
     }
