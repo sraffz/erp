@@ -11,7 +11,7 @@
                 <div class="card-body">
 
                     <div class="table-responsive">
-                        <table class="table table-hover" id="zero_config">
+                        <table class="table table-hover table-bordered" id="zero_config">
                             <thead class="text-primary">
                                 <tr>
                                     <th>
@@ -57,7 +57,8 @@
                                             {{ $br->namaJabatan }}
                                         </th>
                                         <th>
-                                            {{ $br->tarikh_bil }}
+                                            {{ \Carbon\Carbon::parse($br->tarikh_bil)->format('d/m/Y') }}
+                                            {{-- {{ $br->tarikh_bil->format('d/m/Y') }} --}}
                                         </th>
                                         <th>
                                             RM {{ $br->jumlah_bil }} <br> No Bil : {{ $br->no_bil }}

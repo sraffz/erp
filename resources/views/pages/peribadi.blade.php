@@ -62,7 +62,7 @@
                                             {{ $prbd->jantina }}
                                         </th>
                                         <th>
-                                            {{ $prbd->tarikhLahir }}
+                                            {{ \Carbon\Carbon::parse($prbd->tarikhLahir)->format('j F, Y') }}
                                         </th>
                                         <th class="td-actions text-right">
                                             <a rel="tooltip" class="btn btn-primary"

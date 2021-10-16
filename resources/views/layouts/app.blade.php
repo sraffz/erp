@@ -18,6 +18,7 @@
     <!-- CSS Files -->
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet">
 </head>
 <style type="text/css">
     td {
@@ -85,6 +86,7 @@
     <script src="{{ asset('material') }}/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
 
     <script src="{{ asset('material') }}/js/settings.js"></script>
+    <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.js') }}">
     </script>
@@ -281,6 +283,10 @@
             let id = "";
             id = $('#namaPembekal').val();
             $('.alamatPembekal').val(id);
+        });
+
+        $(".select2").select2({
+            
         });
     </script>
 </body>

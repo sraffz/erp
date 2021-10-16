@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jawatan">Jawatan Terakhir</label>
-                                <select class="custom-select" name="jawatan" id="jawatan">
+                                <select class="custom-select select2" name="jawatan" id="jawatan">
                                     <option value="">SILA PILIH</option>
                                     @foreach ($jawatan as $jwtn)
                                         <option value="{{ $jwtn->idJawatan }}" {{ $jwtn->idJawatan == $pkhtm->idJawatan ? 'selected' : '' }}>{{ $jwtn->namaJawatan }}</option>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jabatan">Jabatan Terakhir</label>
-                                <select class="custom-select" name="jabatan" id="jabatan">
+                                <select class="custom-select select2" name="jabatan" id="jabatan">
                                     <option value="">SILA PILIH</option>
                                     @foreach ($jabatan as $jbtn)
                                         <option value="{{ $jbtn->idJabatan }}" {{ $jbtn->idJabatan == $pkhtm->idJabatan ? 'selected' : '' }}>{{ $jbtn->namaJabatan }}</option>
