@@ -69,9 +69,6 @@
                     </ul>
                 </div>
             </li> --}}
-
-
-
             <li class="nav-item{{ $activePage == 'peribadi' ? ' active' : '' }}">
                 <a class="nav-link" href="{{route('page.index', 'peribadi')}}">
                     <i class="material-icons">groups</i>
@@ -104,13 +101,13 @@
             </li>
 
             <li class="nav-item {{ $activePage == 'jabatan' || $activePage == 'jawatan' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#config" aria-expanded="true">
+                <a class="nav-link" data-toggle="collapse" href="#config" aria-expanded="false">
                     <i class="material-icons">settings</i>
                     <p>{{ __('Konfigurasi') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="config">
+                <div class="collapse" id="config">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'jabatan' ? ' active' : '' }}">
                             <a class="nav-link" href="{{route('page.index', 'jabatan')}}">

@@ -36,7 +36,7 @@
                                     <h4 class="card-title">Rawatan Di Hospital/ Klinik Kerajaan </h4>
                                     <div class="form-group">
                                         <label for="hospital">Nama Hospital/Klinik Kerajaan</label>
-                                        <select class="custom-select" name="hospital" id="namaHospital">
+                                        <select class="custom-select select2" name="hospital" id="namaHospital">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($hospital as $hptl)
                                                 <option value="{{ $hptl->idHospital }}">{{ $hptl->namaHospital }}
@@ -107,7 +107,7 @@
                                     <h4 class="card-title">Pembekal Kemudahan Perubatan</h4>
                                     <div class="form-group">
                                         <label for="pembekal">Nama Hospital/ Agensi Swasta</label>
-                                        <select class="alamatPembekal custom-select" name="pembekal" id="namaPembekal">
+                                        <select class="alamatPembekal custom-select select2" name="pembekal" id="namaPembekal">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($pembekal as $pmbkl)
                                                 <option value="{{ $pmbkl->idPembekal }}">
@@ -188,7 +188,7 @@
                                     <h4 class="card-title">Tuntutan Perubatan</h4>
                                     <div class="form-group">
                                         <label for="kategorituntutan">Kategori Tuntutan</label>
-                                        <select class="custom-select" name="kategorituntutan" required id="kategorituntutan">
+                                        <select class="custom-select select2" name="kategorituntutan" required id="kategorituntutan">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($kategorituntutan as $kt)
                                                 <option value="{{ $kt->idKategori }}">
@@ -221,7 +221,7 @@
                                     <h4 class="card-title">Maklumat Tambahan</h4>
                                     <div class="form-group">
                                         <label for="jenisPermohonan">Jenis Permohonan</label>
-                                        <select class="custom-select" name="jenisPermohonan" id="jenisPermohonan">
+                                        <select class="custom-select select2" name="jenisPermohonan" id="jenisPermohonan">
                                             <option value="">SILA PILIH</option>
                                             <option value="Permohonan Pembelanjaan">Permohonan Pembelanjaan</option>
                                             <option value="Pembiayaan Rawatan">Pembiayaan Rawatan</option>

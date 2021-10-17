@@ -21,21 +21,24 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 text-right">
-                            <a href="#" class="btn btn-sm btn-primary">Add user</a>
+                            <a href="#" class="btn btn-sm btn-primary">Tambah Pentadbir</a>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
+                        <table class="table" id="zero_config">
+                            <thead class="text-primary">
                                 <tr>
                                     <th>
-                                        Name
+                                        Nama
                                     </th>
                                     <th>
-                                        Email
+                                        Kad Pengenalan
                                     </th>
                                     <th>
-                                        Creation date
+                                        Peranan
+                                    </th>
+                                    <th>
+                                        Status
                                     </th>
                                     <th class="text-right">
                                         Actions
@@ -43,15 +46,20 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($pentadbir as $ptbr)
+                                @if ($ptbr->status == 'Aktif')
                                 <tr>
                                     <td>
-                                        Admin Admin
+                                        {{ $ptbr->nama }}
                                     </td>
                                     <td>
-                                        admin@material.com
+                                        {{ $ptbr->kad_pengenalan }}
                                     </td>
                                     <td>
-                                        2020-02-24
+                                        {{ $ptbr->level }}
+                                    </td>
+                                    <td>
+                                        {{ $ptbr->status }}
                                     </td>
                                     <td class="td-actions text-right">
                                         <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title=""
@@ -61,6 +69,8 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

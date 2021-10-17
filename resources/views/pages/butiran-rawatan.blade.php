@@ -22,7 +22,7 @@
                             <div class="col-md-6">
                                 <h4 class="card-title">Peribadi</h4>
                                 <br>
-                                @if ($bp->nama_waris != null)
+                                @if ($bp->id_waris != null)
                                     <div class="form-group">
                                         <label for="nama_penuh_waris">Nama Penuh</label>
                                         <input type="text" name="nama_penuh_waris" disabled class="form-control"

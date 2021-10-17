@@ -139,10 +139,10 @@
                                             {{ $prbtn->jenisPermohonan }}
                                         </th>
                                         <th>
-                                            {{ $prbtn->tarikhTerimaPermohonan }}
+                                            {{ \Carbon\Carbon::parse($prbtn->tarikhTerimaPermohonan)->format('d/m/Y') }}
                                         </th>
                                         <th>
-                                            {{ $prbtn->tarikhKelulusan }}
+                                            {{ \Carbon\Carbon::parse($prbtn->tarikhKelulusan)->format('d/m/Y') }}
                                         </th>
                                         <th>
                                             {{ $prbtn->jumlahTuntutan }}
