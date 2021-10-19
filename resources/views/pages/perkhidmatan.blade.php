@@ -6,14 +6,14 @@
     <div class="card">
         <div class="card-body">
             <div class="col-12 text-center">
-                <a href="{{ route('page.index', 'perkhidmatan') }}" class="btn btn-success">Sedang Berkhidmat</a>
+                <a href="{{ route('page.index', 'perkhidmatan') }}" class="btn btn-success">Pegawai</a>
                 <a href="{{ route('page.index', 'perkhidmatan-pesara') }}" class="btn btn-danger">Pesara</a>
             </div>
         </div>
     </div>
     <div class="card">
         <div class="card-header card-header-primary">
-            <h4 class="card-title ">Senarai Perkhidmatan (Sedang Berkhidmat)</h4>
+            <h4 class="card-title ">Senarai Perkhidmatan (Pegawai)</h4>
             {{-- <p class="card-category"> Here you can manage users</p> --}}
         </div>
         <div class="card-body">

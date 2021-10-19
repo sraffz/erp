@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-body">
             <div class="col-12 text-center">
-                <a href="{{ route('page.index', 'perkhidmatan') }}" class="btn btn-success">Sedang Berkhidmat</a>
+                <a href="{{ route('page.index', 'perkhidmatan') }}" class="btn btn-success">Pegawai</a>
                 <a href="{{ route('page.index', 'perkhidmatan-pesara') }}" class="btn btn-danger">Pesara</a>
             </div>
         </div>
