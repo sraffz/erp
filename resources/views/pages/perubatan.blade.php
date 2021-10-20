@@ -15,6 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <form action="{{ url('laporan') }}" id="formLaporan" name="formLaporan" method="post">
+                        {{ csrf_field() }}
                         <div class="form-row">
                             <div class="col">
                                 <label for="jenisLaporan">Jenis Laporan</label>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $kategorituntutan = DB::table('kategorituntutan')->get();
+        $data = DB::table('jumlah_kos_tahunan')->get();
+
+        return view('dashboard', compact('kategorituntutan', 'data'));
     }
 }

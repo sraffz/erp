@@ -117,6 +117,10 @@
             },
         });
 
+        $(document).ready(function() {
+            $('table.display').DataTable();
+        } );
+
         $('#zero_config').dataTable({
             "language": {
                 "emptyTable": "Tiada data",

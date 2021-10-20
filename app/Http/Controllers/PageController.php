@@ -26,6 +26,8 @@ class PageController extends Controller
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $bilrawatan = DB::table('papar_bil_rawatan')->get();
         $pentadbir = DB::table('pentadbir')->get();
+        $kategorituntutan = DB::table('kategorituntutan')->get();
+        $kos_bulanan = DB::table('jumlah_kos_bulanan')->get();
         
         $jabatan = DB::table('jabatan')->get();
         $jawatan = DB::table('jawatan')->get();
@@ -35,7 +37,8 @@ class PageController extends Controller
             return view("pages.{$page}", 
             compact('bilrawatan', 'peribadi2', 'peribadi', 'perkhidmatan', 
             'jabatan', 'jawatan', 'hubungan', 'perkhidmatan_pesara', 'hospital', 
-            'pembekal', 'kategorituntutan', 'perubatan', 'pentadbir'));
+            'pembekal', 'kategorituntutan', 'perubatan', 'pentadbir', 'kategorituntutan',
+            'kos_bulanan'));
         }
         return abort(404);
     }
@@ -51,6 +54,7 @@ class PageController extends Controller
         $pembekal = DB::table('pembekal')->get();
         $hospital = DB::table('hospital')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
+        $kos_bulanan = DB::table('jumlah_kos_bulanan')->where('Tahun', $id)->get();
 
         $waris = $this->waris($id);
         $butiranwaris = $this->butiranwaris($id);
@@ -68,7 +72,7 @@ class PageController extends Controller
             compact('peribadi', 'perkhidmatan','butiranwaris', 'jabatan', 'jawatan', 
             'hubungan', 'waris', 'pembekal', 'hospital', 'butiranperubatan', 'kategorituntutan', 
             'senaraiperubatanwaris', 'senaraiperubatanpegawai', 'senaraibilwaris', 'senaraibilpegawai',
-            'butiranrawatan'));
+            'butiranrawatan', 'kos_bulanan'));
         }
         return abort(404);
     }
@@ -467,6 +471,38 @@ class PageController extends Controller
         DB::table('rawatan')->where('idRawatan', $id)->delete();
 
         return redirect('bil-rawatan')->with('success', 'Bil Rawatan telah berjaya dipadam.');
+    }
+
+    public function laporan(Request $req)
+    {
+        $jenisLaporan = $req->input('jenisLaporan');
+        $kategoriLaporan = $req->input('kategoriLaporan');
+        $tahunLaporan = $req->input('tahunLaporan');
+
+        if ($jenisLaporan == 1) {
+            if ($kategoriLaporan == 1) {
+                # code...
+            } elseif ($kategoriLaporan == 2) {
+                # code...
+            } elseif ($kategoriLaporan == 3) {
+                # code...
+            } elseif ($kategoriLaporan == 4) {
+                # code...
+            } 
+            
+        } elseif ($jenisLaporan == 2) {
+            # code...
+        } elseif ($jenisLaporan == 3) {
+            # code...
+        } elseif ($jenisLaporan == 4) {
+           $list = DB::table('senarai_pesakit_haemodialisis')
+           ->where('tahun', $tahunLaporan )
+           ->get();
+
+           return dd($list);
+        }
+        
+        // return back();
     }
 
 }
