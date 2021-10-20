@@ -95,8 +95,13 @@
                                         <tr class="text-center">
                                             <td scope="row">{{ $d->Tahun }}</td>
                                             <td>{{ $d->Jumlah }}</td>
+<<<<<<< HEAD
                                             <td><a class="btn btn-info btn-sm" href="{{ url('kos-bulanan', [$d->Tahun]) }}" role="button">Butiran</a></td>
                                           </tr>
+=======
+                                            <td><a class="btn btn-info btn-sm" href="#" role="button">Butiran</a></td>
+                                        </tr>
+>>>>>>> 8a2d1888459997e78b45957268f9bef6743c3c67
                                     @endforeach
                                 </tbody>
                             </table>
@@ -168,7 +173,11 @@
                                           <tr class="text-center">
                                               <td scope="row">{{ $d->Tahun }}</td>
                                               <td>{{ $d->Jumlah }}</td>
+<<<<<<< HEAD
                                               <td><a class="btn btn-info btn-sm" href="{{ url('kos-bulanan', [$d->Tahun]) }}" role="button">Butiran</a></td>
+=======
+                                              <td><a class="btn btn-info btn-sm" href="#" role="button">Butiran</a></td>
+>>>>>>> 8a2d1888459997e78b45957268f9bef6743c3c67
                                           </tr>
                                       @endforeach
                                   </tbody>
@@ -511,4 +520,8 @@
             md.initDashboardPageCharts();
         });
     </script>
+<<<<<<< HEAD
 @endpush
+=======
+@endpush
+>>>>>>> 8a2d1888459997e78b45957268f9bef6743c3c67
