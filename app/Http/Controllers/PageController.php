@@ -477,7 +477,7 @@ class PageController extends Controller
     {
         $jenisLaporan = $req->input('jenisLaporan');
         $kategoriLaporan = $req->input('kategoriLaporan');
-        $tahunLaporan = $req->input('tahunLaporan');
+        $tahun = $req->input('tahunLaporan');
 
         if ($jenisLaporan == 1) {
             if ($kategoriLaporan == 1) {
@@ -491,12 +491,16 @@ class PageController extends Controller
             } 
             
         } elseif ($jenisLaporan == 2) {
-            # code...
+            return view('pages/pdf-belanja-perubatan',  compact('tahun'));
         } elseif ($jenisLaporan == 3) {
-            # code...
+
+            $pembekal = DB::table('pembekal')->get();
+
+            return view('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal'));
+
         } elseif ($jenisLaporan == 4) {
            $list = DB::table('senarai_pesakit_haemodialisis')
-           ->where('tahun', $tahunLaporan )
+           ->where('tahun', $tahun )
            ->get();
 
            return dd($list);

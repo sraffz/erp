@@ -23,15 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $data = DB::table('jumlah_kos_tahunan')->get();
 
         return view('dashboard', compact('kategorituntutan', 'data'));
-=======
-        $data = DB::table('jumlah_kos_tahunan')->get();
-
-        return view('dashboard', compact('data'));
->>>>>>> 8a2d1888459997e78b45957268f9bef6743c3c67
     }
 }
