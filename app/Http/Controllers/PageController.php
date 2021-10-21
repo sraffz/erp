@@ -481,13 +481,17 @@ class PageController extends Controller
 
         if ($jenisLaporan == 1) {
             if ($kategoriLaporan == 1) {
-                # code...
+                $kategori = 'PEMBEKALAN PERUBATAN';
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
             } elseif ($kategoriLaporan == 2) {
-                # code...
+                $kategori = 'PEMBEKALAN PERALATAN';
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
             } elseif ($kategoriLaporan == 3) {
-                # code...
+                $kategori = 'RAWATAN SUSULAN DI INSTITUT JANTUNG NEGARA';
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
             } elseif ($kategoriLaporan == 4) {
-                # code...
+                $kategori = 'RAWATAN PENYAKIT BUAH PINGGANG';
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
             } 
             
         } elseif ($jenisLaporan == 2) {
