@@ -10,14 +10,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <style>
-    .table thead th { 
-    background-color: #227292;
-    color: white;
-}
+    .table thead th {
+        background-color: #227292;
+        color: white;
+        font-size: 14px;
+    }
+
+    .table tfoot th {
+        font-size: 14px;
+    }
+
+    .table tbody td {
+        font-size: 12px;
+    }
 </style>
 <body>
     <div class="text-center">
-        <h3><strong>PERBELANJAAN RAWATAN HAEMODIALISIS BAGI TAHUN {{ $tahun }}</strong></h3>
+        <h4><strong>PERBELANJAAN RAWATAN HAEMODIALISIS BAGI TAHUN {{ $tahun }}</strong></h4>
     </div>
     <br><br>
         @foreach ($pembekal as $pmbkl)

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 
 class PageController extends Controller
 {
@@ -481,36 +481,57 @@ class PageController extends Controller
 
         if ($jenisLaporan == 1) {
             if ($kategoriLaporan == 1) {
+
                 $kategori = 'PEMBEKALAN PERUBATAN';
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
+                
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
             } elseif ($kategoriLaporan == 2) {
+                
                 $kategori = 'PEMBEKALAN PERALATAN';
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
+                
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
             } elseif ($kategoriLaporan == 3) {
+                
                 $kategori = 'RAWATAN SUSULAN DI INSTITUT JANTUNG NEGARA';
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
+                
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
             } elseif ($kategoriLaporan == 4) {
+                
                 $kategori = 'RAWATAN PENYAKIT BUAH PINGGANG';
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun','kategori'));
+                
+                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
             } 
             
         } elseif ($jenisLaporan == 2) {
-            return view('pages/pdf-belanja-perubatan',  compact('tahun'));
+            
+            $jumlah1 = DB::table('jumlah_ubat')->where('tahun', $tahun)->first();
+            $jumlah2 = DB::table('jumlah_alatan')->where('tahun', $tahun)->first();
+            $jumlah3 = DB::table('jumlah_ijn')->where('tahun', $tahun)->first();
+            $jumlah4 = DB::table('jumlah_heamodialisis')->where('tahun', $tahun)->first();
+
+            $j1 = $jumlah1->jumlah;
+            $j2 = $jumlah2->jumlah;
+            $j3 = $jumlah3->jumlah;
+            $j4 = $jumlah4->jumlah;
+
+            $pdf = PDF::loadView('pages/pdf-belanja-perubatan',  compact('tahun', 'j1', 'j3', 'j2', 'j4'))->setPaper('a4', 'landscape');
+           return $pdf->download('Jumlah Perbelanjaan Tahun '. $tahun.'.pdf');
+
+            // return view('pages/pdf-belanja-perubatan',  compact('tahun', 'j1', 'j3', 'j2', 'j4'));
         } elseif ($jenisLaporan == 3) {
-
+            
             $pembekal = DB::table('pembekal')->get();
-
+            
             return view('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal'));
-
+            
         } elseif ($jenisLaporan == 4) {
            $list = DB::table('senarai_pesakit_haemodialisis')
            ->where('tahun', $tahun )
            ->get();
-
-           return dd($list);
+           
+           $pdf = PDF::loadView('pages/pdf-senarai-pesakit-haemodialisis', compact('tahun','list'))->setPaper('a4', 'landscape');
+           return $pdf->download('Senarai Pesakit Haemodialisis Tahun '. $tahun.'.pdf');
         }
-        
-        // return back();
     }
 
 }

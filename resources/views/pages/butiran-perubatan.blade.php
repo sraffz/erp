@@ -249,7 +249,7 @@
                                     <div class="form-group">
                                         <label for="hargatuntutan">Harga Tuntuan (RM)</label>
                                         <input type="number" class="form-control" name="hargatuntutan"
-                                            value="{{ $bp->jumlahTuntutan }}">
+                                            value="{{ $bp->jumlahTuntutan }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="hargalulus">Harga Diluluskan (RM)</label>

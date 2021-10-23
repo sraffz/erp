@@ -10,15 +10,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <style>
-    .table thead th { 
-    background-color: #227292;
-    color: white;
-}
+    .table thead th {
+        background-color: #227292;
+        color: white;
+        font-size: 14px;
+    }
+
+    .table tfoot th {
+        font-size: 14px;
+    }
+
+    .table tbody td {
+        font-size: 12px;
+    }
 </style>
 <body>
     <div class="text-center">
-        <h3><strong> JUMLAH PERBELANJAAN PERUBATAN PEGAWAI/PESARA PERKHIDMATAN AWAM <br>
-            NEGERI KELANTAN BAGI {{ $tahun }}</strong></h3>
+        <h4><strong> JUMLAH PERBELANJAAN PERUBATAN PEGAWAI/PESARA PERKHIDMATAN AWAM <br>
+            NEGERI KELANTAN BAGI {{ $tahun }}</strong></h4>
     </div>
     <br><br>
         <table class="table table-bordered table-sm">
@@ -33,13 +42,28 @@
                 <tr class="text-center">
                     <td>1</td>
                     <td class="text-left">PEMBEKALAN UBATAN</td>
-                    <td class="text-right">14486.00</td>
+                    <td class="text-right">{{ $j1 }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td>2</td>
+                    <td class="text-left">PEMBEKALAN ALATAN</td>
+                    <td class="text-right">{{ $j2 }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td>3</td>
+                    <td class="text-left">RAWATAN DI ISTITUT JANTUNG NEGERA</td>
+                    <td class="text-right">{{ $j3 }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td>4</td>
+                    <td class="text-left">RAWATAN HAEMODIALISIS</td>
+                    <td class="text-right">{{ $j4 }}</td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
                     <th class="text-center" colspan="2">JUMLAH KESELURUHAN PERUBATAN</th>
-                    <th class="text-right">0.0</th>
+                    <th class="text-right">{{ $j1 + $j2 + $j3 + $j4 }}</th>
                 </tr>
             </tfoot>
         </table>
