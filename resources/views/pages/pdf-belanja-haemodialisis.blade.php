@@ -57,9 +57,99 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-
+                @foreach ($belanja as $index => $bi)
+                @if ($pmbkl->idPembekal == $bi->idPembekal)
+                <tr class="text-center">
+                    <td class="text-center">{{ $index+1 }}</td>
+                    <td class="text-left">{{ $bi->nama }}</td>
+                    <td class="text-center">{{ $bi->kadPengenalan }}</td>
+                    <td>
+                        @if ($bi->bulan == 1)
+                            {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 2)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 3)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 4)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 5)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 6)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 7)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 8)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 9)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 10)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 11)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
+                    <td>
+                        @if ($bi->bulan == 12)
+                        {{ $bi->jumlahSebenar }}
+                        @else
+                            0.00
+                        @endif
+                    </td>
                 </tr>
+                @endif
+                @endforeach
             </tbody>
             <tfoot>
                 <tr class="text-center">

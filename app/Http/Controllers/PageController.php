@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class PageController extends Controller
 {
@@ -28,17 +28,32 @@ class PageController extends Controller
         $pentadbir = DB::table('pentadbir')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $kos_bulanan = DB::table('jumlah_kos_bulanan')->get();
-        
+
         $jabatan = DB::table('jabatan')->get();
         $jawatan = DB::table('jawatan')->get();
         $hubungan = DB::table('hubungan')->get();
 
         if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}", 
-            compact('bilrawatan', 'peribadi2', 'peribadi', 'perkhidmatan', 
-            'jabatan', 'jawatan', 'hubungan', 'perkhidmatan_pesara', 'hospital', 
-            'pembekal', 'kategorituntutan', 'perubatan', 'pentadbir', 'kategorituntutan',
-            'kos_bulanan'));
+            return view(
+                "pages.{$page}",
+                compact(
+                    'bilrawatan',
+                    'peribadi2',
+                    'peribadi',
+                    'perkhidmatan',
+                    'jabatan',
+                    'jawatan',
+                    'hubungan',
+                    'perkhidmatan_pesara',
+                    'hospital',
+                    'pembekal',
+                    'kategorituntutan',
+                    'perubatan',
+                    'pentadbir',
+                    'kategorituntutan',
+                    'kos_bulanan'
+                )
+            );
         }
         return abort(404);
     }
@@ -47,7 +62,7 @@ class PageController extends Controller
     {
         $peribadi = DB::table('peribadi')->where('idPeribadi', $id)->get();
         $perkhidmatan = DB::table('papar_perkhidmatan')->where('id', $id)->get();
-        
+
         $jabatan = DB::table('jabatan')->get();
         $jawatan = DB::table('jawatan')->get();
         $hubungan = DB::table('hubungan')->get();
@@ -68,11 +83,28 @@ class PageController extends Controller
 
 
         if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}", 
-            compact('peribadi', 'perkhidmatan','butiranwaris', 'jabatan', 'jawatan', 
-            'hubungan', 'waris', 'pembekal', 'hospital', 'butiranperubatan', 'kategorituntutan', 
-            'senaraiperubatanwaris', 'senaraiperubatanpegawai', 'senaraibilwaris', 'senaraibilpegawai',
-            'butiranrawatan', 'kos_bulanan'));
+            return view(
+                "pages.{$page}",
+                compact(
+                    'peribadi',
+                    'perkhidmatan',
+                    'butiranwaris',
+                    'jabatan',
+                    'jawatan',
+                    'hubungan',
+                    'waris',
+                    'pembekal',
+                    'hospital',
+                    'butiranperubatan',
+                    'kategorituntutan',
+                    'senaraiperubatanwaris',
+                    'senaraiperubatanpegawai',
+                    'senaraibilwaris',
+                    'senaraibilpegawai',
+                    'butiranrawatan',
+                    'kos_bulanan'
+                )
+            );
         }
         return abort(404);
     }
@@ -81,7 +113,7 @@ class PageController extends Controller
     {
         $id = DB::table('jabatan')->insertGetId(
             [
-                'singkatanJabatan' => $req->input('singkatan'), 
+                'singkatanJabatan' => $req->input('singkatan'),
                 'namaJabatan' => $req->input('nama_jabatan')
             ]
         );
@@ -94,12 +126,12 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('jabatan')->where('idJabatan', $id)
-        ->update(
-            [
-                'singkatanJabatan' => $req->input('singkatan'), 
-                'namaJabatan' => $req->input('nama_jabatan')
-            ]
-        );
+            ->update(
+                [
+                    'singkatanJabatan' => $req->input('singkatan'),
+                    'namaJabatan' => $req->input('nama_jabatan')
+                ]
+            );
 
         return back()->with('success', 'jabatan telah berjaya dikemaskini.');
     }
@@ -120,11 +152,11 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('jawatan')->where('idJawatan', $id)
-        ->update(
-            [
-                'namaJawatan' => $req->input('jawatan')
-            ]
-        );
+            ->update(
+                [
+                    'namaJawatan' => $req->input('jawatan')
+                ]
+            );
 
         return back()->with('success', 'jabatan telah berjaya dikemaskini.');
     }
@@ -134,15 +166,15 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('peribadi')->where('idPeribadi', $id)
-        ->update(
-            [
-                'nama' => $req->input('nama'),
-                'idGred' => $req->input('gred'),
-                'idSkimPerkhidmatan' => $req->input('skim'),
-                'idJabatan' => $req->input('jabatan'),
-                'idJawatan' => $req->input('jawatan')
-            ]
-        );
+            ->update(
+                [
+                    'nama' => $req->input('nama'),
+                    'idGred' => $req->input('gred'),
+                    'idSkimPerkhidmatan' => $req->input('skim'),
+                    'idJabatan' => $req->input('jabatan'),
+                    'idJawatan' => $req->input('jawatan')
+                ]
+            );
 
         return back()->with('success', 'perkhidmatan telah berjaya dikemaskini.');
     }
@@ -185,15 +217,15 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('peribadi')->where('idPeribadi', $id)
-        ->update(
-            [
-                'nama' => $req->input('nama'),
-                'kadPengenalan' => $req->input('nokp'),
-                'tarikhLahir' => $req->input('tarikhlahir'),
-                'jantina' => $req->input('jantina'),
-                'pesara' => $req->input('statusPesara')
-            ]
-        );
+            ->update(
+                [
+                    'nama' => $req->input('nama'),
+                    'kadPengenalan' => $req->input('nokp'),
+                    'tarikhLahir' => $req->input('tarikhlahir'),
+                    'jantina' => $req->input('jantina'),
+                    'pesara' => $req->input('statusPesara')
+                ]
+            );
 
         return back()->with('success', 'Maklumat Peribadi telah berjaya dikemaskini.');
     }
@@ -201,10 +233,10 @@ class PageController extends Controller
     public function waris($id)
     {
         $waris = DB::table('epp_waris')
-        ->select('epp_waris.*', 'hubungan.namaHubungan as hubungan')
-        ->join('hubungan', 'hubungan.id', '=','epp_waris.hubungan')
-        ->where('idPesara', $id)
-        ->get();
+            ->select('epp_waris.*', 'hubungan.namaHubungan as hubungan')
+            ->join('hubungan', 'hubungan.id', '=', 'epp_waris.hubungan')
+            ->where('idPesara', $id)
+            ->get();
 
         return $waris;
     }
@@ -212,68 +244,68 @@ class PageController extends Controller
     public function butiranwaris($id)
     {
         $waris = DB::table('epp_waris')
-        ->select('epp_waris.*', 'peribadi.nama as nama_pegawai', 'peribadi.kadPengenalan as ic_pegawai', 'jawatan.namaJawatan', 'hubungan.namaHubungan as hubungan')
-        ->join('hubungan', 'hubungan.id', '=','epp_waris.hubungan')
-        ->join('peribadi', 'peribadi.idPeribadi', '=','epp_waris.idPesara')
-        ->leftjoin('jawatan', 'jawatan.idJawatan', '=','peribadi.idJawatan')
-        ->where('epp_waris.id', $id)
-        ->get();
+            ->select('epp_waris.*', 'peribadi.nama as nama_pegawai', 'peribadi.kadPengenalan as ic_pegawai', 'jawatan.namaJawatan', 'hubungan.namaHubungan as hubungan')
+            ->join('hubungan', 'hubungan.id', '=', 'epp_waris.hubungan')
+            ->join('peribadi', 'peribadi.idPeribadi', '=', 'epp_waris.idPesara')
+            ->leftjoin('jawatan', 'jawatan.idJawatan', '=', 'peribadi.idJawatan')
+            ->where('epp_waris.id', $id)
+            ->get();
 
         return $waris;
     }
 
     public function butiranperubatan($id)
     {
-       $butiranperubatan = DB::table('papar_butiran_perubatan')
-       ->where('idTuntutan', $id)
-       ->get();
+        $butiranperubatan = DB::table('papar_butiran_perubatan')
+            ->where('idTuntutan', $id)
+            ->get();
 
-       return $butiranperubatan;
+        return $butiranperubatan;
     }
 
     public function senaraiperubatanwaris($id)
     {
         $senaraiperubatanwaris = DB::table('papar_butiran_perubatan')
-       ->where('idwaris', $id)
-       ->get();
+            ->where('idwaris', $id)
+            ->get();
 
-       return $senaraiperubatanwaris;
+        return $senaraiperubatanwaris;
     }
 
     public function senaraibilpegawai($id)
     {
         $senaraibilpegawai = DB::table('papar_bil_rawatan')
-       ->where('idPeribadi', $id)
-       ->get();
+            ->where('idPeribadi', $id)
+            ->get();
 
-       return $senaraibilpegawai;
+        return $senaraibilpegawai;
     }
 
     public function butiranrawatan($id)
     {
-       $butiranrawatan = DB::table('papar_bil_rawatan')
-       ->where('idRawatan', $id)
-       ->get();
+        $butiranrawatan = DB::table('papar_bil_rawatan')
+            ->where('idRawatan', $id)
+            ->get();
 
-       return $butiranrawatan;
+        return $butiranrawatan;
     }
 
     public function senaraibilwaris($id)
     {
         $senaraibilwaris = DB::table('papar_bil_rawatan')
-       ->where('id_waris', $id)
-       ->get();
+            ->where('id_waris', $id)
+            ->get();
 
-       return $senaraibilwaris;
+        return $senaraibilwaris;
     }
 
     public function senaraiperubatanpegawai($id)
     {
         $senaraiperubatanpegawai = DB::table('papar_butiran_perubatan')
-       ->where('idpenjawatawam', $id)
-       ->get();
+            ->where('idpenjawatawam', $id)
+            ->get();
 
-       return $senaraiperubatanpegawai;
+        return $senaraiperubatanpegawai;
     }
 
     public function kemaskiniwaris(Request $req)
@@ -281,15 +313,15 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('epp_waris')->where('id', $id)
-        ->update(
-            [
-                'nama' => $req->input('nama'),
-                'nokp' => $req->input('nokp'),
-                'jantina' => $req->input('jantina'),
-                'tarikhLahir' => $req->input('tarikhlahir'),
-                'hubungan' => $req->input('hubungan')
-            ]
-        );
+            ->update(
+                [
+                    'nama' => $req->input('nama'),
+                    'nokp' => $req->input('nokp'),
+                    'jantina' => $req->input('jantina'),
+                    'tarikhLahir' => $req->input('tarikhlahir'),
+                    'hubungan' => $req->input('hubungan')
+                ]
+            );
 
         return back()->with('success', 'maklumat Waris telah berjaya Dikemaskini.');
     }
@@ -299,24 +331,24 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('tuntutan')->where('idTuntutan', $id)
-        ->update(
-            [
-                'idHospital' => $req->input('hospital'),
-                'tarikhRawatan' => $req->input('tarikhRawatan'),
-                'idPembekal' => $req->input('pembekal'),
-                'tarikhKemudahanPerubatanDiperolehi' => $req->input('tarikhKemudahanPerubatanDiperolehi'),
-                'idKategoriTuntutan' => $req->input('kategorituntutan'),
-                'detailTuntutan' => $req->input('namaubat'),
-                'noRujukanKewangan' => $req->input('baucer'),
-                'jumlahTuntutan' => $req->input('hargatuntutan'),
-                'jumlahSebenar' => $req->input('hargalulus'),
-                'tarikhKelulusan' => $req->input('tarikh_lulus'),
-                'jenisPermohonan' => $req->input('jenisPermohonan'),
-                'tarikhTerimaPermohonan' => $req->input('tarikh_terima_permohonan'),
-                'catatanPermohonan' => $req->input('catatan_permohonan'),
-                'noFail' => $req->input('nofail')
-            ]
-        );
+            ->update(
+                [
+                    'idHospital' => $req->input('hospital'),
+                    'tarikhRawatan' => $req->input('tarikhRawatan'),
+                    'idPembekal' => $req->input('pembekal'),
+                    'tarikhKemudahanPerubatanDiperolehi' => $req->input('tarikhKemudahanPerubatanDiperolehi'),
+                    'idKategoriTuntutan' => $req->input('kategorituntutan'),
+                    'detailTuntutan' => $req->input('namaubat'),
+                    'noRujukanKewangan' => $req->input('baucer'),
+                    'jumlahTuntutan' => $req->input('hargatuntutan'),
+                    'jumlahSebenar' => $req->input('hargalulus'),
+                    'tarikhKelulusan' => $req->input('tarikh_lulus'),
+                    'jenisPermohonan' => $req->input('jenisPermohonan'),
+                    'tarikhTerimaPermohonan' => $req->input('tarikh_terima_permohonan'),
+                    'catatanPermohonan' => $req->input('catatan_permohonan'),
+                    'noFail' => $req->input('nofail')
+                ]
+            );
         return back()->with('success', 'Maklumat perubatan telah berjaya Dikemaskini.');
     }
 
@@ -334,7 +366,6 @@ class PageController extends Controller
         );
 
         return back()->with('success', 'Bil Rawatan telah berjaya Ditambah.');
-
     }
 
     public function tambahbilrawatanwaris(Request $req)
@@ -353,7 +384,6 @@ class PageController extends Controller
         );
 
         return back()->with('success', 'Bil Rawatan Waris telah berjaya Ditambah.');
-
     }
 
     public function kemaskinibilrawatan(Request $req)
@@ -361,13 +391,13 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('rawatan')->where('idRawatan', $id)
-        ->update(
-            [
-                'tarikh_bil' => $req->input('tarikh_bil'),
-                'jumlah_bil' => $req->input('jumlah_bil'),
-                'no_bil' => $req->input('no_bil')
-            ]
-        );
+            ->update(
+                [
+                    'tarikh_bil' => $req->input('tarikh_bil'),
+                    'jumlah_bil' => $req->input('jumlah_bil'),
+                    'no_bil' => $req->input('no_bil')
+                ]
+            );
         return back()->with('success', 'Maklumat Bil Rawatan telah berjaya Dikemaskini.');
     }
 
@@ -376,7 +406,7 @@ class PageController extends Controller
         $id = $req->input('id');
 
         $dd = DB::table('tuntutan')->insertGetId(
-            [   
+            [
                 'idpenjawatawam' => $req->input('id'),
                 'idHospital' => $req->input('hospital'),
                 'tarikhRawatan' => $req->input('tarikhRawatan'),
@@ -395,7 +425,7 @@ class PageController extends Controller
             ]
         );
 
-        return redirect('senarai-perubatan/'.$id.'')->with('success', 'Maklumat perubatan telah berjaya ditambah.');
+        return redirect('senarai-perubatan/' . $id . '')->with('success', 'Maklumat perubatan telah berjaya ditambah.');
     }
 
     public function tambahperubatanwaris(Request $req)
@@ -403,7 +433,7 @@ class PageController extends Controller
         $id = $req->input('id');
 
         $dd = DB::table('tuntutan')->insertGetId(
-            [   
+            [
                 'idwaris' => $id,
                 'idpenjawatawam' => $req->input('idPesara'),
                 'idHospital' => $req->input('hospital'),
@@ -423,7 +453,7 @@ class PageController extends Controller
             ]
         );
 
-        return redirect('senarai-perubatan-waris/'.$id.'')->with('success', 'Maklumat perubatan waris telah berjaya ditambah.');
+        return redirect('senarai-perubatan-waris/' . $id . '')->with('success', 'Maklumat perubatan waris telah berjaya ditambah.');
     }
 
     public function padampegawaipesara(Request $req)
@@ -448,7 +478,7 @@ class PageController extends Controller
         DB::table('tuntutan')->where('idwaris', $id)->delete();
         DB::table('epp_waris')->where('id', $id)->delete();
 
-        return redirect('butiran-peribadi/'.$pbr->idPeribadi.'')->with('success', 'Waris telah berjaya dipadam.');
+        return redirect('butiran-peribadi/' . $pbr->idPeribadi . '')->with('success', 'Waris telah berjaya dipadam.');
     }
 
     public function padamperubatan(Request $req)
@@ -481,57 +511,113 @@ class PageController extends Controller
 
         if ($jenisLaporan == 1) {
             if ($kategoriLaporan == 1) {
-
+                $kod = "01";
                 $kategori = 'PEMBEKALAN PERUBATAN';
-                
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
+
+                $data = DB::table('papar_perubatan2')
+                    ->where('tahun', $tahun)
+                    ->whereIn('idKategoriTuntutan', [$kod])
+                    ->get();
+
+                $pdf = PDF::loadView('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'))->setPaper('a4', 'landscape');
+                return $pdf->download('PERBELANJAAN PERUBATAN BAGI TAHUN ' . $tahun . '.pdf');
+                //  return dd($data);
+                // return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'));
+
             } elseif ($kategoriLaporan == 2) {
-                
+                $kod = "02, 03, 04, 05, 06, 07";
                 $kategori = 'PEMBEKALAN PERALATAN';
-                
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
+
+                $data = DB::table('papar_perubatan2')
+                    ->where('tahun', $tahun)
+                    ->whereIn('idKategoriTuntutan', [$kod])
+                    ->get();
+
+                $pdf = PDF::loadView('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'))->setPaper('a4', 'landscape');
+                return $pdf->download('PERBELANJAAN PERALATAN BAGI TAHUN ' . $tahun . '.pdf');
+                //  return dd($data);
+                // return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'));
+
             } elseif ($kategoriLaporan == 3) {
-                
+                $kod = "12";
                 $kategori = 'RAWATAN SUSULAN DI INSTITUT JANTUNG NEGARA';
-                
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
+
+                $data = DB::table('papar_perubatan2')
+                    ->where('tahun', $tahun)
+                    ->whereIn('idKategoriTuntutan', [$kod])
+                    ->get();
+
+                $pdf = PDF::loadView('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'))->setPaper('a4', 'landscape');
+                return $pdf->download('PERBELANJAAN RAWATAN DI INSTITUT JANTUNG NEGARA BAGI TAHUN ' . $tahun . '.pdf');
+                //  return dd($data);
+                // return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'));
+
             } elseif ($kategoriLaporan == 4) {
-                
+                $kod = "13";
                 $kategori = 'RAWATAN PENYAKIT BUAH PINGGANG';
-                
-                return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori'));
-            } 
-            
+
+                $data = DB::table('papar_perubatan2')
+                    ->where('tahun', $tahun)
+                    ->whereIn('idKategoriTuntutan', [$kod])
+                    ->get();
+
+                $pdf = PDF::loadView('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'))->setPaper('a4', 'landscape');
+                return $pdf->download('PERBELANJAAN RAWATAN HAEMODIALISIS BAGI TAHUN ' . $tahun . '.pdf');
+                //  return dd($data);
+                // return view('pages/pdf-belanja-perubatan-kategori',  compact('tahun', 'kategori', 'data'));
+
+            }
         } elseif ($jenisLaporan == 2) {
-            
-            $jumlah1 = DB::table('jumlah_ubat')->where('tahun', $tahun)->first();
-            $jumlah2 = DB::table('jumlah_alatan')->where('tahun', $tahun)->first();
-            $jumlah3 = DB::table('jumlah_ijn')->where('tahun', $tahun)->first();
-            $jumlah4 = DB::table('jumlah_heamodialisis')->where('tahun', $tahun)->first();
+            $j1 = DB::table('jumlah_belanja_ubat')
+                ->whereIn('id_kategori', ['01'])
+                ->where('tahun', $tahun)
+                ->sum('total');
 
-            $j1 = $jumlah1->jumlah;
-            $j2 = $jumlah2->jumlah;
-            $j3 = $jumlah3->jumlah;
-            $j4 = $jumlah4->jumlah;
+            $j2 = DB::table('jumlah_belanja_ubat')
+                ->whereIn('id_kategori', ['02', '03', '04', '05', '06', '07'])
+                ->where('tahun', $tahun)
+                ->sum('total');
 
-            $pdf = PDF::loadView('pages/pdf-belanja-perubatan',  compact('tahun', 'j1', 'j3', 'j2', 'j4'))->setPaper('a4', 'landscape');
-           return $pdf->download('Jumlah Perbelanjaan Tahun '. $tahun.'.pdf');
+            $j3 = DB::table('jumlah_belanja_ubat')
+                ->whereIn('id_kategori', ['12'])
+                ->where('tahun', $tahun)
+                ->sum('total');
 
-            // return view('pages/pdf-belanja-perubatan',  compact('tahun', 'j1', 'j3', 'j2', 'j4'));
+            $j4 = DB::table('jumlah_belanja_ubat')
+                ->whereIn('id_kategori', ['13'])
+                ->where('tahun', $tahun)
+                ->sum('total');
+
+            $alltotal = $j1 + $j2 + $j3 + $j4;
+
+            $pdf = PDF::loadView('pages/pdf-belanja-perubatan',  compact('tahun', 'jumlah', 'j1', 'j2', 'j3', 'j4', 'alltotal'))->setPaper('a4', 'landscape');
+            return $pdf->download('Jumlah Perbelanjaan Tahun ' . $tahun . '.pdf');
+
+            // return dd($j2, $j1, $j3, $j4, $alltotal);
+            // return view('pages/pdf-belanja-perubatan',  compact('tahun', 'jumlah', 'j1', 'j2', 'j3', 'j4', 'alltotal'));
         } elseif ($jenisLaporan == 3) {
-            
+
             $pembekal = DB::table('pembekal')->get();
-            
-            return view('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal'));
-            
+            $belanja = DB::table('belanja_haemodialisis_hospital')
+            ->where('tahun', $tahun)
+            ->get();
+
+            $total = DB::table('belanja_haemodialisis_hospital')
+            ->select(DB::raw('SUM(jumlahSebenar))', 'idPembekal'))
+            ->where('tahun', $tahun)
+            ->groupBy('idPembekal')
+            ->get();
+
+            return dd($total);
+
+            return view('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal', 'belanja', 'total'));
         } elseif ($jenisLaporan == 4) {
-           $list = DB::table('senarai_pesakit_haemodialisis')
-           ->where('tahun', $tahun )
-           ->get();
-           
-           $pdf = PDF::loadView('pages/pdf-senarai-pesakit-haemodialisis', compact('tahun','list'))->setPaper('a4', 'landscape');
-           return $pdf->download('Senarai Pesakit Haemodialisis Tahun '. $tahun.'.pdf');
+            $list = DB::table('senarai_pesakit_haemodialisis')
+                ->where('tahun', $tahun)
+                ->get();
+
+            $pdf = PDF::loadView('pages/pdf-senarai-pesakit-haemodialisis', compact('tahun', 'list'))->setPaper('a4', 'landscape');
+            return $pdf->download('Senarai Pesakit Haemodialisis Tahun ' . $tahun . '.pdf');
         }
     }
-
 }
