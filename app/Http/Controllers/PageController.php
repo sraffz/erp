@@ -602,15 +602,17 @@ class PageController extends Controller
             ->where('tahun', $tahun)
             ->get();
 
-            $total = DB::table('belanja_haemodialisis_hospital')
-            ->select(DB::raw('SUM(jumlahSebenar))', 'idPembekal'))
+            $bulanan = DB::table('belanja_haemodialisis_hospital')
+            ->select(DB::raw("SUM(jumlahSebenar) as jumlah"), 'bulan', 'idPembekal')
             ->where('tahun', $tahun)
-            ->groupBy('idPembekal')
+            ->groupBy('idPembekal', 'bulan')
             ->get();
 
-            return dd($total);
+            // return dd($bulanan);
+            $pdf = PDF::loadView('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal', 'belanja', 'bulanan'))->setPaper('a4', 'landscape');
+            return $pdf->download('Jumlah Pembelanjaan Haemodialisis Tahun ' . $tahun . '.pdf');
 
-            return view('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal', 'belanja', 'total'));
+            return view('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal', 'belanja', 'bulanan'));
         } elseif ($jenisLaporan == 4) {
             $list = DB::table('senarai_pesakit_haemodialisis')
                 ->where('tahun', $tahun)

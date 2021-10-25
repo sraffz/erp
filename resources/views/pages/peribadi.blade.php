@@ -63,6 +63,7 @@
                                         </th>
                                         <th>
                                             {{ \Carbon\Carbon::parse($prbd->tarikhLahir)->format('d/m/Y') }}
+                                            ({{ \Carbon\Carbon::parse($prbd->tarikhLahir)->age }})
                                         </th>
                                         <th class="td-actions text-right">
                                             <a rel="tooltip" class="btn btn-primary"

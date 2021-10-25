@@ -109,11 +109,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-6">
                     <div class="card card-chart">
                         <div class="card-header card-header-warning">
-                            {{-- <div class="ct-chart" id="websiteViewsChart"></div> --}}
+                            <div class="ct-chart" id="websiteViewsChart"></div>
                             <h4 class="card-title">Kos Tanggungan Rawatan Pegawai</h4>
                             <p class="card-category">Jadual kos tanggungan keseluruhan pegawai mengikut tahun.</p>
                         </div>
@@ -140,16 +140,16 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                            {{-- <div class="stats">
+                            <div class="stats">
                 <i class="material-icons">access_time</i> campaign sent 2 days ago
-              </div> --}}
+              </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card card-chart">
                         <div class="card-header card-header-danger">
-                            {{-- <div class="ct-chart" id="completedTasksChart"></div> --}}
+                            <div class="ct-chart" id="completedTasksChart"></div>
                             <h4 class="card-title">Kos Tanggungan Rawatan Pesara</h4>
                             <p class="card-category">Jadual kos tanggungan keseluruhan pesara mengikut tahun.</p>
                         </div>
@@ -176,13 +176,13 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                            {{-- <div class="stats">
+                            <div class="stats">
                 <i class="material-icons">access_time</i> campaign sent 2 days ago
-              </div> --}}
+              </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card">

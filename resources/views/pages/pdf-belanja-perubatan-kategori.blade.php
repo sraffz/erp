@@ -82,8 +82,8 @@
                     </td>
                     <td style="vertical-align: middle">{{ $d->namaJabatan }}</td>
                     <td style="vertical-align: middle">{{ $d->jenisPermohonan }}</td>
-                    <td style="vertical-align: middle">{{ $d->tarikhTerimaPermohonan }}</td>
-                    <td style="vertical-align: middle">{{ $d->tarikhKelulusan }}</td>
+                    <td style="vertical-align: middle">{{ \Carbon\Carbon::parse($d->tarikhTerimaPermohonan)->format('d/m/Y') }}</td>
+                    <td style="vertical-align: middle">{{ \Carbon\Carbon::parse($d->tarikhKelulusan)->format('d/m/Y') }}</td>
                     <td style="vertical-align: middle">{{ $d->jumlahSebenar }}</td>
                     <td style="vertical-align: middle">{{ $d->catatanPermohonan }}</td>
                     <td style="vertical-align: middle">{{ $d->noFail }}</td>
