@@ -69,7 +69,8 @@ class PageController extends Controller
         $pembekal = DB::table('pembekal')->get();
         $hospital = DB::table('hospital')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
-        $kos_bulanan = DB::table('jumlah_kos_bulanan')->where('Tahun', $id)->get();
+        $kos_bulanan = DB::table('jumlah_kos_bulanan')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
+        $kos_bulanan_status = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
 
         $waris = $this->waris($id);
         $butiranwaris = $this->butiranwaris($id);
@@ -102,7 +103,8 @@ class PageController extends Controller
                     'senaraibilwaris',
                     'senaraibilpegawai',
                     'butiranrawatan',
-                    'kos_bulanan'
+                    'kos_bulanan',
+                    'kos_bulanan_status'
                 )
             );
         }

@@ -118,7 +118,9 @@
         });
 
         $(document).ready(function() {
-            $('table.display').DataTable();
+            $('table.display').DataTable({
+                "order": [[ 1, "desc" ]]
+            });
         } );
 
         $('#zero_config').dataTable({
