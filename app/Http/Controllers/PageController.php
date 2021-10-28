@@ -624,4 +624,38 @@ class PageController extends Controller
             return $pdf->download('Senarai Pesakit Haemodialisis Tahun ' . $tahun . '.pdf');
         }
     }
+
+    public function tambahhospital(Request $req)
+    {
+        $id = DB::table('hospital')->insertGetId(
+            [
+                'namaHospital' => $req->input('namahospital'),
+                'alamatHospital' => $req->input('alamathospital'),
+                'alamat2' => $req->input('alamat2'),
+                'alamat3' => $req->input('alamat3'),
+                'bandar' => $req->input('bandar'),
+                'poskod' => $req->input('poskod'),
+                'negeri' => $req->input('negeri')
+            ]
+        );
+
+        return back();
+    }
+
+    public function tambahpembekal(Request $req)
+    {
+        $id = DB::table('pembekal')->insertGetId(
+            [
+                'namaPembekal' => $req->input('namaPembekal'),
+                'alamatPembekal' => $req->input('alamatPembekal'),
+                'alamat2' => $req->input('alamat2'),
+                'alamat3' => $req->input('alamat3'),
+                'bandar' => $req->input('bandar'),
+                'poskod' => $req->input('poskod'),
+                'negeri' => $req->input('negeri')
+            ]
+        );
+
+        return back();
+    }
 }

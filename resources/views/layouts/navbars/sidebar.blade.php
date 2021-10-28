@@ -93,13 +93,14 @@
                     <p>{{ __('Bil Rawatan') }}</p>
                 </a>
             </li>
+
+            @if ((Auth::user()->level == 'Pentadbir Sistem') || Auth::user()->level == 'Superadmin')
             <li class="nav-item{{ $activePage == 'pengguna' || $activePage == 'pengguna-tidak-aktif' ? ' active' : '' }}">
                 <a class="nav-link" href="{{route('page.index', 'pengguna')}}">
                     <i class="material-icons">person</i>
                     <p>{{ __('Pengguna') }}</p>
                 </a>
             </li>
-
             <li class="nav-item {{ $activePage == 'jabatan' || $activePage == 'jawatan' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#config" aria-expanded="false">
                     <i class="material-icons">settings</i>
@@ -124,6 +125,9 @@
                     </ul>
                 </div>
             </li>
+            @endif
+
+
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -131,14 +135,6 @@
                     <p>{{ __('Log Keluar') }}</p>
                 </a>
             </li>
-
-
-
-
-
-
-
-
             {{-- <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
                 <a class="nav-link" href="{{route('page.index', 'table') }}">
                     <i class="material-icons">content_paste</i>

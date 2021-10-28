@@ -294,6 +294,50 @@
         $(".select2").select2({
             
         });
+
+        $('#editPembekal').click(function(){
+					if($('#namaPembekal').val()!=0){
+						
+						var idP = $('#namaPembekal').val();
+						
+						$.ajax({        
+						type: 'GET',                              
+                        url: 'loadPembekal.php?id='+idP,   
+						dataType: 'json',                
+                    	}) 
+
+						.done(function(data){
+
+							$('#idPembekal').val(idP);
+							$('#namaPembekalModal').val( data['nama'])
+							$('#alamatPembekal1').val( data['alamat1'])
+							$('#alamatPembekal2').val( data['alamat2'])
+							$('#alamatPembekal3').val( data['alamat3'])
+							$('#bandarPembekal').val( data['bandar'])
+							$('#poskodPembekal').val( data['poskod'])
+							$('#negeriPembekal').val(data['negeri'])
+							$('#btnPembekal').html(' Kemaskini ')
+							$('#methodUpdatePembekal').val('edit')
+							$('#pembekalModal').modal('show')
+						})
+						
+						.fail(function(data){
+							
+							console.log("fail")
+						})
+						
+					}
+					else{
+						new PNotify({
+							delay: 1000,
+							title: '',
+							text: 'Tiada data untuk diedit',
+							type: 'error',
+							styling: 'bootstrap3'
+        				})
+					}
+					
+				});
     </script>
 </body>
 
