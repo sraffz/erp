@@ -4,102 +4,217 @@
     <div class="content">
         <div class="container-fluid">
             {{-- <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-header card-header-warning card-header-icon">
-              <div class="card-icon">
-                <i class="material-icons">content_copy</i>
-              </div>
-              <p class="card-category">Used Space</p>
-              <h3 class="card-title">49/50
-                <small>GB</small>
-              </h3>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons text-danger">warning</i>
-                <a href="#pablo">Get More Space...</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-header card-header-success card-header-icon">
-              <div class="card-icon">
-                <i class="material-icons">store</i>
-              </div>
-              <p class="card-category">Revenue</p>
-              <h3 class="card-title">$34,245</h3>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">date_range</i> Last 24 Hours
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-header card-header-danger card-header-icon">
-              <div class="card-icon">
-                <i class="material-icons">info_outline</i>
-              </div>
-              <p class="card-category">Fixed Issues</p>
-              <h3 class="card-title">75</h3>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">local_offer</i> Tracked from Github
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-header card-header-info card-header-icon">
-              <div class="card-icon">
-                <i class="fa fa-twitter"></i>
-              </div>
-              <p class="card-category">Followers</p>
-              <h3 class="card-title">+245</h3>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">update</i> Just Updated
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> --}}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">content_copy</i>
+                    </div>
+                    <p class="card-category">Used Space</p>
+                    <h3 class="card-title">49/50
+                        <small>GB</small>
+                    </h3>
+                    </div>
+                    <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="#pablo">Get More Space...</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">store</i>
+                    </div>
+                    <p class="card-category">Revenue</p>
+                    <h3 class="card-title">$34,245</h3>
+                    </div>
+                    <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">date_range</i> Last 24 Hours
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">info_outline</i>
+                    </div>
+                    <p class="card-category">Fixed Issues</p>
+                    <h3 class="card-title">75</h3>
+                    </div>
+                    <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">local_offer</i> Tracked from Github
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                    <div class="card-icon">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <p class="card-category">Followers</p>
+                    <h3 class="card-title">+245</h3>
+                    </div>
+                    <div class="card-footer">
+                    <div class="stats">
+                        <i class="material-icons">update</i> Just Updated
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div> --}}
+            {{-- //Jumlah permohonan mengikut tahun dan Kos --}}
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-chart">
                         <div class="card-header card-header-success">
-                            <h4 class="card-title">Kos Tanggungan Rawatan Pegawai dan Pesara</h4>
+                            <h4 class="card-title"><strong>Kos Tanggungan Rawatan Pegawai dan Pesara</strong></h4>
                             <p class="card-category">
                                 <span class="">Jadual kos tanggungan keseluruhan mengikut tahun.
                             </p>
                         </div>
                         <div class="card-body">
-                            <table class="table table-striped display">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>Tahun</th>
-                                        <th>Kos (RM)</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data as $d)
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered  display">
+                                    <thead class="text-primary">
                                         <tr class="text-center">
-                                            <td scope="row">{{ $d->Tahun }}</td>
-                                            <td>{{ $d->Jumlah }}</td>
-                                            <td><a class="btn btn-info btn-sm" href="{{ url('kos-bulanan', [$d->Tahun]) }}" role="button">Butiran</a></td>
-                                          </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                            <th>Tahun</th>
+                                            <th>Kos (RM)</th>
+                                            <th style="width: 5%"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $d)
+                                            <tr class="text-center">
+                                                <td scope="row">{{ $d->Tahun }}</td>
+                                                <td>{{ $d->Jumlah }}</td>
+                                                <td><a class="btn btn-success btn-sm"
+                                                        href="{{ url('kos-bulanan', [$d->Tahun]) }}"
+                                                        role="button">Butiran</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                {{-- <i class="material-icons">access_time</i> updated 4 minutes ago --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- //Jumlah permohonan mengikut tahun dan jenis tuntutan --}}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title"><strong>Jumlah Permohonan dan Tuntutan</strong></h4>
+                            <p class="card-category">
+                                <span class="">Jumlah permohonan mengikut tahun dan jenis tuntutan.
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered display">
+                                    <thead class="text-primary">
+                                        <tr class="text-center">
+                                            <th>Tahun</th>
+                                            <th>Ubatan</th>
+                                            <th>Alatan</th>
+                                            <th>Rawatan Jantung</th>
+                                            <th>Rawatan Heamodialisis</th>
+                                            <th>Jumlah</th>
+                                            <th style="width: 5%"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $d)
+                                            <tr class="text-center">
+                                                <td scope="row">{{ $d->Tahun }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a class="btn btn-danger btn-sm"
+                                                        href="{{ url('kos-bulanan', [$d->Tahun]) }}"
+                                                        role="button">Butiran</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                {{-- <i class="material-icons">access_time</i> updated 4 minutes ago --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- //Jumlah permohonan mengikut tahun dan umur --}}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title"><strong> Jumlah Permohonan Mengikut Tahun dan Peringkat Umur</strong>
+                            </h4>
+                            <p class="card-category">
+                                <span class="">Jumlah permohonan mengikut tahun dan peringkat umur
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered display">
+                                    <thead class="text-primary">
+                                        <tr class="text-center">
+                                            <th rowspan="2">Tahun</th>
+                                            <th colspan="4">Umur</th>
+                                            <th rowspan="2">Jumlah</th>
+                                            <th style="width: 5%" rowspan="2"></th>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <th>30</th>
+                                            <th>31-39</th>
+                                            <th>40-49</th>
+                                            <th>50-59</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $d)
+                                            <tr class="text-center">
+                                                <td scope="row">{{ $d->Tahun }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="width: 5%">
+                                                    <a class="btn btn-primary btn-sm"
+                                                        href="{{ url('kos-bulanan', [$d->Tahun]) }}"
+                                                        role="button">Butiran</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
@@ -184,7 +299,7 @@
                 </div>
             </div> --}}
             <div class="row">
-                <div class="col-lg-12 col-md-12">
+                {{-- <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header card-header-tabs card-header-primary">
                             <div class="nav-tabs-navigation">
@@ -454,51 +569,51 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- <div class="col-lg-6 col-md-12">
-          <div class="card">
-            <div class="card-header card-header-warning">
-              <h4 class="card-title">Employees Stats</h4>
-              <p class="card-category">New employees on 15th September, 2016</p>
-            </div>
-            <div class="card-body table-responsive">
-              <table class="table table-hover">
-                <thead class="text-warning">
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Salary</th>
-                  <th>Country</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Dakota Rice</td>
-                    <td>$36,738</td>
-                    <td>Niger</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Minerva Hooper</td>
-                    <td>$23,789</td>
-                    <td>Curaçao</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Sage Rodriguez</td>
-                    <td>$56,142</td>
-                    <td>Netherlands</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Philip Chaney</td>
-                    <td>$38,735</td>
-                    <td>Korea, South</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div> --}}
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                    <h4 class="card-title">Employees Stats</h4>
+                    <p class="card-category">New employees on 15th September, 2016</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>Country</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Dakota Rice</td>
+                            <td>$36,738</td>
+                            <td>Niger</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Minerva Hooper</td>
+                            <td>$23,789</td>
+                            <td>Curaçao</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Sage Rodriguez</td>
+                            <td>$56,142</td>
+                            <td>Netherlands</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Philip Chaney</td>
+                            <td>$38,735</td>
+                            <td>Korea, South</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                </div> --}}
             </div>
         </div>
     </div>

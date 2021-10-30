@@ -369,7 +369,7 @@
                             <div class="form-group">
                                 <label for="namaPembekal">Nama Hospital/ Agensi Swasta:</label>
                                 <input type="text" class="form-control" name="namaPembekal" id="namaPembekal"
-                                    aria-describedby="helpId" placeholder="Nama Hospital/Klinik Kerajaan">
+                                    aria-describedby="helpId" placeholder="Nama Hospital/Klinik Swasta">
                             </div>
                             <div class="form-group">
                                 <label for="alamatPembekal">Alamat</label>

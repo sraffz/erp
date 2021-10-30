@@ -14,7 +14,7 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/fontawesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('material/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -22,6 +22,10 @@
 </head>
 <style type="text/css">
     td {
+        font-weight: bold;
+    }
+
+    th {
         font-weight: bold;
     }
 
@@ -123,6 +127,12 @@
             });
         } );
 
+        $(document).ready(function() {
+            $('table.display2').DataTable({ 
+                
+            });
+        } );
+
         $('#zero_config').dataTable({
             "language": {
                 "emptyTable": "Tiada data",
@@ -139,7 +149,7 @@
                     "sLast": "Akhir"
                 }
             },
-            "dom": 'Bfrtip',
+            // "dom": 'Bfrtip',
             "buttons": [
                 // { extend: 'copy', className: 'btn-info'},
                 {
