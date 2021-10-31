@@ -24,27 +24,45 @@ class HomeController extends Controller
     public function index()
     {
         $kategorituntutan = DB::table('kategorituntutan')->get();
+
         $data = DB::table('jumlah_kos_tahunan')
             ->where('tahun', '<>', '')
             ->orderBy('tahun', 'DESC')
             ->get();
 
-        $j1 = DB::table('jumlah_belanja_ubat')
-            ->whereIn('id_kategori', ['01'])
-            ->sum('total');
+        $bilpermohonan = DB::table('bil_permohonan_tahun_kategori')
+            ->where('tahun', '<>', '')
+            ->get();
 
-        $j2 = DB::table('jumlah_belanja_ubat')
-            ->whereIn('id_kategori', ['02', '03', '04', '05', '06', '07'])
-            ->sum('total');
+        $bilpermohonan2 = DB::table('bil_permohonan_tahun_kategori2')
+            ->where('tahun', '<>', '')
+            ->get();
 
-        $j3 = DB::table('jumlah_belanja_ubat')
-            ->whereIn('id_kategori', ['12'])
-            ->sum('total');
+        $tahunPermohonan = DB::table('jumlah_belanja_ubat')
+            ->select('tahun')
+            ->where('tahun', '<>', 'null')
+            ->groupBy('tahun')
+            ->get();
 
-        $j4 = DB::table('jumlah_belanja_ubat')
-            ->whereIn('id_kategori', ['13'])
-            ->sum('total');
+        $jumlahpermohonan = DB::table('bil_permohonan_tahun')
+            ->where('tahun', '<>', 'null')
+            ->get();
 
-        return view('dashboard', compact('kategorituntutan', 'data'));
+        // SQL mengikut Umur
+
+        $tahunumur = DB::table('bil_permohonan_ikut_umur_tahun')->where('tahun_memohon', '<>', 'null')->get();
+
+        $umurk30 = DB::table('bil_permohonan_ikut_kurang_30')->get();
+        $umurk3039 = DB::table('bil_permohonan_ikut_30_39')->get();
+        $umurk4049 = DB::table('bil_permohonan_ikut_40_49')->get();
+        $umurk5059 = DB::table('bil_permohonan_ikut_50_59')->get();
+        $umura60 = DB::table('bil_permohonan_ikut_lebih_60')->get();
+
+            // return dd($tahunumur);
+        return view('dashboard', compact('kategorituntutan', 'data', 
+            'tahunPermohonan', 'bilpermohonan', 
+            'bilpermohonan2','biljenis2', 'jumlahpermohonan', 
+            'umurk30', 'umurk3039', 'umurk4049', 'umurk5059', 'umura60', 'tahunumur'
+        ));
     }
 }

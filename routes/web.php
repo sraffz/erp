@@ -98,7 +98,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('tambah-bilrawatanwaris', 'PageController@tambahbilrawatanwaris');
     Route::post('kemaskini-bilrawatan', 'PageController@kemaskinibilrawatan');
 
-
     Route::post('padam-pegawai-pesara', 'PageController@padampegawaipesara');
     Route::post('padam-waris', 'PageController@padamwaris');
     Route::post('padam-perubatan', 'PageController@padamperubatan');

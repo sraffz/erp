@@ -141,16 +141,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $d)
+                                        @foreach ($tahunPermohonan as $d)
                                             <tr class="text-center">
-                                                <td scope="row">{{ $d->Tahun }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td scope="row">{{ $d->tahun }}</td>
+                                                <td>
+                                                    @foreach ($bilpermohonan as $ubat)
+                                                        @if (($ubat->tahun == $d->tahun && ($ubat->id_kategori == '01')))
+                                                            {{ $ubat->jumlah }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td>
+                                                    @foreach ($bilpermohonan2 as $alat)
+                                                        @if ($alat->tahun == $d->tahun)
+                                                            {{ $alat->jumlah }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td>
+                                                    @foreach ($bilpermohonan as $ijn)
+                                                        @if (($ijn->tahun == $d->tahun && ($ijn->id_kategori == '12')))
+                                                            {{ $ijn->jumlah }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td>
+                                                    @foreach ($bilpermohonan as $heamo)
+                                                        @if (($heamo->tahun == $d->tahun && ($heamo->id_kategori == '13')))
+                                                            {{ $heamo->jumlah }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td>
+                                                    @foreach ($jumlahpermohonan as $jumlah)
+                                                    @if ($jumlah->tahun == $d->tahun)
+                                                    {{ $jumlah->jumlah }}
+                                                @endif
+                                                    @endforeach
+                                                </td>
                                                 <td><a class="btn btn-danger btn-sm"
-                                                        href="{{ url('kos-bulanan', [$d->Tahun]) }}"
+                                                        href="{{ url('kos-bulanan', [$d->tahun]) }}"
                                                         role="button">Butiran</a>
                                                 </td>
                                             </tr>
@@ -185,29 +215,67 @@
                                     <thead class="text-primary">
                                         <tr class="text-center">
                                             <th rowspan="2">Tahun</th>
-                                            <th colspan="4">Umur</th>
+                                            <th colspan="5">Umur</th>
                                             <th rowspan="2">Jumlah</th>
-                                            <th style="width: 5%" rowspan="2"></th>
+                                            <th rowspan="2"></th>
                                         </tr>
                                         <tr class="text-center">
-                                            <th>30</th>
-                                            <th>31-39</th>
+                                            <th>30 Ke bawah</th>
+                                            <th>30-39</th>
                                             <th>40-49</th>
                                             <th>50-59</th>
+                                            <th>60 Ke atas</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $d)
+                                        @foreach ($tahunumur as $d)
                                             <tr class="text-center">
-                                                <td scope="row">{{ $d->Tahun }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td style="width: 5%">
+                                                <td style="width: 12.5%" scope="row">{{ $d->tahun_memohon }}</td>
+                                                <td style="width: 13%">
+                                                    @foreach ($umurk30 as $k30)
+                                                        @if ($k30->tahun == $d->tahun_memohon)
+                                                            {{ $k30->bil }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td style="width: 12%">
+                                                    @foreach ($umurk3039 as $k3039)
+                                                        @if ($k3039->tahun == $d->tahun_memohon)
+                                                            {{ $k3039->bil }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td style="width: 12.5%">
+                                                    @foreach ($umurk4049 as $k4049)
+                                                        @if ($k4049->tahun == $d->tahun_memohon)
+                                                            {{ $k4049->bil }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td style="width: 12.5%">
+                                                    @foreach ($umurk5059 as $k5059)
+                                                        @if ($k5059->tahun == $d->tahun_memohon)
+                                                            {{ $k5059->bil }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td style="width: 12.5%">
+                                                    @foreach ($umura60 as $k60)
+                                                        @if ($k60->tahun == $d->tahun_memohon)
+                                                            {{ $k60->bil }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td style="width: 12.5%">
+                                                    @foreach ($tahunumur as $total)
+                                                        @if ($total->tahun_memohon == $d->tahun_memohon)
+                                                            {{ $total->bil }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td style="width: 12.5%" style="width: 5%">
                                                     <a class="btn btn-primary btn-sm"
-                                                        href="{{ url('kos-bulanan', [$d->Tahun]) }}"
+                                                        href="{{ url('kos-bulanan', [$d->tahun_memohon]) }}"
                                                         role="button">Butiran</a>
                                                 </td>
                                             </tr>
