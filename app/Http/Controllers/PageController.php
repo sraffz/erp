@@ -81,7 +81,30 @@ class PageController extends Controller
         $senaraibilwaris = $this->senaraibilwaris($id);
         $senaraibilpegawai = $this->senaraibilpegawai($id);
 
+        $umurk30 = DB::table('bil_permohonan_ikut_kurang_30')->where('tahun', $id)->get();
+        $umurk3039 = DB::table('bil_permohonan_ikut_30_39')->where('tahun', $id)->get();
+        $umurk4049 = DB::table('bil_permohonan_ikut_40_49')->where('tahun', $id)->get();
+        $umurk5059 = DB::table('bil_permohonan_ikut_50_59')->where('tahun', $id)->get();
+        $umura60 = DB::table('bil_permohonan_ikut_lebih_60')->where('tahun', $id)->get();
+        $tahunumur = DB::table('bil_permohonan_ikut_umur_tahun')->where('tahun_memohon', $id)->get();
 
+        $bilpermohonan = DB::table('bil_permohonan_tahun_kategori')
+            ->where('tahun', $id)
+            ->get();
+
+        $bilpermohonan2 = DB::table('bil_permohonan_tahun_kategori2')
+            ->where('tahun', $id)
+            ->get();
+
+        $tahunPermohonan = DB::table('jumlah_belanja_ubat')
+            ->select('tahun')
+            ->where('tahun', $id)
+            ->groupBy('tahun')
+            ->get();
+
+        $jumlahpermohonan = DB::table('bil_permohonan_tahun')
+            ->where('tahun', $id)
+            ->get();
 
         if (view()->exists("pages.{$page}")) {
             return view(
@@ -104,7 +127,9 @@ class PageController extends Controller
                     'senaraibilpegawai',
                     'butiranrawatan',
                     'kos_bulanan',
-                    'kos_bulanan_status'
+                    'kos_bulanan_status',
+                    'umurk30', 'umurk3039', 'umurk4049', 'umurk5059', 'umura60', 'tahunumur',
+                    'bilpermohonan', 'bilpermohonan2', 'jumlahpermohonan'
                 )
             );
         }

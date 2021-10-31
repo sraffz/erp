@@ -87,7 +87,7 @@
                                 <table class="table table-striped table-bordered  display">
                                     <thead class="text-primary">
                                         <tr class="text-center">
-                                            <th>Tahun</th>
+                                            <th style="width: 50%">Tahun</th>
                                             <th>Kos (RM)</th>
                                             <th style="width: 5%"></th>
                                         </tr>
@@ -123,7 +123,7 @@
                         <div class="card-header card-header-danger">
                             <h4 class="card-title"><strong>Jumlah Permohonan dan Tuntutan</strong></h4>
                             <p class="card-category">
-                                <span class="">Jumlah permohonan mengikut tahun dan jenis tuntutan.
+                                <span class="">Jumlah permohonan mengikut tahun.
                             </p>
                         </div>
                         <div class="card-body">
@@ -131,11 +131,7 @@
                                 <table class="table table-striped table-bordered display">
                                     <thead class="text-primary">
                                         <tr class="text-center">
-                                            <th>Tahun</th>
-                                            <th>Ubatan</th>
-                                            <th>Alatan</th>
-                                            <th>Rawatan Jantung</th>
-                                            <th>Rawatan Heamodialisis</th>
+                                            <th style="width: 50%">Tahun</th>
                                             <th>Jumlah</th>
                                             <th style="width: 5%"></th>
                                         </tr>
@@ -145,42 +141,14 @@
                                             <tr class="text-center">
                                                 <td scope="row">{{ $d->tahun }}</td>
                                                 <td>
-                                                    @foreach ($bilpermohonan as $ubat)
-                                                        @if (($ubat->tahun == $d->tahun && ($ubat->id_kategori == '01')))
-                                                            {{ $ubat->jumlah }}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    @foreach ($bilpermohonan2 as $alat)
-                                                        @if ($alat->tahun == $d->tahun)
-                                                            {{ $alat->jumlah }}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    @foreach ($bilpermohonan as $ijn)
-                                                        @if (($ijn->tahun == $d->tahun && ($ijn->id_kategori == '12')))
-                                                            {{ $ijn->jumlah }}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    @foreach ($bilpermohonan as $heamo)
-                                                        @if (($heamo->tahun == $d->tahun && ($heamo->id_kategori == '13')))
-                                                            {{ $heamo->jumlah }}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>
                                                     @foreach ($jumlahpermohonan as $jumlah)
-                                                    @if ($jumlah->tahun == $d->tahun)
-                                                    {{ $jumlah->jumlah }}
-                                                @endif
+                                                        @if ($jumlah->tahun == $d->tahun)
+                                                            {{ $jumlah->jumlah }}
+                                                        @endif
                                                     @endforeach
                                                 </td>
                                                 <td><a class="btn btn-danger btn-sm"
-                                                        href="{{ url('kos-bulanan', [$d->tahun]) }}"
+                                                        href="{{ url('butiran-jumlah-tuntutan', [$d->tahun]) }}"
                                                         role="button">Butiran</a>
                                                 </td>
                                             </tr>
@@ -199,7 +167,7 @@
             </div>
 
             {{-- //Jumlah permohonan mengikut tahun dan umur --}}
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12">
                     <div class="card card-chart">
                         <div class="card-header card-header-primary">
@@ -286,12 +254,11 @@
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                {{-- <i class="material-icons">access_time</i> updated 4 minutes ago --}}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- <div class="row">
                 <div class="col-md-6">
                     <div class="card card-chart">

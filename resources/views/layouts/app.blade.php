@@ -123,13 +123,22 @@
 
         $(document).ready(function() {
             $('table.display').DataTable({
+                "language": {
+                "emptyTable": "Tiada data",
+                "lengthMenu": "_MENU_ Rekod setiap halaman",
+                "zeroRecords": "Tiada padanan rekod yang dijumpai.",
+                "info": "Paparan dari _START_ hingga _END_ dari _TOTAL_ rekod",
+                "infoEmpty": "Paparan 0 hingga 0 dari 0 rekod",
+                "infoFiltered": "(Ditapis dari jumlah _MAX_ rekod)",
+                "search": "Carian:",
+                "oPaginate": {
+                    "sFirst": "Pertama",
+                    "sPrevious": "Sebelum",
+                    "sNext": "Seterusnya",
+                    "sLast": "Akhir"
+                }
+            },
                 "order": [[ 1, "desc" ]]
-            });
-        } );
-
-        $(document).ready(function() {
-            $('table.display2').DataTable({ 
-                
             });
         } );
 
