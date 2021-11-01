@@ -29,18 +29,18 @@
               {{-- {{ __('Or Sign in with ') }} <strong>kamarulashraff05@gmail.com</strong> 
               {{ __(' and the password ') }}<strong>12345678</strong>  --}}
             </p>
-            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+            <div class="bmd-form-group{{ $errors->has('ic') ? ' has-danger' : '' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}" value="{{ old('email', 'sraffzkakz@gmail.com') }}" required>
+                <input type="text" name="ic" class="form-control" placeholder="{{ __('No Kad Pengenalan...') }}" value="{{ old('ic', '930116035899') }}" required>
               </div>
-              @if ($errors->has('email'))
-                <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                  <strong>{{ $errors->first('email') }}</strong>
+              @if ($errors->has('ic'))
+                <div id="ic-error" class="error text-danger pl-3" for="ic" style="display: block;">
+                  <strong>{{ $errors->first('ic') }}</strong>
                 </div>
               @endif
             </div>
