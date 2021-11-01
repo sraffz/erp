@@ -70,7 +70,29 @@ class PageController extends Controller
         $hospital = DB::table('hospital')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $kos_bulanan = DB::table('jumlah_kos_bulanan')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
-        $kos_bulanan_status = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
+        $kos_bulanan_pegawai = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Tidak')
+            ->orderBy('bulan', 'asc')
+            ->get();
+        $kos_bulanan_pesara = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Ya')
+            ->orderBy('bulan', 'asc')
+            ->get();
+
+        $jumlah_kos_pesara = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Ya')
+            ->sum('jumlah');
+
+        $jumlah_kos_pegawai = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Tidak')
+            ->sum('jumlah');
+        $jumlah_kos = DB::table('jumlah_kos_tahunan')
+            ->where('tahun', $id)
+            ->get();
 
         $waris = $this->waris($id);
         $butiranwaris = $this->butiranwaris($id);
@@ -106,6 +128,38 @@ class PageController extends Controller
             ->where('tahun', $id)
             ->get();
 
+        $jumlahumurjenis60 = DB::table('bil_permohonan_ikut_lebih_60_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis50 = DB::table('bil_permohonan_ikut_50_59_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis40 = DB::table('bil_permohonan_ikut_40_49_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis30 = DB::table('bil_permohonan_ikut_30_39_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenisb30 = DB::table('bil_permohonan_ikut_kurang_30_jenis')
+            ->where('tahun', $id)
+            ->get();
+
+        $jumlahumurjenis60k2 = DB::table('bil_permohonan_tahun_kategori2_60')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis50k2 = DB::table('bil_permohonan_tahun_kategori2_5059')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis40k2 = DB::table('bil_permohonan_tahun_kategori2_4049')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis30k2 = DB::table('bil_permohonan_tahun_kategori2_3039')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenisb30k2 = DB::table('bil_permohonan_tahun_kategori2_kurang_30')
+            ->where('tahun', $id)
+            ->get();
+
         if (view()->exists("pages.{$page}")) {
             return view(
                 "pages.{$page}",
@@ -127,9 +181,31 @@ class PageController extends Controller
                     'senaraibilpegawai',
                     'butiranrawatan',
                     'kos_bulanan',
-                    'kos_bulanan_status',
-                    'umurk30', 'umurk3039', 'umurk4049', 'umurk5059', 'umura60', 'tahunumur',
-                    'bilpermohonan', 'bilpermohonan2', 'jumlahpermohonan'
+                    'kos_bulanan_pesara',
+                    'kos_bulanan_pegawai',
+                    'jumlah_kos_pesara',
+                    'jumlah_kos_pegawai',
+                    'jumlah_kos',
+                    'umurk30',
+                    'umurk3039',
+                    'umurk4049',
+                    'umurk5059',
+                    'umura60',
+                    'tahunumur',
+                    'bilpermohonan',
+                    'bilpermohonan2',
+                    'jumlahpermohonan',
+                    'jumlahumurjenis60',
+                    'jumlahumurjenis50',
+                    'jumlahumurjenis40',
+                    'jumlahumurjenis30',
+                    'jumlahumurjenisb30',
+                    'jumlahumurjenis60k2',
+                    'jumlahumurjenis50k2',
+                    'jumlahumurjenis40k2',
+                    'jumlahumurjenis30k2',
+                    'jumlahumurjenisb30k2',
+                    'id'
                 )
             );
         }
@@ -626,14 +702,14 @@ class PageController extends Controller
 
             $pembekal = DB::table('pembekal')->get();
             $belanja = DB::table('belanja_haemodialisis_hospital')
-            ->where('tahun', $tahun)
-            ->get();
+                ->where('tahun', $tahun)
+                ->get();
 
             $bulanan = DB::table('belanja_haemodialisis_hospital')
-            ->select(DB::raw("SUM(jumlahSebenar) as jumlah"), 'bulan', 'idPembekal')
-            ->where('tahun', $tahun)
-            ->groupBy('idPembekal', 'bulan')
-            ->get();
+                ->select(DB::raw("SUM(jumlahSebenar) as jumlah"), 'bulan', 'idPembekal')
+                ->where('tahun', $tahun)
+                ->groupBy('idPembekal', 'bulan')
+                ->get();
 
             // return dd($bulanan);
             $pdf = PDF::loadView('pages/pdf-belanja-haemodialisis', compact('tahun', 'pembekal', 'belanja', 'bulanan'))->setPaper('a4', 'landscape');
@@ -682,5 +758,149 @@ class PageController extends Controller
         );
 
         return back();
+    }
+
+    public function laporanjumlahkos($id)
+    {
+        $kos_bulanan = DB::table('jumlah_kos_bulanan')
+            ->where('tahun', $id)
+            ->get();
+
+        $kos_bulanan_pegawai = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Tidak')
+            ->get();
+
+        $kos_bulanan_pesara = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Ya')
+            ->get();
+
+        $jumlah_kos_pesara = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Ya')
+            ->sum('jumlah');
+
+        $jumlah_kos_pegawai = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Tidak')
+            ->sum('jumlah');
+
+        $total = DB::table('jumlah_kos_tahunan')
+            ->where('tahun', $id)
+            ->get();
+
+        $pdf = PDF::loadView('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'))->setPaper('a4', 'potrait');
+        return $pdf->download('Jumlah Permohonan Tahun ' . $id . '.pdf');
+
+        // return dd($jumlah_kos_pesara, $jumlah_kos_pegawai);
+        // return view('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'));
+    }
+
+    public function laporanjumlahpermohonan($id)
+    {
+        $umurk30 = DB::table('bil_permohonan_ikut_kurang_30')->where('tahun', $id)->get();
+        $umurk3039 = DB::table('bil_permohonan_ikut_30_39')->where('tahun', $id)->get();
+        $umurk4049 = DB::table('bil_permohonan_ikut_40_49')->where('tahun', $id)->get();
+        $umurk5059 = DB::table('bil_permohonan_ikut_50_59')->where('tahun', $id)->get();
+        $umura60 = DB::table('bil_permohonan_ikut_lebih_60')->where('tahun', $id)->get();
+        $tahunumur = DB::table('bil_permohonan_ikut_umur_tahun')->where('tahun_memohon', $id)->get();
+
+        $bilpermohonan = DB::table('bil_permohonan_tahun_kategori')
+            ->where('tahun', $id)
+            ->get();
+
+        $bilpermohonan2 = DB::table('bil_permohonan_tahun_kategori2')
+            ->where('tahun', $id)
+            ->get();
+
+        $tahunPermohonan = DB::table('jumlah_belanja_ubat')
+            ->select('tahun')
+            ->where('tahun', $id)
+            ->groupBy('tahun')
+            ->get();
+
+        $jumlahpermohonan = DB::table('bil_permohonan_tahun')
+            ->where('tahun', $id)
+            ->get();
+
+        $jumlahumurjenis60 = DB::table('bil_permohonan_ikut_lebih_60_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis50 = DB::table('bil_permohonan_ikut_50_59_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis40 = DB::table('bil_permohonan_ikut_40_49_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis30 = DB::table('bil_permohonan_ikut_30_39_jenis')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenisb30 = DB::table('bil_permohonan_ikut_kurang_30_jenis')
+            ->where('tahun', $id)
+            ->get();
+
+        $jumlahumurjenis60k2 = DB::table('bil_permohonan_tahun_kategori2_60')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis50k2 = DB::table('bil_permohonan_tahun_kategori2_5059')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis40k2 = DB::table('bil_permohonan_tahun_kategori2_4049')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis30k2 = DB::table('bil_permohonan_tahun_kategori2_3039')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenisb30k2 = DB::table('bil_permohonan_tahun_kategori2_kurang_30')
+            ->where('tahun', $id)
+            ->get();
+
+        $pdf = PDF::loadView('pdf.pdf-jumlah-permohonan',  compact(
+            'umurk30',
+            'umurk3039',
+            'umurk4049',
+            'umurk5059',
+            'umura60',
+            'tahunumur',
+            'bilpermohonan',
+            'bilpermohonan2',
+            'jumlahpermohonan',
+            'jumlahumurjenis60',
+            'jumlahumurjenis50',
+            'jumlahumurjenis40',
+            'jumlahumurjenis30',
+            'jumlahumurjenisb30',
+            'jumlahumurjenis60k2',
+            'jumlahumurjenis50k2',
+            'jumlahumurjenis40k2',
+            'jumlahumurjenis30k2',
+            'jumlahumurjenisb30k2',
+            'id'
+        ))->setPaper('a4', 'landscape');
+        return $pdf->download('Jumlah Permohonan Tahun ' . $id . '.pdf');
+
+        // return view('pdf.pdf-jumlah-permohonan',  compact(
+        //     'umurk30',
+        //     'umurk3039',
+        //     'umurk4049',
+        //     'umurk5059',
+        //     'umura60',
+        //     'tahunumur',
+        //     'bilpermohonan',
+        //     'bilpermohonan2',
+        //     'jumlahpermohonan',
+        //     'jumlahumurjenis60',
+        //     'jumlahumurjenis50',
+        //     'jumlahumurjenis40',
+        //     'jumlahumurjenis30',
+        //     'jumlahumurjenisb30',
+        //     'jumlahumurjenis60k2',
+        //     'jumlahumurjenis50k2',
+        //     'jumlahumurjenis40k2',
+        //     'jumlahumurjenis30k2',
+        //     'jumlahumurjenisb30k2',
+        //     'id'
+        // ));
     }
 }

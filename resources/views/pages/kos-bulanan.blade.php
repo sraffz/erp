@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => 'Halaman Utama'])
+@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => 'Butiran Kos Tahunan'])
 
 @section('content')
     <div class="content">
@@ -7,8 +7,15 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="col-12 text-right">
-                                <a href="{{ route('home') }}" class="btn btn-warning">Kembali</a>
+                            <div class="col-12">
+                                <div class="float-right">
+                                    <a href="{{ url('pdf/pdf-jumlah-kos', [$id]) }}" class="btn btn-info">
+                                        <span class="material-icons">print</span>
+                                    </a>
+                                </div>
+                                <a href="{{ route('home') }}" class="btn btn-warning">
+                                    <span class="material-icons">arrow_back_ios</span>Kembali
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -25,23 +32,142 @@
                                     <tr class="text-center">
                                         <th>Bulan</th>
                                         <th>Kos (RM)</th>
-                                        {{-- <th></th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kos_bulanan as $d)
-                                        <tr class="text-center">
-                                            <td scope="row">{{ $d->bulan }}</td>
-                                            <td>{{ $d->jumlah }}</td>
-                                            {{-- <td><a class="btn btn-info btn-sm" href="#" role="button">Butiran</a></td> --}}
-                                        </tr>
-                                    @endforeach
+                                    <tr class="text-center">
+                                        <td scope="row">JANUARI</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '1')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">FEBRUARI</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '2')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">MAC</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '3')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">APRIL</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '4')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">MEI</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '5')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">JUN</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '6')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">JULAI</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '7')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">OGOS</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '8')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">SEPTEMBER</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '9')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">OKTOBER</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '10')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">NOVEMBER</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '11')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">DISEMBER</td>
+                                        <td>
+                                            @foreach ($kos_bulanan as $d)
+                                                @if ($d->bulan == '12')
+                                                    {{ $d->jumlah }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td scope="row">JUMLAH</td>
+                                        <td>
+                                            @foreach ($jumlah_kos as $jk)
+                                                {{ $jk->Jumlah }}
+                                            @endforeach
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                {{-- <i class="material-icons">access_time</i> updated 4 minutes ago --}}
                             </div>
                         </div>
                     </div>
@@ -62,25 +188,139 @@
                                         <tr class="text-center">
                                             <th>Bulan</th>
                                             <th>Kos (RM)</th>
-                                            <th></th>
+                                            {{-- <th></th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($kos_bulanan_status as $d)
-                                            @if ($d->pesara == 'Tidak')
-                                                <tr class="text-center">
-                                                    <td scope="row">{{ $d->bulan }}</td>
-                                                    <td>{{ $d->jumlah }}</td>
-                                                    <td><a class="btn btn-info btn-sm" href="#" role="button">Butiran</a>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
+                                        <tr class="text-center">
+                                            <td scope="row">JANUARI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '1')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">FEBRUARI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '2')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">MAC</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '3')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">APRIL</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '4')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">MEI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '5')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">JUN</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '6')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">JULAI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '7')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">OGOS</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '8')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">SEPTEMBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '9')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">OKTOBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '10')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">NOVEMBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '11')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">DISEMBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pegawai as $d)
+                                                    @if ($d->bulan == '12')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">JUMLAH</td>
+                                            <td>
+                                                {{ $jumlah_kos_pegawai }}
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="card-footer">
                         </div>
                     </div>
                 </div>
@@ -98,25 +338,139 @@
                                         <tr class="text-center">
                                             <th>Bulan</th>
                                             <th>Kos (RM)</th>
-                                            <th></th>
+                                            {{-- <th></th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($kos_bulanan_status as $d)
-                                            @if ($d->pesara == 'Ya')
-                                                <tr class="text-center">
-                                                    <td scope="row">{{ $d->bulan }}</td>
-                                                    <td>{{ $d->jumlah }}</td>
-                                                    <td><a class="btn btn-info btn-sm" href="#" role="button">Butiran</a>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
+                                        <tr class="text-center">
+                                            <td scope="row">JANUARI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '1')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">FEBRUARI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '2')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">MAC</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '3')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">APRIL</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '4')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">MEI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '5')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">JUN</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '6')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">JULAI</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '7')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">OGOS</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '8')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">SEPTEMBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '9')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">OKTOBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '10')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">NOVEMBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '11')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">DISEMBER</td>
+                                            <td>
+                                                @foreach ($kos_bulanan_pesara as $d)
+                                                    @if ($d->bulan == '12')
+                                                        {{ $d->jumlah }}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td scope="row">JUMLAH</td>
+                                            <td>
+                                                {{ $jumlah_kos_pesara }}
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="card-footer">
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,8 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/fontawesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/fontawesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('material/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -123,24 +124,28 @@
 
         $(document).ready(function() {
             $('table.display').DataTable({
+                "pageLength": 5,
+                "lengthMenu": [ 5, 10, 15, 20 ],
                 "language": {
-                "emptyTable": "Tiada data",
-                "lengthMenu": "_MENU_ Rekod setiap halaman",
-                "zeroRecords": "Tiada padanan rekod yang dijumpai.",
-                "info": "Paparan dari _START_ hingga _END_ dari _TOTAL_ rekod",
-                "infoEmpty": "Paparan 0 hingga 0 dari 0 rekod",
-                "infoFiltered": "(Ditapis dari jumlah _MAX_ rekod)",
-                "search": "Carian:",
-                "oPaginate": {
-                    "sFirst": "Pertama",
-                    "sPrevious": "Sebelum",
-                    "sNext": "Seterusnya",
-                    "sLast": "Akhir"
-                }
-            },
-                "order": [[ 1, "desc" ]]
+                    "emptyTable": "Tiada data",
+                    "lengthMenu": "_MENU_ Rekod setiap halaman",
+                    "zeroRecords": "Tiada padanan rekod yang dijumpai.",
+                    "info": "Paparan dari _START_ hingga _END_ dari _TOTAL_ rekod",
+                    "infoEmpty": "Paparan 0 hingga 0 dari 0 rekod",
+                    "infoFiltered": "(Ditapis dari jumlah _MAX_ rekod)",
+                    "search": "Carian:",
+                    "oPaginate": {
+                        "sFirst": "Pertama",
+                        "sPrevious": "Sebelum",
+                        "sNext": "Seterusnya",
+                        "sLast": "Akhir"
+                    }
+                },
+                "order": [
+                    [1, "desc"]
+                ]
             });
-        } );
+        });
 
         $('#zero_config').dataTable({
             "language": {
@@ -311,52 +316,51 @@
         });
 
         $(".select2").select2({
-            
+
         });
 
-        $('#editPembekal').click(function(){
-					if($('#namaPembekal').val()!=0){
-						
-						var idP = $('#namaPembekal').val();
-						
-						$.ajax({        
-						type: 'GET',                              
-                        url: 'loadPembekal.php?id='+idP,   
-						dataType: 'json',                
-                    	}) 
+        $('#editPembekal').click(function() {
+            if ($('#namaPembekal').val() != 0) {
 
-						.done(function(data){
+                var idP = $('#namaPembekal').val();
 
-							$('#idPembekal').val(idP);
-							$('#namaPembekalModal').val( data['nama'])
-							$('#alamatPembekal1').val( data['alamat1'])
-							$('#alamatPembekal2').val( data['alamat2'])
-							$('#alamatPembekal3').val( data['alamat3'])
-							$('#bandarPembekal').val( data['bandar'])
-							$('#poskodPembekal').val( data['poskod'])
-							$('#negeriPembekal').val(data['negeri'])
-							$('#btnPembekal').html(' Kemaskini ')
-							$('#methodUpdatePembekal').val('edit')
-							$('#pembekalModal').modal('show')
-						})
-						
-						.fail(function(data){
-							
-							console.log("fail")
-						})
-						
-					}
-					else{
-						new PNotify({
-							delay: 1000,
-							title: '',
-							text: 'Tiada data untuk diedit',
-							type: 'error',
-							styling: 'bootstrap3'
-        				})
-					}
-					
-				});
+                $.ajax({
+                        type: 'GET',
+                        url: 'loadPembekal.php?id=' + idP,
+                        dataType: 'json',
+                    })
+
+                    .done(function(data) {
+
+                        $('#idPembekal').val(idP);
+                        $('#namaPembekalModal').val(data['nama'])
+                        $('#alamatPembekal1').val(data['alamat1'])
+                        $('#alamatPembekal2').val(data['alamat2'])
+                        $('#alamatPembekal3').val(data['alamat3'])
+                        $('#bandarPembekal').val(data['bandar'])
+                        $('#poskodPembekal').val(data['poskod'])
+                        $('#negeriPembekal').val(data['negeri'])
+                        $('#btnPembekal').html(' Kemaskini ')
+                        $('#methodUpdatePembekal').val('edit')
+                        $('#pembekalModal').modal('show')
+                    })
+
+                    .fail(function(data) {
+
+                        console.log("fail")
+                    })
+
+            } else {
+                new PNotify({
+                    delay: 1000,
+                    title: '',
+                    text: 'Tiada data untuk diedit',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                })
+            }
+
+        });
     </script>
 </body>
 
