@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => 'Profil Pengguna'])
+@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => 'User Profile'])
 
 @section('content')
   <div class="content">
@@ -6,13 +6,11 @@
       <div class="row">
         <div class="col-md-12">
           <form method="post" action="{{ route('profile.update') }}" autocomplete="off" class="form-horizontal">
-            @csrf
-            @method('put')
-
+            {{ csrf_field() }}
             <div class="card ">
               <div class="card-header card-header-danger">
-                <h4 class="card-title">{{ __('Edit Profile') }}</h4>
-                <p class="card-category">{{ __('User information') }}</p>
+                <h4 class="card-title">{{ __('Kemaskini Profil') }}</h4>
+                <p class="card-category">{{ __('Maklumat Pengguna') }}</p>
               </div>
               <div class="card-body ">
                 @if (session('status'))
@@ -51,7 +49,7 @@
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-danger">{{ __('Save') }}</button>
+                <button type="submit" class="btn btn-danger">{{ __('Simpan') }}</button>
               </div>
             </div>
           </form>
@@ -60,26 +58,22 @@
       <div class="row">
         <div class="col-md-12">
           <form method="post" action="{{ route('profile.password') }}" class="form-horizontal">
-            @csrf
-            @method('put')
-
+            {{ csrf_field() }}
             <div class="card ">
               <div class="card-header card-header-danger">
-                <h4 class="card-title">{{ __('Change password') }}</h4>
-                <p class="card-category">{{ __('Password') }}</p>
+                <h4 class="card-title">{{ __('Tukar Kata Laluan') }}</h4>
+                <p class="card-category">{{ __('Kata Laluan') }}</p>
               </div>
               <div class="card-body ">
                 @if (session('status_password'))
                   <div class="row">
                     <div class="col-sm-12">
-
                       <div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <i class="material-icons">close</i>
                         </button>
                         <span>{{ session('status_password') }}</span>
                       </div>
-                      
                     </div>
                   </div>
                 @endif
@@ -115,7 +109,7 @@
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-danger">{{ __('Change password') }}</button>
+                <button type="submit" class="btn btn-danger">{{ __('Tukar Kata Laluan') }}</button>
               </div>
             </div>
           </form>

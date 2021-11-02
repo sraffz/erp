@@ -49,7 +49,7 @@
                         </div>
                         <br>
                         <hr>
-                        <form method="POST" action="{{ url('kemaskini-perubatan') }}">
+                        <form method="POST" action="{{ url('kemaskini-perubatan') }}" autocomplete="off">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{ $bp->idTuntutan }}">
                             <div class="row">
@@ -245,28 +245,44 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label for="kategoripenyakit">Kategori Penyakit</label>
+                                        <select class="custom-select select2" name="kategoripenyakit" required>
+                                            <option value="">SILA PILIH</option>
+                                            <option value="Buah Pinggang">Buah Pinggang</option>
+                                            <option value="Jantung">Jantung</option>
+                                            <option value="Kanser">Kanser</option>
+                                            <option value="Stroke">Stroke</option>
+                                            <option value="Diabetes">Diabetes</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama_penyakit">Nama/Jenis Penyakit Yang Dihidapi</label>
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nama_penyakit" class="form-control" value="{{ $bp->nama_penyakit }}">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="namaubat">Nama Ubat/Alat/Perkhidmatan Perubatan/ Rawatan</label>
-                                        <input type="text" class="form-control" name="namaubat"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="namaubat"
                                             value="{{ $bp->detailTuntutan }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="baucer">No Baucer</label>
-                                        <input type="text" class="form-control" name="baucer"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="baucer"
                                             value="{{ $bp->noRujukanKewangan }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="hargatuntutan">Harga Tuntuan (RM)</label>
-                                        <input type="number" class="form-control" name="hargatuntutan"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="number" class="form-control" name="hargatuntutan"
                                             value="{{ $bp->jumlahTuntutan }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="hargalulus">Harga Diluluskan (RM)</label>
-                                        <input type="text" class="form-control" name="hargalulus"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="hargalulus"
                                             value="{{ $bp->jumlahSebenar }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_lulus">Tarikh Kelulusan</label>
-                                        <input type="date" class="form-control" name="tarikh_lulus"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_lulus"
                                             value="{{ $bp->tarikhKelulusan }}">
                                     </div>
                                 </div>
@@ -289,17 +305,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_terima_permohonan">Tarikh Terima Permohonan</label>
-                                        <input type="date" class="form-control" name="tarikh_terima_permohonan"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_terima_permohonan"
                                             value="{{ $bp->tarikhTerimaPermohonan }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="catatan_permohonan">Catatan Permohonan</label>
-                                        <textarea class="form-control" name="catatan_permohonan" id="catatan_permohonan"
+                                        <textarea onkeyup="this.value = this.value.toUpperCase();" class="form-control" name="catatan_permohonan" id="catatan_permohonan"
                                             rows="3"> {{ $bp->catatanPermohonan }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="nofail">No Fail</label>
-                                        <input type="text" name="nofail" class="form-control"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nofail" class="form-control"
                                             value="{{ $bp->noFail }}">
                                     </div>
                                 </div>

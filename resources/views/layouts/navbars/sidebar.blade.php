@@ -14,14 +14,14 @@
     <div class="sidebar-wrapper">
         {{-- For mobile view --}}
         <ul class="nav navbar-nav nav-mobile-menu">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">
                   <i class="material-icons">dashboard</i>
                   <p class="d-lg-none d-md-block">
                     {{ __('Halaman Utama') }}
                   </p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -29,8 +29,8 @@
                     {{ __('Akaun') }}
                   </p>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profil') }}</a>
+                <div class="dropdown-menu dropdown-menu-right {{ $activePage == 'profile' ? ' active' : '' }}" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="{{ url('tetapan') }}">{{ __('Profil') }}</a>
                   {{-- <a class="dropdown-item" href="#">{{ __('Settings') }}</a> --}}
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Log out') }}</a>

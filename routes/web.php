@@ -29,7 +29,7 @@ Route::middleware(['guest'])->group(function () {
 
         foreach ($tuntutan as $tt) {
             foreach ($dbb as $db) {
-                if ($db->idwaris == $tt->idPesakit) {
+                if ($db->idperibadi == $tt->idPesakit) {
                     DB::table('tuntutan')
                         ->where('idPesakit', $tt->idPesakit)
                         ->update(
@@ -75,10 +75,12 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('user', 'UserController', ['except' => ['show']]);
-    // Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
-    // Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
-    Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
-    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+    // Route::post('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+    // Route::post('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+    Route::post('profile/update', 'ProfileController@update')->name('profile.update');
+    Route::post('profile/password', 'ProfileController@password')->name('profile.password');
 
     Route::post('tambah-jabatan', 'PageController@tambahjabatan');
     Route::post('kemaskini-jabatan', 'PageController@kemaskinijabatan');

@@ -44,11 +44,13 @@
                                             {{ $index + 1 }}
                                         </th>
                                         <th>
-                                            {{ $br->nama }}
+                                            {{ $br->nama }} <br>
+                                            {{ $br->namaJawatan }}
                                         </th>
                                         <th>
                                             @if ($br->id_waris <> null)
-                                            {{ $br->nama_waris }}
+                                            {{ $br->nama_waris }} <br>
+                                            *{{ $br->namaHubungan }}
                                             @else
                                             {{ $br->nama }}
                                             @endif

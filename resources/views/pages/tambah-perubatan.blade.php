@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="card-title">Peribadi</h4>
+                                <h4 class="card-title"><strong>Peribadi</strong></h4>
                                 <br>
                                 <div class="form-group">
                                     <label for="nama_penuh">Nama Penuh</label>
@@ -25,9 +25,8 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
                         <hr>
-                        <form method="POST" action="{{ url('tambahperubatan') }}">
+                        <form method="POST" action="{{ url('tambahperubatan') }}" autocomplete="off">
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{ $wrs->idPeribadi }}">
                             {{-- <input type="text" name="idPesara" value="{{ $wrs->idPesara }}"> --}}
@@ -35,9 +34,9 @@
                                 <div class="col-md-6"><br>
                                     <h4 class="card-title">Rawatan Di Hospital/ Klinik Kerajaan </h4>
                                     <div class="form-group">
-                                        <label for="hospital">Nama Hospital/Klinik Kerajaan</label> 
-                                        <button type="button"  class="btn btn-primary btn-sm" 
-                                            data-toggle="modal" data-target="#tambahhospital">
+                                        <label for="hospital">Nama Hospital/Klinik Kerajaan</label>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahhospital">
                                             <span class="material-icons"> add </span>
                                         </button>
                                         {{-- <button type="button"
@@ -116,8 +115,7 @@
                                     <h4 class="card-title">Pembekal Kemudahan Perubatan</h4>
                                     <div class="form-group">
                                         <label for="pembekal">Nama Hospital/ Agensi Swasta</label>
-                                        <button type="button"
-                                            class="btn btn-primary btn-sm" data-toggle="modal"
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                             data-target="#tambahpembekal">
                                             <span class="material-icons"> add </span>
                                         </button>
@@ -218,24 +216,40 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label for="kategoripenyakit">Kategori Penyakit</label>
+                                        <select class="custom-select select2" name="kategoripenyakit" required>
+                                            <option value="">SILA PILIH</option>
+                                            <option value="Buah Pinggang">Buah Pinggang</option>
+                                            <option value="Jantung">Jantung</option>
+                                            <option value="Kanser">Kanser</option>
+                                            <option value="Stroke">Stroke</option>
+                                            <option value="Diabetes">Diabetes</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama_penyakit">Nama/Jenis Penyakit Yang Dihidapi</label>
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nama_penyakit" class="form-control" value="">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="namaubat">Nama Ubat/Alat/Perkhidmatan Perubatan/ Rawatan</label>
-                                        <input type="text" class="form-control" name="namaubat" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="namaubat" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="baucer">No Baucer</label>
-                                        <input type="text" class="form-control" name="baucer" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="baucer" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="hargatuntutan">Harga Tuntuan (RM)</label>
-                                        <input type="text" class="form-control" name="hargatuntutan" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="hargatuntutan" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="hargalulus">Harga Diluluskan (RM)</label>
-                                        <input type="text" class="form-control" name="hargalulus" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="hargalulus" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_lulus">Tarikh Kelulusan</label>
-                                        <input type="date" class="form-control" name="tarikh_lulus" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_lulus" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6"><br>
@@ -251,16 +265,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_terima_permohonan">Tarikh Terima Permohonan</label>
-                                        <input type="date" class="form-control" name="tarikh_terima_permohonan" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_terima_permohonan" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="catatan_permohonan">Catatan Permohonan</label>
-                                        <textarea class="form-control" name="catatan_permohonan" id="catatan_permohonan"
+                                        <textarea onkeyup="this.value = this.value.toUpperCase();" class="form-control" name="catatan_permohonan" id="catatan_permohonan"
                                             rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="nofail">No Fail</label>
-                                        <input type="text" name="nofail" class="form-control" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nofail" class="form-control" value="">
                                     </div>
                                 </div>
                                 <hr><br>
@@ -277,7 +291,8 @@
         </div>
     </div>
     <!-- Modal Tambah Hospital-->
-    <div class="modal fade" id="tambahhospital" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="tambahhospital" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -353,7 +368,8 @@
         </div>
     </div>
     <!-- Modal Tambah Pembekal-->
-    <div class="modal fade" id="tambahpembekal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="tambahpembekal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
