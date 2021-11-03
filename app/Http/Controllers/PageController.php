@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -210,6 +211,22 @@ class PageController extends Controller
             );
         }
         return abort(404);
+    }
+
+    public function tambahpentadbir(Request $req)
+    {
+        DB::table('users')->insertGetId(
+            [
+                'name' => $req->input('name'),
+                'kad_pengenalan' => $req->input('kp'),
+                'email' => $req->input('email'),
+                'level' => $req->input('level'),
+                'password' => Hash::make('admin@EPP2021'),
+                'status' => $req->input('status')
+            ]
+        );
+
+        return back()->with('success', 'Pentadbir telah berjaya ditambah.');
     }
 
     public function tambahjabatan(Request $req)

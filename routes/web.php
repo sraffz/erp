@@ -82,6 +82,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('profile/update', 'ProfileController@update')->name('profile.update');
     Route::post('profile/password', 'ProfileController@password')->name('profile.password');
 
+
+    Route::post('tambahpentadbir', 'PageController@tambahpentadbir');
+
     Route::post('tambah-jabatan', 'PageController@tambahjabatan');
     Route::post('kemaskini-jabatan', 'PageController@kemaskinijabatan');
     Route::post('tambah-jawatan', 'PageController@tambahjawatan');
