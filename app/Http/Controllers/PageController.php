@@ -39,7 +39,6 @@ class PageController extends Controller
                 "pages.{$page}",
                 compact(
                     'bilrawatan',
-                    'peribadi2',
                     'peribadi',
                     'perkhidmatan',
                     'jabatan',

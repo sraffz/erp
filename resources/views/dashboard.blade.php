@@ -96,7 +96,8 @@
                                         @foreach ($data as $d)
                                             <tr class="text-center">
                                                 <td scope="row">{{ $d->Tahun }}</td>
-                                                <td>{{ $d->Jumlah }}</td>
+                                                <td>{{ number_format($d->Jumlah, 2, '.', ',')  }}</td>
+                                                {{-- <td>{{ $d->Jumlah }}</td> --}}
                                                 <td><a class="btn btn-success btn-sm"
                                                         href="{{ url('kos-bulanan', [$d->Tahun]) }}"
                                                         role="button">Butiran</a>

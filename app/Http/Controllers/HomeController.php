@@ -61,7 +61,7 @@ class HomeController extends Controller
             // return dd($tahunumur);
         return view('dashboard', compact('kategorituntutan', 'data', 
             'tahunPermohonan', 'bilpermohonan', 
-            'bilpermohonan2','biljenis2', 'jumlahpermohonan', 
+            'bilpermohonan2', 'jumlahpermohonan', 
             'umurk30', 'umurk3039', 'umurk4049', 'umurk5059', 'umura60', 'tahunumur'
         ));
     }
