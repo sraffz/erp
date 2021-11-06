@@ -42,7 +42,7 @@
             <thead class="thead-success">
                 <tr class="text-center">
                     <th style="width: 50%">BULAN</th>
-                    <th>KOS</th>
+                    <th>KOS (RM)</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,7 +51,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '1')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -61,7 +61,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '2')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -71,7 +71,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '3')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -81,7 +81,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '4')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -91,7 +91,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '5')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -101,7 +101,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '6')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -111,7 +111,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '7')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -121,7 +121,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '8')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -131,7 +131,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '9')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -141,7 +141,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '10')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -151,7 +151,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '11')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -161,7 +161,7 @@
                     <td>
                         @foreach ($kos_bulanan as $d)
                             @if ($d->bulan == '12')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -172,7 +172,7 @@
                     <th class="text-center">JUMLAH KESELURUHAN</th>
                     <th class="text-center">
                         @foreach ($total as $t)
-                                {{ $t->Jumlah }}
+                            {{ number_format($t->Jumlah, 2, '.', ',')  }}
                         @endforeach    
                     </th>
                 </tr>
@@ -189,7 +189,7 @@
             <thead class="thead-success">
                 <tr class="text-center">
                     <th style="width: 50%">BULAN</th>
-                    <th>KOS</th>
+                    <th>KOS RM)</th>
                 </tr>
             </thead>
             <tbody>
@@ -198,7 +198,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '1')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -208,7 +208,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '2')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -218,7 +218,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '3')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -228,7 +228,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '4')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -238,7 +238,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '5')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -248,7 +248,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '6')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -258,7 +258,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '7')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -268,7 +268,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '8')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -278,7 +278,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '9')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -288,7 +288,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '10')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -298,7 +298,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '11')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -308,7 +308,7 @@
                     <td>
                         @foreach ($kos_bulanan_pegawai as $d)
                             @if ($d->bulan == '12')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -317,7 +317,7 @@
             <tfoot>
                 <tr>
                     <th class="text-center">JUMLAH KESELURUHAN</th>
-                    <th class="text-center">{{ $jumlah_kos_pegawai }}</th>
+                    <th class="text-center">{{ number_format($jumlah_kos_pegawai, 2, '.', ',')  }}</th>
                 </tr>
             </tfoot>
         </table>
@@ -332,7 +332,7 @@
             <thead class="thead-success">
                 <tr class="text-center">
                     <th style="width: 50%">BULAN</th>
-                    <th>KOS</th>
+                    <th>KOS (RM)</th>
                 </tr>
             </thead>
             <tbody>
@@ -341,7 +341,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '1')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -351,7 +351,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '2')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -361,7 +361,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '3')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -371,7 +371,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '4')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -381,7 +381,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '5')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -391,7 +391,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '6')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -401,7 +401,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '7')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -411,7 +411,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '8')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -421,7 +421,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '9')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -431,7 +431,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '10')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -441,7 +441,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '11')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -451,7 +451,7 @@
                     <td>
                         @foreach ($kos_bulanan_pesara as $d)
                             @if ($d->bulan == '12')
-                                {{ $d->jumlah }}
+                                {{ number_format($d->jumlah, 2, '.', ',')  }}
                             @endif
                         @endforeach
                     </td>
@@ -460,12 +460,12 @@
             <tfoot>
                 <tr>
                     <th class="text-center">JUMLAH KESELURUHAN</th>
-                    <th class="text-center">{{ $jumlah_kos_pesara }}</th>
+                    <th class="text-center">{{ number_format($jumlah_kos_pesara, 2, '.', ',')  }}</th>
                 </tr>
             </tfoot>
         </table>
     </div>
-    <div class="page-break"></div>
+    {{-- <div class="page-break"></div>
     <div>
         <div class="text-center">
             <h4><strong>JUMLAH PERBELANJAAN RAWATAN MENGIKUT JENIS PERMOHONAN BAGI TAHUN {{ $id }}</strong>
@@ -504,7 +504,7 @@
                 </tr>
             </tfoot>
         </table>
-    </div>
+    </div> --}}
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">

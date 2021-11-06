@@ -66,13 +66,13 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover" id="zero_config">
+                        <table class="table table-hover text-center" id="zero_config">
                             <thead class="text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 17%">
                                         Nama Pesakit / No. KP
                                     </th>
-                                    <th>
+                                    <th style="width: 12%">
                                         Status
                                     </th>
                                     <th>
@@ -107,7 +107,7 @@
                             <tbody>
                                 @foreach ($perubatan as $prbtn)
                                     <tr>
-                                        <th>
+                                        <th class="text-left">
                                             @if ($prbtn->nama_waris != null)
                                                 {{ $prbtn->nama_waris }} <br>
                                                 {{ $prbtn->ic_waris }}

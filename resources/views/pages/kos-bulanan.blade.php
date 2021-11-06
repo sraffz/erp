@@ -475,13 +475,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12">
                     <div class="card card-chart">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title">Kos Tanggungan Rawatan Mengikut Jenis Permohonan</h4>
                             <p class="card-category">
-                                {{-- <span class="">Jadual kos tanggungan keseluruhan mengikut bulan. --}}
                             </p>
                         </div>
                         <div class="card-body">
@@ -490,7 +489,6 @@
                                     <tr class="text-center">
                                         <th>Jenis Tuntuan / Permohonan</th>
                                         <th>Kos (RM)</th>
-                                        {{-- <th></th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -515,12 +513,11 @@
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                {{-- <i class="material-icons">access_time</i> updated 4 minutes ago --}}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
