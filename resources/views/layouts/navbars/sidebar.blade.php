@@ -40,7 +40,7 @@
 
         <ul class="nav">
             <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('home') }}">
+                <a class="nav-link" href="{{ route('halaman-utama') }}">
                     <i class="material-icons">dashboard</i>
                     <p>{{ __('Halaman Utama') }}</p>
                 </a>

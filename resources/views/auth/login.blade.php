@@ -38,7 +38,7 @@
                     <i class="material-icons">email</i>
                   </span>
                 </div>
-                <input type="text" name="ic" class="form-control" placeholder="{{ __('No Kad Pengenalan...') }}" value="{{ old('ic', '930116035899') }}" required>
+                <input type="text" name="ic" class="form-control" placeholder="{{ __('No Kad Pengenalan...') }}" value="{{ old('ic') }}" required>
               </div>
               @if ($errors->has('ic'))
                 <div id="ic-error" class="error text-danger pl-3" for="ic" style="display: block;">
@@ -53,7 +53,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" value="{{ !$errors->has('password') ? "12345678" : "" }}" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" value="" required>
               </div>
               @if ($errors->has('password'))
                 <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">

@@ -15,7 +15,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <a href="{{ route('home') }}" class="btn btn-warning"><span class="material-icons">
+                                <a href="{{ route('halaman-utama') }}" class="btn btn-warning"><span class="material-icons">
                                         arrow_back_ios
                                     </span>Kembali</a>
                             </div>
@@ -268,7 +268,7 @@
                                         <tr class="text-center">
                                             <td scope="row">40 - 49</td>
                                             <td>
-                                                @foreach ($jumlahumurjenis50 as $jju40)
+                                                @foreach ($jumlahumurjenis40 as $jju40)
                                                     @if ($jju40->idKategoriTuntutan == '01')
                                                         {{ $jju40->bil }}
                                                     @endif

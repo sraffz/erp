@@ -68,7 +68,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/halaman-utama', 'HomeController@index')->name('halaman-utama');
     Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
     Route::get('{page}/{id}', ['as' => 'page.withid', 'uses' => 'PageController@withid']);
 });

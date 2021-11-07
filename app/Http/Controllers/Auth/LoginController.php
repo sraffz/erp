@@ -35,7 +35,7 @@ class LoginController extends Controller
         // attempt to log the user in
         if(Auth::guard('web')->attempt(['kad_pengenalan' => $request->ic,'password' => $request->password], $request->remember)){
             // if success, then redirect to their intended location
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('halaman-utama'));
         }
         //if unsuccessful, the reidirect back to the login with the form data
         Session::flash('message', 'No KP atau kata laluan salah.');

@@ -13,7 +13,7 @@
                                         <span class="material-icons">print</span>
                                     </a>
                                 </div>
-                                <a href="{{ route('home') }}" class="btn btn-warning">
+                                <a href="{{ route('halaman-utama') }}" class="btn btn-warning">
                                     <span class="material-icons">arrow_back_ios</span>Kembali
                                 </a>
                             </div>
