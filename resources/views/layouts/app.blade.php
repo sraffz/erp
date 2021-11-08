@@ -11,10 +11,32 @@
     <link rel="icon" type="image/png" href="{{ asset('material') }}/img/sukk.png">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
+
+    @guest()
+    @else
+        <!-- Matomo Tag Manager -->
+        <script type="text/javascript">
+            var _mtm = window._mtm = window._mtm || [];
+            _mtm.push({
+                'mtm.startTime': (new Date().getTime()),
+                'event': 'mtm.Start'
+            });
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.src = 'https://aplikasi1.kelantan.gov.my/analytic/js/container_mJvLDMJc.js';
+            s.parentNode.insertBefore(g, s);
+        </script>
+        <!-- End Matomo Tag Manager -->
+    @endguest
+
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/fontawesome.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/fontawesome.min.css">
     <!-- CSS Files -->
     <link href="{{ asset('material/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -124,7 +146,7 @@
         $(document).ready(function() {
             $('table.display').DataTable({
                 "pageLength": 5,
-                "lengthMenu": [ 5, 10, 15, 20 ],
+                "lengthMenu": [5, 10, 15, 20],
                 "language": {
                     "emptyTable": "Tiada data",
                     "lengthMenu": "_MENU_ Rekod setiap halaman",
@@ -206,6 +228,26 @@
 
             $(".modal-body #id").val(id);
             $(".modal-body #jawatan").val(jawatan);
+        });
+
+        $('#kemaskinipengguna').on('show.bs.modal', event => {
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+
+            var id = button.data('id');
+            var nama = button.data('nama');
+            var ic = button.data('ic');
+            var level = button.data('level');
+            var status = button.data('status');
+            var email = button.data('email');
+            // Use above variables to manipulate the DOM
+
+            $(".modal-body #id").val(id);
+            $(".modal-body #nama").val(nama);
+            $(".modal-body #ic").val(ic);
+            $(".modal-body #level").val(level);
+            $(".modal-body #status").val(status);
+            $(".modal-body #email").val(email);
         });
 
 
@@ -361,6 +403,35 @@
 
         });
     </script>
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u = "https://aplikasi1.kelantan.gov.my/analytic/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', 'qdjomgbl5ezvwgvanwkry431x']);
+            var d = document,
+                g = d.createElement('script'),
+                s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.async = true;
+            g.src = u + 'matomo.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <noscript>
+        <p><img src="https://aplikasi1.kelantan.gov.my/analytic/matomo.php?idsite=qdjomgbl5ezvwgvanwkry431x&amp;rec=1"
+                style="border:0;" alt="" /></p>
+    </noscript>
+
+    @guest()
+    @else
+    <input type="hidden" id="userid" value="{{ Auth::user()->kad_pengenalan }}">
+    @endguest
 </body>
 
 </html>

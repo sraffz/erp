@@ -26,7 +26,7 @@ class PageController extends Controller
         $hospital = DB::table('hospital')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $bilrawatan = DB::table('papar_bil_rawatan')->get();
-        $pentadbir = DB::table('pentadbir')->get();
+        $pentadbir = DB::table('users')->whereNotIn('level', ['superadmin'])->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $kos_bulanan = DB::table('jumlah_kos_bulanan')->get();
 
@@ -226,6 +226,24 @@ class PageController extends Controller
         );
 
         return back()->with('success', 'Pentadbir telah berjaya ditambah.');
+    }
+
+    public function kemaskinipentadbir(Request $req)
+    {
+        $id = $req->input('id');
+
+        DB::table('users')->where('id', $id)
+        ->update(
+            [
+                'name' => $req->input('nama'),
+                'kad_pengenalan' => $req->input('ic'),
+                'email' => $req->input('email'),
+                'level' => $req->input('level'),
+                'status' => $req->input('status')
+            ]
+        );
+
+        return back()->with('success', 'Pentadbir telah berjaya dikemaskini.');
     }
 
     public function tambahjabatan(Request $req)

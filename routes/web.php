@@ -84,6 +84,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::post('tambahpentadbir', 'PageController@tambahpentadbir');
+    Route::post('kemaskinipentadbir', 'PageController@kemaskinipentadbir');
 
     Route::post('tambah-jabatan', 'PageController@tambahjabatan');
     Route::post('kemaskini-jabatan', 'PageController@kemaskinijabatan');

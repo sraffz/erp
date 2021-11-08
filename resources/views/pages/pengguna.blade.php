@@ -14,7 +14,7 @@
             @endif
             <div class="card">
                 <div class="card-body">
-                    <div class="col-12 text-right">
+                    <div class="col-12 text-center">
                         <a href="{{ route('page.index', 'pengguna') }}" class="btn btn-success">Pengguna Aktif</a>
                         <a href="{{ route('page.index', 'pengguna-tidak-aktif') }}" class="btn btn-danger">Pengguna Tidak
                             Aktif</a>
@@ -63,7 +63,7 @@
                                     @if ($ptbr->status == 'Aktif')
                                         <tr>
                                             <td>
-                                                {{ $ptbr->nama }}
+                                                {{ $ptbr->name }}
                                             </td>
                                             <td>
                                                 {{ $ptbr->kad_pengenalan }}
@@ -74,12 +74,15 @@
                                             <td>
                                                 {{ $ptbr->status }}
                                             </td>
-                                            <td class="td-actions text-right">
-                                                <a rel="tooltip" class="btn btn-success btn-link" href="#"
-                                                    data-original-title="" title="">
-                                                    <i class="material-icons">edit</i>
-                                                    <div class="ripple-container"></div>
-                                                </a>
+                                            <td class="td-actions text-center">
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary"
+                                                    data-status='{{ $ptbr->status }}' data-level="{{ $ptbr->level }}"
+                                                    data-id="{{ $ptbr->id }}" data-nama="{{ $ptbr->name }}" data-email="{{ $ptbr->email }}"
+                                                    data-ic="{{ $ptbr->kad_pengenalan }}" data-toggle="modal"
+                                                    data-target="#kemaskinipengguna">
+                                                    <i class="material-icons">edit</i> Kemaskini
+                                                </button>
                                             </td>
                                         </tr>
                                     @endif
@@ -118,29 +121,29 @@
                             <small id="helpId" class="form-text text-muted">Tanpa "-". Contoh:XXXXXXXXXXXX</small>
                         </div>
                         <div class="form-group">
-                          <label for="email">E-Mail</label>
-                          <input type="email"
-                            class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Alamat Email">
-                          <small id="helpId" class="form-text text-muted">Bertujuan untuk menukar kata laluan.</small>
+                            <label for="email">E-Mail</label>
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId"
+                                placeholder="Alamat Email">
+                            <small id="helpId" class="form-text text-muted">Bertujuan untuk menukar kata laluan.</small>
                         </div>
                         <div class="form-group">
-                          <label for="level">Peranan</label>
-                          <select class="form-control" name="level" id="level">
-                            <option value="">Sila Pilih</option>
-                            <option value="Pentadbir Sistem">Pentadbir Sistem</option>
-                            <option value="Pentadbir Pencen">Pentadbir Pencen</option>
-                            <option value="Pentadbir Perubatan">Pentadbir Perubatan</option>
-                            <option value="Pentadbir Kewangan">Pentadbir Kewangan</option>
-                          </select>
+                            <label for="level">Peranan</label>
+                            <select class="form-control" name="level" id="level">
+                                <option value="">Sila Pilih</option>
+                                <option value="Pentadbir Sistem">Pentadbir Sistem</option>
+                                <option value="Pentadbir Pencen">Pentadbir Pencen</option>
+                                <option value="Pentadbir Perubatan">Pentadbir Perubatan</option>
+                                <option value="Pentadbir Kewangan">Pentadbir Kewangan</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select class="form-control" name="status" id="status">
-                              <option value="">Sila Pilih</option>
-                              <option value="Aktif">Aktif</option>
-                              <option value="Tidak Aktif">Tidak Aktif</option>
+                                <option value="">Sila Pilih</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Tidak Aktif">Tidak Aktif</option>
                             </select>
-                          </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -151,12 +154,63 @@
         </div>
     </div>
 
-    <script>
-        $('#tambahpentadbir').on('show.bs.modal', event => {
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-            // Use above variables to manipulate the DOM
-
-        });
-    </script>
+    <!-- Modal Kemaskini Pentadbir-->
+    <div class="modal fade" id="kemaskinipengguna" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kemaskini Pengguna/Pentadbir</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('kemaskinipentadbir') }}" method="post" autocomplete="off">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="id" value="">
+                        <div class="form-group">
+                            <label for="nama">Nama Penuh</label>
+                            <input type="text" class="form-control" name="nama" id="nama" aria-describedby="helpId"
+                                placeholder="Nama Penuh" onkeyup="this.value = this.value.toUpperCase();" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="ic">No Kad Pengenalan</label>
+                            <input type="text" class="form-control" name="ic" id="ic" aria-describedby="helpId"
+                                placeholder="">
+                            <small id="helpId" class="form-text text-muted">Tanpa "-". Contoh:XXXXXXXXXXXX</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId"
+                                placeholder="Alamat Email">
+                            <small id="helpId" class="form-text text-muted">Bertujuan untuk menukar kata laluan.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="level">Peranan</label>
+                            <select class="form-control" name="level" id="level">
+                                <option value="">Sila Pilih</option>
+                                <option value="Pentadbir Sistem">Pentadbir Sistem</option>
+                                <option value="Pentadbir Pencen">Pentadbir Pencen</option>
+                                <option value="Pentadbir Perubatan">Pentadbir Perubatan</option>
+                                <option value="Pentadbir Kewangan">Pentadbir Kewangan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" name="status" id="status">
+                                <option value="">Sila Pilih</option>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Tidak Aktif">Tidak Aktif</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
