@@ -13,6 +13,13 @@
                 </div>
             @endif
             <div class="card">
+                <div class="card-body">
+                    <div class="col-12 text-right">
+                        <a href="{{ route('page.index', 'bil-rawatan') }}" class="btn btn-warning">Kembali</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
                 <div class="card-header card-header-primary">
                     <h3 class="card-title">Butiran Bil Rawatan</h3>
                 </div>
@@ -66,7 +73,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="jumlah_bil">Jumlah Tuntutan</label>
-                                        <input type="number" class="form-control" name="jumlah_bil"
+                                        <input type="number" class="form-control" step='0.01' name="jumlah_bil"
                                             value="{{ $bp->jumlah_bil }}">
                                     </div>
                                 </div>

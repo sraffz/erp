@@ -133,7 +133,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jumlah_bil">Jumlah Tuntutan</label>
-                                <input type="number" class="form-control" name="jumlah_bil" value="">
+                                <input type="number" step='0.01' class="form-control" name="jumlah_bil" value="">
                             </div>
                         </div>
                     </div>

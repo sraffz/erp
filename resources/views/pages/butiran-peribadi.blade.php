@@ -112,7 +112,7 @@
                                         <td scope="row">{{ $wrs->nama }}</td>
                                         <td>{{ $wrs->nokp }}</td>
                                         <td>{{ $wrs->hubungan }}</td>
-                                        <td>{{ $wrs->tarikhLahir }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($wrs->tarikhLahir)->format('d/m/Y') }} ({{ \Carbon\Carbon::parse($wrs->tarikhLahir)->age }})</td>
                                         <td>
                                             <a rel="tooltip" class="btn btn-sm btn-primary"
                                                 href="{{ url('butiran-waris', [$wrs->id]) }}" data-original-title=""
@@ -168,12 +168,12 @@
                             <div class="form-group row">
                                 <label for="nokp">No Kad Pengenalan</label>
                                 <input type="text" class="form-control" name="nokp" id="nokp"
-                                    placeholder="No Kad Pengenalan" value="" required>
+                                    placeholder="No Kad Pengenalan" value="">
                             </div>
                             <div class="form-group row">
                                 <label for="tarikhlahir">Tarikh Lahir</label>
                                 <input type="date" class="form-control" name="tarikhlahir" id="tarikhlahir"
-                                    placeholder="Tarikh Lahir" value="" required>
+                                    placeholder="Tarikh Lahir" value="">
                             </div>
                             <div class="form-group">
                                 <label for="jantina">Jantina</label>

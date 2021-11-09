@@ -36,6 +36,10 @@
                                     <h4 class="card-title">Rawatan Di Hospital/ Klinik Kerajaan </h4>
                                     <div class="form-group">
                                         <label for="hospital">Nama Hospital/Klinik Kerajaan</label>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahhospital">
+                                            <span class="material-icons"> add </span>
+                                        </button>
                                         <select class="custom-select select2" name="hospital" id="namaHospital">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($hospital as $hptl)
@@ -105,8 +109,13 @@
                                 </div>
                                 <div class="col-md-6"><br>
                                     <h4 class="card-title">Pembekal Kemudahan Perubatan</h4>
+                                    
                                     <div class="form-group">
                                         <label for="pembekal">Nama Hospital/ Agensi Swasta</label>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahpembekal">
+                                            <span class="material-icons"> add </span>
+                                        </button>
                                         <select class="alamatPembekal custom-select select2" name="pembekal" id="namaPembekal">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($pembekal as $pmbkl)
@@ -266,6 +275,161 @@
                             </div>
                         </form>
                     </div>
+
+                    <!-- Modal Tambah Hospital-->
+    <div class="modal fade" id="tambahhospital" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Hospital</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url('tambah-hospital') }}" method="post">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="namahospital">Nama Hospital/Klinik Kerajaan:</label>
+                            <input type="text" class="form-control" name="namahospital" id="namahospital"
+                                aria-describedby="helpId" placeholder="Nama Hospital/Klinik Kerajaan">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamathospital">Alamat</label>
+                            <input type="text" class="form-control" name="alamathospital" id="alamathospital"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat2">Alamat 2</label>
+                            <input type="text" class="form-control" name="alamat2" id="alamat2"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat3">Alamat 3</label>
+                            <input type="text" class="form-control" name="alamat3" id="alamat3"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="poskod">Poskod</label>
+                            <input type="text" class="form-control" name="poskod" id="poskod"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="bandar">Bandar</label>
+                            <input type="text" class="form-control" name="bandar" id="bandar"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="negeri">Negeri</label>
+                            <select class="form-control custom-select" name="negeri" id="negeri">
+                                <option value="">SILA PILIH</option>
+                                <option value="JOHOR">JOHOR </option>
+                                <option value="KEDAH">KEDAH</option>
+                                <option value="KELANTAN">KELANTAN</option>
+                                <option value="MELAKA">MELAKA</option>
+                                <option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
+                                <option value="PAHANG">PAHANG</option>
+                                <option value="PERAK">PERAK</option>
+                                <option value="PERLIS">PERLIS</option>
+                                <option value="PULAU PINANG">PULAU PINANG</option>
+                                <option value="SABAH">SABAH</option>
+                                <option value="SARAWAK">SARAWAK</option>
+                                <option value="SELANGOR">SELANGOR</option>
+                                <option value="TERENGGANU">TERENGGANU</option>
+                                <option value="W.P KUALA LUMPUR">W.P KUALA LUMPUR</option>
+                                <option value="W.P LABUAN">W.P LABUAN</option>
+                                <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Tambah Pembekal-->
+<div class="modal fade" id="tambahpembekal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Pembekal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url('tambah-pembekal') }}" method="post">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="namaPembekal">Nama Hospital/ Agensi Swasta:</label>
+                            <input type="text" class="form-control" name="namaPembekal" id="namaPembekal"
+                                aria-describedby="helpId" placeholder="Nama Hospital/Klinik Swasta">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamatPembekal">Alamat</label>
+                            <input type="text" class="form-control" name="alamatPembekal" id="alamatPembekal"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat2">Alamat 2</label>
+                            <input type="text" class="form-control" name="alamat2" id="alamat2"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat3">Alamat 3</label>
+                            <input type="text" class="form-control" name="alamat3" id="alamat3"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="poskod">Poskod</label>
+                            <input type="text" class="form-control" name="poskod" id="poskod"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="bandar">Bandar</label>
+                            <input type="text" class="form-control" name="bandar" id="bandar"
+                                aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="negeri">Negeri</label>
+                            <select class="form-control custom-select" name="negeri" id="negeri">
+                                <option value="">SILA PILIH</option>
+                                <option value="JOHOR">JOHOR </option>
+                                <option value="KEDAH">KEDAH</option>
+                                <option value="KELANTAN">KELANTAN</option>
+                                <option value="MELAKA">MELAKA</option>
+                                <option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
+                                <option value="PAHANG">PAHANG</option>
+                                <option value="PERAK">PERAK</option>
+                                <option value="PERLIS">PERLIS</option>
+                                <option value="PULAU PINANG">PULAU PINANG</option>
+                                <option value="SABAH">SABAH</option>
+                                <option value="SARAWAK">SARAWAK</option>
+                                <option value="SELANGOR">SELANGOR</option>
+                                <option value="TERENGGANU">TERENGGANU</option>
+                                <option value="W.P KUALA LUMPUR">W.P KUALA LUMPUR</option>
+                                <option value="W.P LABUAN">W.P LABUAN</option>
+                                <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
                 @endforeach
             </div>
         </div>

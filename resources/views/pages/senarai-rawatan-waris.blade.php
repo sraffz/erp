@@ -73,7 +73,7 @@
                                     value="{{ $bw->namaJawatan }}">
                             </div>
                         </form>
-                  
+
                 </div>
             </div>
             {{-- Waris --}}
@@ -86,7 +86,8 @@
                     <div class="row">
                         <div class="col-12 text-right">
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-id="{{ $bw->idPesara }}" data-idwaris="{{ $bw->id }}" data-target="#tambahbilwaris">
+                                data-id="{{ $bw->idPesara }}" data-idwaris="{{ $bw->id }}"
+                                data-target="#tambahbilwaris">
                                 Tambah Bil Rawatan
                             </button>
                         </div>
@@ -99,7 +100,6 @@
                                     <th>Bil</th>
                                     <th>Nama Pegawai/pesara & Jawatan</th>
                                     <th>Nama Pesakit</th>
-                                    <th>Jabatan Terkini</th>
                                     <th>Tarikh bil</th>
                                     <th>Jumlah Tuntutan / No bil</th>
                                     <th></th>
@@ -108,16 +108,15 @@
                             <tbody>
                                 @foreach ($senaraibilwaris as $index => $bil)
                                     <tr>
-                                        <td>{{ $index+1 }}</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>{{ $bil->nama }}</td>
                                         <td>
-                                            @if ($bil->nama_waris <> '')
-                                            {{ $bil->nama_waris }}
+                                            @if ($bil->nama_waris != '')
+                                                {{ $bil->nama_waris }}
                                             @else
-                                            {{ $bil->nama }}
+                                                {{ $bil->nama }}
                                             @endif
                                         </td>
-                                        <td>{{ $bil->namaJabatan }}</td>
                                         <td>{{ $bil->tarikh_bil }}</td>
                                         <td>RM {{ $bil->jumlah_bil }} <br> No Bil : {{ $bil->no_bil }}</td>
                                         <td><a class="btn btn-info btn-sm"
@@ -159,7 +158,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jumlah_bil">Jumlah Tuntutan</label>
-                                <input type="number" class="form-control" name="jumlah_bil" value="">
+                                <input type="number" step='0.01' class="form-control" name="jumlah_bil" value="">
                             </div>
                         </div>
                     </div>

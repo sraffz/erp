@@ -13,6 +13,13 @@
                 </div>
             @endif
             <div class="card">
+                <div class="card-body">
+                    <div class="col-12 text-right">
+                        <a href="{{ route('page.index', 'perubatan') }}" class="btn btn-warning">Kembali</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
                 <div class="card-header card-header-primary">
                     <h3 class="card-title">Butiran Perubatan</h3>
                 </div>
