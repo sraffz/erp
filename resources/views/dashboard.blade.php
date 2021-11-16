@@ -95,11 +95,11 @@
                                     <tbody>
                                         @foreach ($data as $d)
                                             <tr class="text-center">
-                                                <td scope="row">{{ $d->Tahun }}</td>
-                                                <td>{{ number_format($d->Jumlah, 2, '.', ',')  }}</td>
+                                                <td scope="row">{{ $d->tahun }}</td>
+                                                <td>{{ number_format($d->jumlah, 2, '.', ',')  }}</td>
                                                 {{-- <td>{{ $d->Jumlah }}</td> --}}
                                                 <td><a class="btn btn-success btn-sm"
-                                                        href="{{ url('kos-bulanan', [$d->Tahun]) }}"
+                                                        href="{{ url('kos-bulanan', [$d->ahun]) }}"
                                                         role="button">Butiran</a>
                                                 </td>
                                             </tr>
