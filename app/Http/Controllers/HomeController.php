@@ -25,7 +25,7 @@ class HomeController extends Controller
     {
         $kategorituntutan = DB::table('kategorituntutan')->get();
 
-        $data = DB::table('jumlah_kos_tahunan')
+        $data = DB::table('jumlah_bil_tahunan')
             ->where('tahun', '<>', '')
             ->orderBy('tahun', 'DESC')
             ->get();

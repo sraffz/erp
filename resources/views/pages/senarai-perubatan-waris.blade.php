@@ -106,7 +106,7 @@
                                         <td>{{ $wrs->jumlahSebenar }}</td>
                                         <td>{{ $wrs->catatanPermohonan }}</td>
                                         <td>{{ $wrs->noFail }}</td>
-                                        <td><a  class="btn btn-info btn-sm" href="{{ url('butiran-perubatan', [$wrs->idTuntutan]) }}" role="button">Butiran</a></td>
+                                        <td><a  class="btn btn-info btn-sm" href="{{ url('butiran-perubatan-waris', [$wrs->idTuntutan]) }}" role="button">Butiran</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

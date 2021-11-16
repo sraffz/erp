@@ -172,7 +172,7 @@
                     <th class="text-center">JUMLAH KESELURUHAN</th>
                     <th class="text-center">
                         @foreach ($total as $t)
-                            {{ number_format($t->Jumlah, 2, '.', ',')  }}
+                            {{ number_format($t->jumlah, 2, '.', ',')  }}
                         @endforeach    
                     </th>
                 </tr>

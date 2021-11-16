@@ -40,10 +40,8 @@
                                     <tr class="text-center">
                                         <td scope="row">Ubatan</td>
                                         <td>
-                                            @foreach ($bilpermohonan as $ubat)
-                                                @if ($ubat->id_kategori == '01')
-                                                    {{ $ubat->jumlah }}
-                                                @endif
+                                            @foreach ($bilpermohonan18 as $alat)
+                                                {{ $alat->jumlah }}
                                             @endforeach
                                         </td>
                                     </tr>
@@ -234,10 +232,8 @@
                                         <tr class="text-center">
                                             <td scope="row">30 - 39</td>
                                             <td>
-                                                @foreach ($jumlahumurjenis30 as $jju30)
-                                                    @if ($jju30->idKategoriTuntutan == '01')
-                                                        {{ $jju30->bil }}
-                                                    @endif
+                                                @foreach ($jumlahumurjenis30k18 as $jju30)
+                                                    {{ $jju30->jumlah }}
                                                 @endforeach
                                             </td>
                                             <td>
@@ -268,10 +264,8 @@
                                         <tr class="text-center">
                                             <td scope="row">40 - 49</td>
                                             <td>
-                                                @foreach ($jumlahumurjenis40 as $jju40)
-                                                    @if ($jju40->idKategoriTuntutan == '01')
-                                                        {{ $jju40->bil }}
-                                                    @endif
+                                                @foreach ($jumlahumurjenis40k18 as $jju40)
+                                                    {{ $jju40->jumlah }}
                                                 @endforeach
                                             </td>
                                             <td>
@@ -302,10 +296,8 @@
                                         <tr class="text-center">
                                             <td scope="row">50 - 59</td>
                                             <td>
-                                                @foreach ($jumlahumurjenis50 as $jju50)
-                                                    @if ($jju50->idKategoriTuntutan == '01')
-                                                        {{ $jju50->bil }}
-                                                    @endif
+                                                @foreach ($jumlahumurjenis50k18 as $jju50)
+                                                    {{ $jju50->jumlah }}
                                                 @endforeach
                                             </td>
                                             <td>
@@ -336,11 +328,9 @@
                                         <tr class="text-center">
                                             <td scope="row">60 dan Ke Atas</td>
                                             <td>
-                                                @foreach ($jumlahumurjenis60 as $jju60)
-                                                    @if ($jju60->idKategoriTuntutan == '01')
-                                                        {{ $jju60->bil }}
-                                                    @endif
-                                                @endforeach
+                                                @foreach ($jumlahumurjenis60k18 as $jju60)
+                                                {{ $jju60->jumlah }}
+                                            @endforeach
                                             </td>
                                             <td>
                                                 @foreach ($jumlahumurjenis60k2 as $jju60)
@@ -372,10 +362,8 @@
                                         <tr class="text-center">
                                             <th scope="row">Jumlah</th>
                                             <th>
-                                                @foreach ($bilpermohonan as $ubat)
-                                                    @if ($ubat->id_kategori == '01')
-                                                        {{ $ubat->jumlah }}
-                                                    @endif
+                                                @foreach ($bilpermohonan18 as $alat)
+                                                    {{ $alat->jumlah }}
                                                 @endforeach
                                             </th>
                                             <th>

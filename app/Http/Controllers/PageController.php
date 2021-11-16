@@ -69,28 +69,28 @@ class PageController extends Controller
         $pembekal = DB::table('pembekal')->get();
         $hospital = DB::table('hospital')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
-        $kos_bulanan = DB::table('jumlah_kos_bulanan')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
-        $kos_bulanan_pegawai = DB::table('jumlah_kos_bulanan_status')
+        $kos_bulanan = DB::table('jumlah_bil_bulanan')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
+        $kos_bulanan_pegawai = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Tidak')
             ->orderBy('bulan', 'asc')
             ->get();
-        $kos_bulanan_pesara = DB::table('jumlah_kos_bulanan_status')
+        $kos_bulanan_pesara = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Ya')
             ->orderBy('bulan', 'asc')
             ->get();
 
-        $jumlah_kos_pesara = DB::table('jumlah_kos_bulanan_status')
+        $jumlah_kos_pesara = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Ya')
             ->sum('jumlah');
 
-        $jumlah_kos_pegawai = DB::table('jumlah_kos_bulanan_status')
+        $jumlah_kos_pegawai = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Tidak')
             ->sum('jumlah');
-        $jumlah_kos = DB::table('jumlah_kos_tahunan')
+        $jumlah_kos = DB::table('jumlah_bil_tahunan')
             ->where('tahun', $id)
             ->get();
 
@@ -115,6 +115,10 @@ class PageController extends Controller
             ->get();
 
         $bilpermohonan2 = DB::table('bil_permohonan_tahun_kategori2')
+            ->where('tahun', $id)
+            ->get();
+        
+        $bilpermohonan18 = DB::table('bil_permohonan_tahun_kategori1-8')
             ->where('tahun', $id)
             ->get();
 
@@ -160,6 +164,22 @@ class PageController extends Controller
             ->where('tahun', $id)
             ->get();
 
+        $jumlahumurjenis60k18 = DB::table('bil_permohonan_tahun_kategori1-8_60')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis50k18 = DB::table('bil_permohonan_tahun_kategori1-8_5059')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis40k18 = DB::table('bil_permohonan_tahun_kategori1-8_4049')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis30k18 = DB::table('bil_permohonan_tahun_kategori1-8_3039')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenisb30k18 = DB::table('bil_permohonan_tahun_kategori1-8_kurang_30')
+            ->where('tahun', $id)
+            ->get();
+
         if (view()->exists("pages.{$page}")) {
             return view(
                 "pages.{$page}",
@@ -194,6 +214,7 @@ class PageController extends Controller
                     'tahunumur',
                     'bilpermohonan',
                     'bilpermohonan2',
+                    'bilpermohonan18',
                     'jumlahpermohonan',
                     'jumlahumurjenis60',
                     'jumlahumurjenis50',
@@ -205,6 +226,11 @@ class PageController extends Controller
                     'jumlahumurjenis40k2',
                     'jumlahumurjenis30k2',
                     'jumlahumurjenisb30k2',
+                    'jumlahumurjenis60k18',
+                    'jumlahumurjenis50k18',
+                    'jumlahumurjenis40k18',
+                    'jumlahumurjenis30k18',
+                    'jumlahumurjenisb30k18',
                     'id'
                 )
             );
@@ -233,15 +259,15 @@ class PageController extends Controller
         $id = $req->input('id');
 
         DB::table('users')->where('id', $id)
-        ->update(
-            [
-                'name' => $req->input('nama'),
-                'kad_pengenalan' => $req->input('ic'),
-                'email' => $req->input('email'),
-                'level' => $req->input('level'),
-                'status' => $req->input('status')
-            ]
-        );
+            ->update(
+                [
+                    'name' => $req->input('nama'),
+                    'kad_pengenalan' => $req->input('ic'),
+                    'email' => $req->input('email'),
+                    'level' => $req->input('level'),
+                    'status' => $req->input('status')
+                ]
+            );
 
         return back()->with('success', 'Pentadbir telah berjaya dikemaskini.');
     }
@@ -802,36 +828,36 @@ class PageController extends Controller
 
     public function laporanjumlahkos($id)
     {
-        $kos_bulanan = DB::table('jumlah_kos_bulanan')
+        $kos_bulanan = DB::table('jumlah_bil_bulanan')
             ->where('tahun', $id)
             ->get();
 
-        $kos_bulanan_pegawai = DB::table('jumlah_kos_bulanan_status')
+        $kos_bulanan_pegawai = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Tidak')
             ->get();
 
-        $kos_bulanan_pesara = DB::table('jumlah_kos_bulanan_status')
+        $kos_bulanan_pesara = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Ya')
             ->get();
 
-        $jumlah_kos_pesara = DB::table('jumlah_kos_bulanan_status')
+        $jumlah_kos_pesara = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Ya')
             ->sum('jumlah');
 
-        $jumlah_kos_pegawai = DB::table('jumlah_kos_bulanan_status')
+        $jumlah_kos_pegawai = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Tidak')
             ->sum('jumlah');
 
-        $total = DB::table('jumlah_kos_tahunan')
+        $total = DB::table('jumlah_bil_tahunan')
             ->where('tahun', $id)
             ->get();
 
         $pdf = PDF::loadView('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'))->setPaper('a4', 'potrait');
-        return $pdf->download('Jumlah Permohonan Tahun ' . $id . '.pdf');
+        return $pdf->download('Jumlah Bil Tahun ' . $id . '.pdf');
 
         // return dd($jumlah_kos_pesara, $jumlah_kos_pegawai);
         // return view('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'));
@@ -851,6 +877,10 @@ class PageController extends Controller
             ->get();
 
         $bilpermohonan2 = DB::table('bil_permohonan_tahun_kategori2')
+            ->where('tahun', $id)
+            ->get();
+
+        $bilpermohonan18 = DB::table('bil_permohonan_tahun_kategori1-8')
             ->where('tahun', $id)
             ->get();
 
@@ -896,6 +926,22 @@ class PageController extends Controller
             ->where('tahun', $id)
             ->get();
 
+        $jumlahumurjenis60k18 = DB::table('bil_permohonan_tahun_kategori1-8_60')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis50k18 = DB::table('bil_permohonan_tahun_kategori1-8_5059')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis40k18 = DB::table('bil_permohonan_tahun_kategori1-8_4049')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenis30k18 = DB::table('bil_permohonan_tahun_kategori1-8_3039')
+            ->where('tahun', $id)
+            ->get();
+        $jumlahumurjenisb30k18 = DB::table('bil_permohonan_tahun_kategori1-8_kurang_30')
+            ->where('tahun', $id)
+            ->get();
+
         $pdf = PDF::loadView('pdf.pdf-jumlah-permohonan',  compact(
             'umurk30',
             'umurk3039',
@@ -905,6 +951,7 @@ class PageController extends Controller
             'tahunumur',
             'bilpermohonan',
             'bilpermohonan2',
+            'bilpermohonan18',
             'jumlahpermohonan',
             'jumlahumurjenis60',
             'jumlahumurjenis50',
@@ -916,6 +963,11 @@ class PageController extends Controller
             'jumlahumurjenis40k2',
             'jumlahumurjenis30k2',
             'jumlahumurjenisb30k2',
+            'jumlahumurjenis60k18',
+            'jumlahumurjenis50k18',
+            'jumlahumurjenis40k18',
+            'jumlahumurjenis30k18',
+            'jumlahumurjenisb30k18',
             'id'
         ))->setPaper('a4', 'landscape');
         return $pdf->download('Jumlah Permohonan Tahun ' . $id . '.pdf');

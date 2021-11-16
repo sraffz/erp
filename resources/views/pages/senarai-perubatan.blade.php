@@ -90,7 +90,7 @@
                                         <td>{{ $wrs->catatanPermohonan }}</td>
                                         <td>{{ $wrs->noFail }}</td>
                                         <td><a class="btn btn-info btn-sm"
-                                                href="{{ url('butiran-perubatan', [$wrs->idTuntutan]) }}"
+                                                href="{{ url('butiran-perubatan-pegawai', [$wrs->idTuntutan]) }}"
                                                 role="button">Butiran</a></td>
                                     </tr>
                                 @endforeach

@@ -15,15 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="col-12 text-right">
-                        @foreach ($perkhidmatan as $prbd)
-                            @if ($prbd->pesara == 'Ya')
-                                <a href="{{ route('page.index', 'perkhidmatan-pesara') }}" class="btn btn-warning">Kembali</a>
-                            @else
-                                <a href="{{ route('page.index', 'perkhidmatan') }}" class="btn btn-warning">Kembali</a>
-                                
-                            @endif
-                        @endforeach
-                        {{-- <a href="{{ route('page.index', 'perkhidmatan-pesara') }}" class="btn btn-danger">Kembali</a> --}}
+                        <a href="{{ route('page.index', 'peribadi') }}" class="btn btn-danger">Kembali</a>
                     </div>
                 </div>
             </div>

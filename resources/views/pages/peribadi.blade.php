@@ -72,7 +72,7 @@
                                                 <div class="ripple-container"></div>
                                             </a>
                                             <a rel="tooltip" class="btn btn-success btn-full"
-                                                href="{{ url('butiran-perkhidmatan', [$prbd->id]) }}"
+                                                href="{{ url('butiran-perkhidmatan-pegawai', [$prbd->id]) }}"
                                                 data-original-title="" title="Maklumat Perkhidmatan">
                                                 <i class="material-icons">business_center</i>
                                                 <div class="ripple-container"></div>

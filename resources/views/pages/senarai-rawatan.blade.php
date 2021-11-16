@@ -94,7 +94,7 @@
                                         <td>{{ $bil->tarikh_bil }}</td>
                                         <td>RM {{ $bil->jumlah_bil }} <br> No Bil : {{ $bil->no_bil }}</td>
                                         <td><a class="btn btn-info btn-sm"
-                                                href="{{ url('butiran-rawatan', [$bil->idRawatan]) }}"
+                                                href="{{ url('butiran-rawatan-pegawai', [$bil->idRawatan]) }}"
                                                 role="button">Butiran</a></td>
                                     </tr>
                                 @endforeach

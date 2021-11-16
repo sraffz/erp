@@ -159,7 +159,7 @@
                                         <td scope="row">JUMLAH</td>
                                         <td>
                                             @foreach ($jumlah_kos as $jk)
-                                                {{ number_format($jk->Jumlah, 2, '.', ',')  }}
+                                                {{ number_format($jk->jumlah, 2, '.', ',')  }}
                                             @endforeach
                                         </td>
                                     </tr>
