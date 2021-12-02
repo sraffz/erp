@@ -123,6 +123,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('tambah-hospital', 'PageController@tambahhospital');
     Route::post('tambah-pembekal', 'PageController@tambahpembekal');
 
+    Route::get('pdf/pdf-jumlah-bill/{id}', 'PageController@laporanjumlahbill')->name('pdf.pdf-jumlah-bill');
     Route::get('pdf/pdf-jumlah-kos/{id}', 'PageController@laporanjumlahkos')->name('pdf.pdf-jumlah-kos');
     Route::get('pdf/pdf-jumlah-permohonan/{id}', 'PageController@laporanjumlahpermohonan')->name('pdf.pdf-jumlah-permohonan');
 });

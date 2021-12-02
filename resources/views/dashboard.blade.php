@@ -76,10 +76,54 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-chart">
-                        <div class="card-header card-header-success">
-                            <h4 class="card-title"><strong>Kos Tanggungan Rawatan Pegawai dan Pesara</strong></h4>
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title"><strong>Kos & Pembiayaan Rawatan Pegawai dan Pesara</strong></h4>
                             <p class="card-category">
-                                <span class="">Jadual kos tanggungan keseluruhan mengikut tahun.
+                                <span class="">Jadual kos & pembiayaan rawatan keseluruhan mengikut tahun.
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered  display">
+                                    <thead class="text-primary">
+                                        <tr class="text-center">
+                                            <th style="width: 50%">Tahun</th>
+                                            <th>Kos (RM)</th>
+                                            <th style="width: 5%"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($kos as $d)
+                                            <tr class="text-center">
+                                                <td scope="row">{{ $d->tahun }}</td>
+                                                <td>{{ number_format($d->jumlah, 2, '.', ',')  }}</td>
+                                                {{-- <td>{{ $d->Jumlah }}</td> --}}
+                                                <td><a class="btn btn-primary btn-sm"
+                                                        href="{{ url('kos-bulanan', [$d->tahun]) }}"
+                                                        role="button">Butiran</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                {{-- <i class="material-icons">access_time</i> updated 4 minutes ago --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-success">
+                            <h4 class="card-title"><strong>Bil Rawatan Pegawai dan Pesara</strong></h4>
+                            <p class="card-category">
+                                <span class="">Jadual bil keseluruhan mengikut tahun.
                             </p>
                         </div>
                         <div class="card-body">
@@ -99,7 +143,7 @@
                                                 <td>{{ number_format($d->jumlah, 2, '.', ',')  }}</td>
                                                 {{-- <td>{{ $d->Jumlah }}</td> --}}
                                                 <td><a class="btn btn-success btn-sm"
-                                                        href="{{ url('kos-bulanan', [$d->ahun]) }}"
+                                                        href="{{ url('bil-bulanan', [$d->tahun]) }}"
                                                         role="button">Butiran</a>
                                                 </td>
                                             </tr>

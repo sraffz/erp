@@ -25,6 +25,11 @@ class HomeController extends Controller
     {
         $kategorituntutan = DB::table('kategorituntutan')->get();
 
+        $kos = DB::table('jumlah_kos_tahunan')
+            ->where('tahun', '<>', '')
+            ->orderBy('tahun', 'DESC')
+            ->get();
+
         $data = DB::table('jumlah_bil_tahunan')
             ->where('tahun', '<>', '')
             ->orderBy('tahun', 'DESC')
@@ -62,7 +67,8 @@ class HomeController extends Controller
         return view('dashboard', compact('kategorituntutan', 'data', 
             'tahunPermohonan', 'bilpermohonan', 
             'bilpermohonan2', 'jumlahpermohonan', 
-            'umurk30', 'umurk3039', 'umurk4049', 'umurk5059', 'umura60', 'tahunumur'
+            'umurk30', 'umurk3039', 'umurk4049', 'umurk5059', 'umura60', 'tahunumur',
+            'kos'
         ));
     }
 }

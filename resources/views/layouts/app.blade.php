@@ -31,7 +31,6 @@
         </script>
         <!-- End Matomo Tag Manager -->
     @endguest
-
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -54,7 +53,7 @@
     label {
         color: black;
     }
-
+    
 </style>
 
 <body class="{{ $class ?? '' }}">
@@ -69,6 +68,9 @@
     @if (auth()->check())
 
     @endif
+
+  
+
     <!--   Core JS Files   -->
     <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
     <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
@@ -404,6 +406,16 @@
         });
     </script>
 
+    <script>
+        $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+        });
+        </script>
+
     <!-- Matomo -->
     <script type="text/javascript">
         var _paq = window._paq = window._paq || [];
@@ -432,6 +444,8 @@
     @else
         <input type="hidden" id="userid" value="{{ Auth::user()->kad_pengenalan }}">
     @endguest
+
+    
 </body>
 
 </html>

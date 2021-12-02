@@ -69,30 +69,56 @@ class PageController extends Controller
         $pembekal = DB::table('pembekal')->get();
         $hospital = DB::table('hospital')->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
-        $kos_bulanan = DB::table('jumlah_bil_bulanan')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
-        $kos_bulanan_pegawai = DB::table('jumlah_bil_bulanan_status')
+        
+        $bill_bulanan = DB::table('jumlah_bil_bulanan')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
+        $bill_bulanan_pegawai = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Tidak')
             ->orderBy('bulan', 'asc')
             ->get();
-        $kos_bulanan_pesara = DB::table('jumlah_bil_bulanan_status')
+        $bill_bulanan_pesara = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Ya')
             ->orderBy('bulan', 'asc')
             ->get();
 
-        $jumlah_kos_pesara = DB::table('jumlah_bil_bulanan_status')
+        $jumlah_bill_pesara = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Ya')
             ->sum('jumlah');
 
-        $jumlah_kos_pegawai = DB::table('jumlah_bil_bulanan_status')
+        $jumlah_bill_pegawai = DB::table('jumlah_bil_bulanan_status')
             ->where('Tahun', $id)
             ->where('pesara', 'Tidak')
             ->sum('jumlah');
-        $jumlah_kos = DB::table('jumlah_bil_tahunan')
+        $jumlah_bill = DB::table('jumlah_bil_tahunan')
             ->where('tahun', $id)
             ->get();
+
+            $kos_bulanan = DB::table('jumlah_kos_bulanan')->where('Tahun', $id)->orderBy('bulan', 'asc')->get();
+            $kos_bulanan_pegawai = DB::table('jumlah_kos_bulanan_status')
+                ->where('Tahun', $id)
+                ->where('pesara', 'Tidak')
+                ->orderBy('bulan', 'asc')
+                ->get();
+            $kos_bulanan_pesara = DB::table('jumlah_kos_bulanan_status')
+                ->where('Tahun', $id)
+                ->where('pesara', 'Ya')
+                ->orderBy('bulan', 'asc')
+                ->get();
+    
+            $jumlah_kos_pesara = DB::table('jumlah_kos_bulanan_status')
+                ->where('Tahun', $id)
+                ->where('pesara', 'Ya')
+                ->sum('jumlah');
+    
+            $jumlah_kos_pegawai = DB::table('jumlah_kos_bulanan_status')
+                ->where('Tahun', $id)
+                ->where('pesara', 'Tidak')
+                ->sum('jumlah');
+            $jumlah_kos = DB::table('jumlah_kos_tahunan')
+                ->where('tahun', $id)
+                ->get();
 
         $waris = $this->waris($id);
         $butiranwaris = $this->butiranwaris($id);
@@ -200,6 +226,12 @@ class PageController extends Controller
                     'senaraibilwaris',
                     'senaraibilpegawai',
                     'butiranrawatan',
+                    'bill_bulanan',
+                    'bill_bulanan_pesara',
+                    'bill_bulanan_pegawai',
+                    'jumlah_bill_pesara',
+                    'jumlah_bill_pegawai',
+                    'jumlah_bill',
                     'kos_bulanan',
                     'kos_bulanan_pesara',
                     'kos_bulanan_pegawai',
@@ -826,7 +858,7 @@ class PageController extends Controller
         return back();
     }
 
-    public function laporanjumlahkos($id)
+    public function laporanjumlahbill($id)
     {
         $kos_bulanan = DB::table('jumlah_bil_bulanan')
             ->where('tahun', $id)
@@ -858,6 +890,43 @@ class PageController extends Controller
 
         $pdf = PDF::loadView('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'))->setPaper('a4', 'potrait');
         return $pdf->download('Jumlah Bil Tahun ' . $id . '.pdf');
+
+        // return dd($jumlah_kos_pesara, $jumlah_kos_pegawai);
+        // return view('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'));
+    }
+
+    public function laporanjumlahkos($id)
+    {
+        $kos_bulanan = DB::table('jumlah_kos_bulanan')
+            ->where('tahun', $id)
+            ->get();
+
+        $kos_bulanan_pegawai = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Tidak')
+            ->get();
+
+        $kos_bulanan_pesara = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Ya')
+            ->get();
+
+        $jumlah_kos_pesara = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Ya')
+            ->sum('jumlah');
+
+        $jumlah_kos_pegawai = DB::table('jumlah_kos_bulanan_status')
+            ->where('Tahun', $id)
+            ->where('pesara', 'Tidak')
+            ->sum('jumlah');
+
+        $total = DB::table('jumlah_kos_tahunan')
+            ->where('tahun', $id)
+            ->get();
+
+        $pdf = PDF::loadView('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'))->setPaper('a4', 'potrait');
+        return $pdf->download('Jumlah Kos & Biayaan Tahun ' . $id . '.pdf');
 
         // return dd($jumlah_kos_pesara, $jumlah_kos_pegawai);
         // return view('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'));
