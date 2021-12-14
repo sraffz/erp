@@ -108,7 +108,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse" id="config">
+                <div class="collapse {{ $activePage == 'jabatan' || $activePage == 'jawatan' ? ' show' : '' }}" id="config">
                     <ul class="nav">
                         <li class="nav-item{{ $activePage == 'jabatan' ? ' active' : '' }}">
                             <a class="nav-link" href="{{route('page.index', 'jabatan')}}">
