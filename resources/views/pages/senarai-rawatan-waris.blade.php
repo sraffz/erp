@@ -149,7 +149,7 @@
                             <input type="hidden" name="id" id="id" value="">
                             <input type="hidden" name="idwaris" id="idwaris" value="">
                             <div class="form-group">
-                                <label for="no_bil">No Bil</label>
+                                <label for="no_bil">No Bil (Jika perlu)</label>
                                 <input type="text" class="form-control" name="no_bil" value="">
                             </div>
                             <div class="form-group">
@@ -158,7 +158,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="jumlah_bil">Jumlah Tuntutan</label>
-                                <input type="number" step='0.01' class="form-control" name="jumlah_bil" value="">
+                                <input type="number" step='0.01' class="form-control" name="jumlah_bil" value="" required>
                             </div>
                         </div>
                     </div>

@@ -100,20 +100,20 @@
                             <thead class="text-primary">
                                 <tr>
                                     <th>Nama Penuh</th>
-                                    <th>Kad Pengenalan</th>
+                                    {{-- <th>Kad Pengenalan</th> --}}
                                     <th>Hubungan</th>
-                                    <th>Tarikh Lahir</th>
-                                    <th>Butiran</th>
+                                    {{-- <th>Tarikh Lahir</th> --}}
+                                    <th class="text-center">Butiran</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($waris as $wrs)
                                     <tr>
                                         <td scope="row">{{ $wrs->nama }}</td>
-                                        <td>{{ $wrs->nokp }}</td>
+                                        {{-- <td>{{ $wrs->nokp }}</td> --}}
                                         <td>{{ $wrs->hubungan }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($wrs->tarikhLahir)->format('d/m/Y') }} ({{ \Carbon\Carbon::parse($wrs->tarikhLahir)->age }})</td>
-                                        <td>
+                                        {{-- <td>{{ \Carbon\Carbon::parse($wrs->tarikhLahir)->format('d/m/Y') }} ({{ \Carbon\Carbon::parse($wrs->tarikhLahir)->age }})</td> --}}
+                                        <td class="text-center">
                                             <a rel="tooltip" class="btn btn-sm btn-primary"
                                                 href="{{ url('butiran-waris', [$wrs->id]) }}" data-original-title=""
                                                 title="Maklumat Peribadi">
@@ -165,16 +165,16 @@
                                 <input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"
                                     name="nama" id="namapenuh" placeholder="Nama Penuh" value="" required>
                             </div>
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="nokp">No Kad Pengenalan</label>
                                 <input type="text" class="form-control" name="nokp" id="nokp"
                                     placeholder="No Kad Pengenalan" value="">
-                            </div>
-                            <div class="form-group row">
+                            </div> --}}
+                            {{-- <div class="form-group row">
                                 <label for="tarikhlahir">Tarikh Lahir</label>
                                 <input type="date" class="form-control" name="tarikhlahir" id="tarikhlahir"
                                     placeholder="Tarikh Lahir" value="">
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="jantina">Jantina</label>
                                 <select class="custom-select" name="jantina" id="jantina" required>
@@ -184,7 +184,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="hubungan">Hubungan Dengan Kakitangan</label>
+                                <label for="hubungan">Hubungan Dengan Pegawai</label>
                                 <select class="custom-select" name="hubungan" id="hubungan" required>
                                     <option value="">Sila pilih</option>
                                     @foreach ($hubungan as $hbgn)
