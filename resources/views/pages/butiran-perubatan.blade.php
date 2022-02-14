@@ -62,12 +62,13 @@
                             <div class="row">
                                 <div class="col-md-6"><br>
                                     <h4 class="card-title">Rawatan Di Hospital/ Klinik Kerajaan </h4>
-                                   
+
                                     <div class="form-group">
-                                        <label for="hospital">Nama Hospital/Klinik Kerajaan</label> <button type="button"  class="btn btn-primary btn-sm" 
-                                        data-toggle="modal" data-target="#tambahhospital">
-                                        <span class="material-icons"> add </span>
-                                    </button>
+                                        <label for="hospital">Nama Hospital/Klinik Kerajaan</label> <button type="button"
+                                            class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahhospital">
+                                            <span class="material-icons"> add </span>
+                                        </button>
                                         <select class="custom-select select2" name="hospital" id="namaHospital">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($hospital as $hptl)
@@ -149,11 +150,12 @@
 
                                     <div class="form-group">
                                         <label for="pembekal">Nama Hospital/ Agensi Swasta</label><button type="button"
-                                        class="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target="#tambahpembekal">
-                                        <span class="material-icons"> add </span>
-                                    </button>
-                                        <select class="alamatPembekal custom-select select2" name="pembekal" id="namaPembekal">
+                                            class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahpembekal">
+                                            <span class="material-icons"> add </span>
+                                        </button>
+                                        <select class="alamatPembekal custom-select select2" name="pembekal"
+                                            id="namaPembekal">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($pembekal as $pmbkl)
                                                 <option value="{{ $pmbkl->idPembekal }}"
@@ -253,43 +255,47 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="kategoripenyakit">Kategori Penyakit</label>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahketegoripenyakit">
+                                            <span class="material-icons"> add </span>
+                                        </button>
                                         <select class="custom-select select2" name="kategoripenyakit" required>
                                             <option value="">SILA PILIH</option>
-                                            <option value="Buah Pinggang">Buah Pinggang</option>
-                                            <option value="Jantung">Jantung</option>
-                                            <option value="Kanser">Kanser</option>
-                                            <option value="Stroke">Stroke</option>
-                                            <option value="Diabetes">Diabetes</option>
-                                            <option value="Lain-lain">Lain-lain</option>
+                                            @foreach ($kategori_penyakit as $kpy)
+                                            <option value="{{ $kpy->kategori }}" {{ $kpy->kategori == $bp->kategori_penyakit ? 'selected' : '' }}>{{ $kpy->kategori }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_penyakit">Nama/Jenis Penyakit Yang Dihidapi</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nama_penyakit" class="form-control" value="{{ $bp->nama_penyakit }}">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            name="nama_penyakit" class="form-control" value="{{ $bp->nama_penyakit }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="namaubat">Nama Ubat/Alat/Perkhidmatan Perubatan/ Rawatan</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="namaubat"
-                                            value="{{ $bp->detailTuntutan }}">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            class="form-control" name="namaubat" value="{{ $bp->detailTuntutan }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="baucer">No Baucer</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="baucer"
-                                            value="{{ $bp->noRujukanKewangan }}">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            class="form-control" name="baucer" value="{{ $bp->noRujukanKewangan }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="hargatuntutan">Harga Tuntuan (RM)</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="number" class="form-control" name="hargatuntutan"
-                                            value="{{ $bp->jumlahTuntutan }}" required>
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="number"
+                                            class="form-control" name="hargatuntutan" value="{{ $bp->jumlahTuntutan }}"
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label for="hargalulus">Harga Diluluskan (RM)</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="hargalulus"
-                                            value="{{ $bp->jumlahSebenar }}">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            class="form-control" name="hargalulus" value="{{ $bp->jumlahSebenar }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_lulus">Tarikh Kelulusan</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_lulus"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date"
+                                            class="form-control" name="tarikh_lulus"
                                             value="{{ $bp->tarikhKelulusan }}">
                                     </div>
                                 </div>
@@ -312,18 +318,20 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_terima_permohonan">Tarikh Terima Permohonan</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_terima_permohonan"
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date"
+                                            class="form-control" name="tarikh_terima_permohonan"
                                             value="{{ $bp->tarikhTerimaPermohonan }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="catatan_permohonan">Catatan Permohonan</label>
-                                        <textarea onkeyup="this.value = this.value.toUpperCase();" class="form-control" name="catatan_permohonan" id="catatan_permohonan"
+                                        <textarea onkeyup="this.value = this.value.toUpperCase();" class="form-control"
+                                            name="catatan_permohonan" id="catatan_permohonan"
                                             rows="3"> {{ $bp->catatanPermohonan }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="nofail">No Fail</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nofail" class="form-control"
-                                            value="{{ $bp->noFail }}">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nofail"
+                                            class="form-control" value="{{ $bp->noFail }}">
                                     </div>
                                 </div>
                                 <hr><br>
@@ -340,8 +348,8 @@
                     </div>
 
                     <!-- Modal Padam Waris-->
-                    <div class="modal fade" id="padamperubatan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-                        aria-hidden="true">
+                    <div class="modal fade" id="padamperubatan" tabindex="-1" role="dialog"
+                        aria-labelledby="modelTitleId" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -371,8 +379,9 @@
         </div>
     </div>
 
-       <!-- Modal Tambah Hospital-->
-       <div class="modal fade" id="tambahhospital" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <!-- Modal Tambah Hospital-->
+    <div class="modal fade" id="tambahhospital" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -448,7 +457,8 @@
         </div>
     </div>
     <!-- Modal Tambah Pembekal-->
-    <div class="modal fade" id="tambahpembekal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="tambahpembekal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -512,6 +522,36 @@
                                     <option value="W.P LABUAN">W.P LABUAN</option>
                                     <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Tambah Kategori Penyakit-->
+    <div class="modal fade" id="tambahketegoripenyakit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Kategori Penyakit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('tambah-kategori-penyakit') }}" method="post" autocomplete="off">
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="ktpenyakit">Kategori Penyakit</label>
+                                <input type="text" class="form-control" name="ktpenyakit" id="ktpenyakit"
+                                 placeholder="Kategori Penyakit" required>
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade as PDF;
 
+use App\Kategori_penyakit;
+
+use Carbon\Carbon;
+
 class PageController extends Controller
 {
     /**
@@ -34,11 +38,14 @@ class PageController extends Controller
         $jawatan = DB::table('jawatan')->get();
         $hubungan = DB::table('hubungan')->get();
 
+        $kategori_penyakit = Kategori_penyakit::all();
+
         if (view()->exists("pages.{$page}")) {
             return view(
                 "pages.{$page}",
                 compact(
                     'bilrawatan',
+                    'kategori_penyakit',
                     'peribadi',
                     'perkhidmatan',
                     'jabatan',
@@ -206,6 +213,8 @@ class PageController extends Controller
             ->where('tahun', $id)
             ->get();
 
+        $kategori_penyakit = Kategori_penyakit::all();
+
         if (view()->exists("pages.{$page}")) {
             return view(
                 "pages.{$page}",
@@ -219,6 +228,7 @@ class PageController extends Controller
                     'waris',
                     'pembekal',
                     'hospital',
+                    'kategori_penyakit',
                     'butiranperubatan',
                     'kategorituntutan',
                     'senaraiperubatanwaris',
@@ -856,6 +866,19 @@ class PageController extends Controller
         );
 
         return back();
+    }
+
+    public function tambahkategoripenyakit(Request $req)
+    {
+        Kategori_penyakit::insertGetId(
+            [
+                'kategori' => $req->input('ktpenyakit'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        );
+
+        return back()->with('success', 'Kategori Penyakit Telah Ditambah');;
     }
 
     public function laporanjumlahbill($id)

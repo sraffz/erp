@@ -3,6 +3,15 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b>{{ session()->get('success') }}</span>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h3 class="card-title">Butiran Perubatan</h3>
@@ -109,14 +118,15 @@
                                 </div>
                                 <div class="col-md-6"><br>
                                     <h4 class="card-title">Pembekal Kemudahan Perubatan</h4>
-                                    
+
                                     <div class="form-group">
                                         <label for="pembekal">Nama Hospital/ Agensi Swasta</label>
                                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                             data-target="#tambahpembekal">
                                             <span class="material-icons"> add </span>
                                         </button>
-                                        <select class="alamatPembekal custom-select select2" name="pembekal" id="namaPembekal">
+                                        <select class="alamatPembekal custom-select select2" name="pembekal"
+                                            id="namaPembekal">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($pembekal as $pmbkl)
                                                 <option value="{{ $pmbkl->idPembekal }}">
@@ -197,7 +207,8 @@
                                     <h4 class="card-title">Tuntutan Perubatan</h4>
                                     <div class="form-group">
                                         <label for="kategorituntutan">Kategori Tuntutan</label>
-                                        <select class="custom-select select2" name="kategorituntutan" required id="kategorituntutan">
+                                        <select class="custom-select select2" name="kategorituntutan" required
+                                            id="kategorituntutan">
                                             <option value="">SILA PILIH</option>
                                             @foreach ($kategorituntutan as $kt)
                                                 <option value="{{ $kt->idKategori }}">
@@ -207,39 +218,46 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="kategoripenyakit">Kategori Penyakit</label>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahketegoripenyakit">
+                                            <span class="material-icons"> add </span>
+                                        </button>
                                         <select class="custom-select select2" name="kategoripenyakit" required>
                                             <option value="">SILA PILIH</option>
-                                            <option value="Buah Pinggang">Buah Pinggang</option>
-                                            <option value="Jantung">Jantung</option>
-                                            <option value="Kanser">Kanser</option>
-                                            <option value="Stroke">Stroke</option>
-                                            <option value="Diabetes">Diabetes</option>
-                                            <option value="Lain-lain">Lain-lain</option>
+                                            @foreach ($kategori_penyakit as $kpy)
+                                                <option value="{{ $kpy->kategori }}">{{ $kpy->kategori }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_penyakit">Nama/Jenis Penyakit Yang Dihidapi</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nama_penyakit" class="form-control" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            name="nama_penyakit" class="form-control" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="namaubat">Nama Ubat/Alat/Perkhidmatan Perubatan/ Rawatan</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="namaubat" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            class="form-control" name="namaubat" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="baucer">No Baucer</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="baucer" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            class="form-control" name="baucer" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="hargatuntutan">Harga Tuntuan (RM)</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="hargatuntutan" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            class="form-control" name="hargatuntutan" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="hargalulus">Harga Diluluskan (RM)</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" class="form-control" name="hargalulus" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text"
+                                            class="form-control" name="hargalulus" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_lulus">Tarikh Kelulusan</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_lulus" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date"
+                                            class="form-control" name="tarikh_lulus" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6"><br>
@@ -255,182 +273,218 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="tarikh_terima_permohonan">Tarikh Terima Permohonan</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date" class="form-control" name="tarikh_terima_permohonan" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="date"
+                                            class="form-control" name="tarikh_terima_permohonan" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="catatan_permohonan">Catatan Permohonan</label>
-                                        <textarea onkeyup="this.value = this.value.toUpperCase();" class="form-control" name="catatan_permohonan" id="catatan_permohonan"
-                                            rows="3"></textarea>
+                                        <textarea onkeyup="this.value = this.value.toUpperCase();" class="form-control"
+                                            name="catatan_permohonan" id="catatan_permohonan" rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="nofail">No Fail</label>
-                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nofail" class="form-control" value="">
+                                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="nofail"
+                                            class="form-control" value="">
                                     </div>
                                 </div>
                                 <hr><br>
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a name="" id="" class="btn btn-danger" href="{{ url()->previous() }}" role="button">Batal</a>
+                                    <a name="" id="" class="btn btn-danger" href="{{ url()->previous() }}"
+                                        role="button">Batal</a>
                                 </div>
                             </div>
                         </form>
                     </div>
 
                     <!-- Modal Tambah Hospital-->
-    <div class="modal fade" id="tambahhospital" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Hospital</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ url('tambah-hospital') }}" method="post">
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="namahospital">Nama Hospital/Klinik Kerajaan:</label>
-                            <input type="text" class="form-control" name="namahospital" id="namahospital"
-                                aria-describedby="helpId" placeholder="Nama Hospital/Klinik Kerajaan">
-                        </div>
-                        <div class="form-group">
-                            <label for="alamathospital">Alamat</label>
-                            <input type="text" class="form-control" name="alamathospital" id="alamathospital"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat2">Alamat 2</label>
-                            <input type="text" class="form-control" name="alamat2" id="alamat2"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat3">Alamat 3</label>
-                            <input type="text" class="form-control" name="alamat3" id="alamat3"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="poskod">Poskod</label>
-                            <input type="text" class="form-control" name="poskod" id="poskod"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="bandar">Bandar</label>
-                            <input type="text" class="form-control" name="bandar" id="bandar"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="negeri">Negeri</label>
-                            <select class="form-control custom-select" name="negeri" id="negeri">
-                                <option value="">SILA PILIH</option>
-                                <option value="JOHOR">JOHOR </option>
-                                <option value="KEDAH">KEDAH</option>
-                                <option value="KELANTAN">KELANTAN</option>
-                                <option value="MELAKA">MELAKA</option>
-                                <option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
-                                <option value="PAHANG">PAHANG</option>
-                                <option value="PERAK">PERAK</option>
-                                <option value="PERLIS">PERLIS</option>
-                                <option value="PULAU PINANG">PULAU PINANG</option>
-                                <option value="SABAH">SABAH</option>
-                                <option value="SARAWAK">SARAWAK</option>
-                                <option value="SELANGOR">SELANGOR</option>
-                                <option value="TERENGGANU">TERENGGANU</option>
-                                <option value="W.P KUALA LUMPUR">W.P KUALA LUMPUR</option>
-                                <option value="W.P LABUAN">W.P LABUAN</option>
-                                <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">tambah</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Modal Tambah Pembekal-->
-<div class="modal fade" id="tambahpembekal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Pembekal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ url('tambah-pembekal') }}" method="post">
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="namaPembekal">Nama Hospital/ Agensi Swasta:</label>
-                            <input type="text" class="form-control" name="namaPembekal" id="namaPembekal"
-                                aria-describedby="helpId" placeholder="Nama Hospital/Klinik Swasta">
-                        </div>
-                        <div class="form-group">
-                            <label for="alamatPembekal">Alamat</label>
-                            <input type="text" class="form-control" name="alamatPembekal" id="alamatPembekal"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat2">Alamat 2</label>
-                            <input type="text" class="form-control" name="alamat2" id="alamat2"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat3">Alamat 3</label>
-                            <input type="text" class="form-control" name="alamat3" id="alamat3"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="poskod">Poskod</label>
-                            <input type="text" class="form-control" name="poskod" id="poskod"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="bandar">Bandar</label>
-                            <input type="text" class="form-control" name="bandar" id="bandar"
-                                aria-describedby="helpId" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="negeri">Negeri</label>
-                            <select class="form-control custom-select" name="negeri" id="negeri">
-                                <option value="">SILA PILIH</option>
-                                <option value="JOHOR">JOHOR </option>
-                                <option value="KEDAH">KEDAH</option>
-                                <option value="KELANTAN">KELANTAN</option>
-                                <option value="MELAKA">MELAKA</option>
-                                <option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
-                                <option value="PAHANG">PAHANG</option>
-                                <option value="PERAK">PERAK</option>
-                                <option value="PERLIS">PERLIS</option>
-                                <option value="PULAU PINANG">PULAU PINANG</option>
-                                <option value="SABAH">SABAH</option>
-                                <option value="SARAWAK">SARAWAK</option>
-                                <option value="SELANGOR">SELANGOR</option>
-                                <option value="TERENGGANU">TERENGGANU</option>
-                                <option value="W.P KUALA LUMPUR">W.P KUALA LUMPUR</option>
-                                <option value="W.P LABUAN">W.P LABUAN</option>
-                                <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
-                            </select>
+                    <div class="modal fade" id="tambahhospital" tabindex="-1" role="dialog"
+                        aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Tambah Hospital</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ url('tambah-hospital') }}" method="post">
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            {{ csrf_field() }}
+                                            <div class="form-group">
+                                                <label for="namahospital">Nama Hospital/Klinik Kerajaan:</label>
+                                                <input type="text" class="form-control" name="namahospital"
+                                                    id="namahospital" aria-describedby="helpId"
+                                                    placeholder="Nama Hospital/Klinik Kerajaan">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamathospital">Alamat</label>
+                                                <input type="text" class="form-control" name="alamathospital"
+                                                    id="alamathospital" aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat2">Alamat 2</label>
+                                                <input type="text" class="form-control" name="alamat2" id="alamat2"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat3">Alamat 3</label>
+                                                <input type="text" class="form-control" name="alamat3" id="alamat3"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="poskod">Poskod</label>
+                                                <input type="text" class="form-control" name="poskod" id="poskod"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="bandar">Bandar</label>
+                                                <input type="text" class="form-control" name="bandar" id="bandar"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="negeri">Negeri</label>
+                                                <select class="form-control custom-select" name="negeri" id="negeri">
+                                                    <option value="">SILA PILIH</option>
+                                                    <option value="JOHOR">JOHOR </option>
+                                                    <option value="KEDAH">KEDAH</option>
+                                                    <option value="KELANTAN">KELANTAN</option>
+                                                    <option value="MELAKA">MELAKA</option>
+                                                    <option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
+                                                    <option value="PAHANG">PAHANG</option>
+                                                    <option value="PERAK">PERAK</option>
+                                                    <option value="PERLIS">PERLIS</option>
+                                                    <option value="PULAU PINANG">PULAU PINANG</option>
+                                                    <option value="SABAH">SABAH</option>
+                                                    <option value="SARAWAK">SARAWAK</option>
+                                                    <option value="SELANGOR">SELANGOR</option>
+                                                    <option value="TERENGGANU">TERENGGANU</option>
+                                                    <option value="W.P KUALA LUMPUR">W.P KUALA LUMPUR</option>
+                                                    <option value="W.P LABUAN">W.P LABUAN</option>
+                                                    <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-primary">tambah</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">tambah</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+                    <!-- Modal Tambah Pembekal-->
+                    <div class="modal fade" id="tambahpembekal" tabindex="-1" role="dialog"
+                        aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Tambah Pembekal</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ url('tambah-pembekal') }}" method="post">
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            {{ csrf_field() }}
+                                            <div class="form-group">
+                                                <label for="namaPembekal">Nama Hospital/ Agensi Swasta:</label>
+                                                <input type="text" class="form-control" name="namaPembekal"
+                                                    id="namaPembekal" aria-describedby="helpId"
+                                                    placeholder="Nama Hospital/Klinik Swasta">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamatPembekal">Alamat</label>
+                                                <input type="text" class="form-control" name="alamatPembekal"
+                                                    id="alamatPembekal" aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat2">Alamat 2</label>
+                                                <input type="text" class="form-control" name="alamat2" id="alamat2"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat3">Alamat 3</label>
+                                                <input type="text" class="form-control" name="alamat3" id="alamat3"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="poskod">Poskod</label>
+                                                <input type="text" class="form-control" name="poskod" id="poskod"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="bandar">Bandar</label>
+                                                <input type="text" class="form-control" name="bandar" id="bandar"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="negeri">Negeri</label>
+                                                <select class="form-control custom-select" name="negeri" id="negeri">
+                                                    <option value="">SILA PILIH</option>
+                                                    <option value="JOHOR">JOHOR </option>
+                                                    <option value="KEDAH">KEDAH</option>
+                                                    <option value="KELANTAN">KELANTAN</option>
+                                                    <option value="MELAKA">MELAKA</option>
+                                                    <option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
+                                                    <option value="PAHANG">PAHANG</option>
+                                                    <option value="PERAK">PERAK</option>
+                                                    <option value="PERLIS">PERLIS</option>
+                                                    <option value="PULAU PINANG">PULAU PINANG</option>
+                                                    <option value="SABAH">SABAH</option>
+                                                    <option value="SARAWAK">SARAWAK</option>
+                                                    <option value="SELANGOR">SELANGOR</option>
+                                                    <option value="TERENGGANU">TERENGGANU</option>
+                                                    <option value="W.P KUALA LUMPUR">W.P KUALA LUMPUR</option>
+                                                    <option value="W.P LABUAN">W.P LABUAN</option>
+                                                    <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                                        <button type="submit" class="btn btn-primary">tambah</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Kategori Penyakit-->
+    <div class="modal fade" id="tambahketegoripenyakit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Kategori Penyakit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('tambah-kategori-penyakit') }}" method="post" autocomplete="off">
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="ktpenyakit">Kategori Penyakit</label>
+                                <input type="text" class="form-control" name="ktpenyakit" id="ktpenyakit"
+                                 placeholder="Kategori Penyakit" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">tambah</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

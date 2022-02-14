@@ -3,6 +3,15 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b>{{ session()->get('success') }}</span>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h3 class="card-title">Butiran Perubatan</h3>
@@ -217,14 +226,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="kategoripenyakit">Kategori Penyakit</label>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#tambahketegoripenyakit">
+                                            <span class="material-icons"> add </span>
+                                        </button>
                                         <select class="custom-select select2" name="kategoripenyakit" required>
                                             <option value="">SILA PILIH</option>
-                                            <option value="Buah Pinggang">Buah Pinggang</option>
-                                            <option value="Jantung">Jantung</option>
-                                            <option value="Kanser">Kanser</option>
-                                            <option value="Stroke">Stroke</option>
-                                            <option value="Diabetes">Diabetes</option>
-                                            <option value="Lain-lain">Lain-lain</option>
+                                            @foreach ($kategori_penyakit as $kpy)
+                                            <option value="{{ $kpy->kategori }}">{{ $kpy->kategori }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -433,6 +443,36 @@
                                     <option value="W.P LABUAN">W.P LABUAN</option>
                                     <option value="W.P PUTRAJAYA">W.P PUTRAJAYA</option>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Tambah Kategori Penyakit-->
+    <div class="modal fade" id="tambahketegoripenyakit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Kategori Penyakit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('tambah-kategori-penyakit') }}" method="post" autocomplete="off">
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="ktpenyakit">Kategori Penyakit</label>
+                                <input type="text" class="form-control" name="ktpenyakit" id="ktpenyakit"
+                                 placeholder="Kategori Penyakit" required>
                             </div>
                         </div>
                     </div>
