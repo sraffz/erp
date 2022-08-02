@@ -41,7 +41,9 @@
     <!-- CSS Files -->
     <link href="{{ asset('material/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
-    <link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet">
+     <!-- Select2 -->
+     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 </head>
 <style type="text/css">
     td {
@@ -116,7 +118,8 @@
     <script src="{{ asset('material') }}/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
 
     <script src="{{ asset('material') }}/js/settings.js"></script>
-    <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
+    {{-- <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script> --}}
+    <script src="{{ asset('select2/js/select2.full.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.js') }}">
     </script>
@@ -168,6 +171,31 @@
                 },
                 "order": [
                     [1, "desc"]
+                ]
+            });
+        });
+
+        $(document).ready(function() {
+            $('table.display1').DataTable({
+                "pageLength": 5,
+                "lengthMenu": [5, 10, 15, 20],
+                "language": {
+                    "emptyTable": "Tiada data",
+                    "lengthMenu": "_MENU_ Rekod setiap halaman",
+                    "zeroRecords": "Tiada padanan rekod yang dijumpai.",
+                    "info": "Paparan dari _START_ hingga _END_ dari _TOTAL_ rekod",
+                    "infoEmpty": "Paparan 0 hingga 0 dari 0 rekod",
+                    "infoFiltered": "(Ditapis dari jumlah _MAX_ rekod)",
+                    "search": "Carian:",
+                    "oPaginate": {
+                        "sFirst": "Pertama",
+                        "sPrevious": "Sebelum",
+                        "sNext": "Seterusnya",
+                        "sLast": "Akhir"
+                    }
+                },
+                "order": [
+                    [0, "desc"]
                 ]
             });
         });
@@ -361,7 +389,7 @@
         });
 
         $(".select2").select2({
-
+            theme: 'bootstrap4'
         });
 
         $('#editPembekal').click(function() {

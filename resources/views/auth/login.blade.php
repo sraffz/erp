@@ -10,7 +10,7 @@
       <form class="form" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
 
-        <div class="card card-login card-hidden mb-3">
+        <div class="card card-login card-hidden mb-5">
           <div class="card-header card-header-primary text-center">
             <h4 class="card-title"><strong>{{ __('Log Masuk') }}</strong></h4>
             {{-- <div class="social-line">

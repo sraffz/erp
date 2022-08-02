@@ -84,7 +84,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered  display">
+                                <table class="table table-striped table-bordered  display1">
                                     <thead class="text-primary">
                                         <tr class="text-center">
                                             <th style="width: 50%">Tahun</th>
@@ -128,7 +128,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered  display">
+                                <table class="table table-striped table-bordered  display1">
                                     <thead class="text-primary">
                                         <tr class="text-center">
                                             <th style="width: 50%">Tahun</th>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered display">
+                                <table class="table table-striped table-bordered display1">
                                     <thead class="text-primary">
                                         <tr class="text-center">
                                             <th style="width: 50%">Tahun</th>
@@ -224,7 +224,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered display">
+                                <table class="table table-striped table-bordered display1">
                                     <thead class="text-primary">
                                         <tr class="text-center">
                                             <th rowspan="2">Tahun</th>
