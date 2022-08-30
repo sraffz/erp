@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <div class="col-12">
                                 <div class="float-right">
-                                    <a href="{{ url('pdf/pdf-jumlah-bill', [$id]) }}" class="btn btn-info">
+                                    <a target="_blank" href="{{ url('pdf/pdf-jumlah-bill', [$id]) }}" class="btn btn-info">
                                         <span class="material-icons">print</span>
                                     </a>
                                 </div>

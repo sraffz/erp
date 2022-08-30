@@ -912,7 +912,7 @@ class PageController extends Controller
             ->get();
 
         $pdf = PDF::loadView('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'))->setPaper('a4', 'potrait');
-        return $pdf->download('Jumlah Bil Tahun ' . $id . '.pdf');
+        return $pdf->stream('Jumlah Bil Tahun ' . $id . '.pdf');
 
         // return dd($jumlah_kos_pesara, $jumlah_kos_pegawai);
         // return view('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'));
@@ -949,7 +949,8 @@ class PageController extends Controller
             ->get();
 
         $pdf = PDF::loadView('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'))->setPaper('a4', 'potrait');
-        return $pdf->download('Jumlah Kos & Biayaan Tahun ' . $id . '.pdf');
+        // return $pdf->stream();
+        return $pdf->stream('Jumlah Kos & Biayaan Tahun ' . $id . '.pdf');
 
         // return dd($jumlah_kos_pesara, $jumlah_kos_pegawai);
         // return view('pdf.pdf-jumlah-kos',  compact('id', 'kos_bulanan', 'kos_bulanan_pesara', 'kos_bulanan_pegawai', 'total', 'jumlah_kos_pesara', 'jumlah_kos_pegawai'));
@@ -1062,7 +1063,7 @@ class PageController extends Controller
             'jumlahumurjenisb30k18',
             'id'
         ))->setPaper('a4', 'landscape');
-        return $pdf->download('Jumlah Permohonan Tahun ' . $id . '.pdf');
+        return $pdf->stream('Jumlah Permohonan Tahun ' . $id . '.pdf',array('Attachment'=>0));
 
         // return view('pdf.pdf-jumlah-permohonan',  compact(
         //     'umurk30',
