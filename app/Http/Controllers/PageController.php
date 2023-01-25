@@ -847,8 +847,10 @@ class PageController extends Controller
                 'negeri' => $req->input('negeri')
             ]
         );
+ 
+        return response()->json(['success'=>'Successfully']);
 
-        return back();
+        // return back();
     }
 
     public function tambahpembekal(Request $req)
@@ -865,11 +867,13 @@ class PageController extends Controller
             ]
         );
 
-        return back();
+        return response()->json(['success'=>'Successfully']);
+        // return back();
     }
 
     public function tambahkategoripenyakit(Request $req)
     {
+        // dd($req->all());
         Kategori_penyakit::insertGetId(
             [
                 'kategori' => $req->input('ktpenyakit'),
@@ -878,7 +882,10 @@ class PageController extends Controller
             ]
         );
 
-        return back()->with('success', 'Kategori Penyakit Telah Ditambah');;
+        return response()->json(['success'=>'Successfully']);
+ 
+
+        // return back()->with('success', 'Kategori Penyakit Telah Ditambah');
     }
 
     public function laporanjumlahbill($id)
@@ -1087,5 +1094,30 @@ class PageController extends Controller
         //     'jumlahumurjenisb30k2',
         //     'id'
         // ));
+    }
+
+    public function fetchpenyakit()
+    {
+        // return view('testing');
+        $penyakit = DB::table('kategori_penyakit')->get();
+        return response()->json([
+            'penyakit' => $penyakit
+        ]);
+    }
+    public function fetchhospitalklinik()
+    {
+        // return view('testing');
+        $hospital = DB::table('hospital')->get();
+        return response()->json([
+            'hospital' => $hospital
+        ]);
+    }
+    public function fetchpembekal()
+    {
+        // return view('testing');
+        $pembekal = DB::table('pembekal')->get();
+        return response()->json([
+            'pembekal' => $pembekal
+        ]);
     }
 }

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head> 
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ __('SISTEM PENGURUSAN RAWATAN PERUBATAN | E-RP') }}</title>
-    
+
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material') }}/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('material') }}/img/sukk.png">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
@@ -41,9 +41,9 @@
     <!-- CSS Files -->
     <link href="{{ asset('material/css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
-     <!-- Select2 -->
-     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
-     <link rel="stylesheet" href="{{ asset('select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 </head>
 <style type="text/css">
     td {
@@ -57,7 +57,6 @@
     label {
         color: black;
     }
-    
 </style>
 
 <body class="{{ $class ?? '' }}">
@@ -70,10 +69,9 @@
         @include('layouts.page_templates.auth')
     @endguest
     @if (auth()->check())
-
     @endif
 
-  
+
 
     <!--   Core JS Files   -->
     <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
@@ -115,7 +113,7 @@
     <!--  Notifications Plugin    -->
     <script src="{{ asset('material') }}/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('material') }}/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+    <script src="{{ asset('material') }}/js/material-dashboard.js" type="text/javascript"></script>
 
     <script src="{{ asset('material') }}/js/settings.js"></script>
     {{-- <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script> --}}
@@ -435,16 +433,20 @@
 
         });
     </script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" defer></script>
+    @yield('script')
     <script>
+
+
         $(function() {
-        $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
-        }, function(start, end, label) {
-            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
+                    .format('YYYY-MM-DD'));
+            });
         });
-        });
-        </script>
+    </script>
 
     <!-- Matomo -->
     <script type="text/javascript">
@@ -475,7 +477,7 @@
         <input type="hidden" id="userid" value="{{ Auth::user()->kad_pengenalan }}">
     @endguest
 
-    
+
 </body>
 
 </html>
