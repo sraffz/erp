@@ -106,9 +106,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <!-- Library for adding dinamically elements -->
     <script src="{{ asset('material') }}/js/plugins/arrive.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script> --}}
-    <!-- Chartist JS -->
+      <!-- Chartist JS -->
     <script src="{{ asset('material') }}/js/plugins/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="{{ asset('material') }}/js/plugins/bootstrap-notify.js"></script>
@@ -123,7 +121,12 @@
     </script>
     {{-- <script type="text/javascript" src="{{ asset('DataTables/datatables.min.js') }}"></script> --}}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    
+
     @stack('js')
+
+    @yield('script')
 
 
     <script>
@@ -434,7 +437,7 @@
         });
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" defer></script>
-    @yield('script')
+    
     <script>
 
 

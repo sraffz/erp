@@ -83,6 +83,10 @@
                             </p>
                         </div>
                         <div class="card-body">
+                            <div class="">
+                                <div class="ct-chart" id=" ">{!! $chart->container() !!}</div>
+                            </div>
+                            <hr>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered  display1">
                                     <thead class="text-primary">
@@ -96,7 +100,7 @@
                                         @foreach ($kos as $d)
                                             <tr class="text-center">
                                                 <td scope="row">{{ $d->tahun }}</td>
-                                                <td>{{ number_format($d->jumlah, 2, '.', ',')  }}</td>
+                                                <td>{{ number_format($d->jumlah, 2, '.', ',') }}</td>
                                                 {{-- <td>{{ $d->Jumlah }}</td> --}}
                                                 <td><a class="btn btn-primary btn-sm"
                                                         href="{{ url('kos-bulanan', [$d->tahun]) }}"
@@ -116,7 +120,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-chart">
@@ -127,6 +130,10 @@
                             </p>
                         </div>
                         <div class="card-body">
+                            <div class="">
+                                <div class="ct-chart" id=" ">{!! $chart2->container() !!}</div>
+                            </div>
+                            <hr>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered  display1">
                                     <thead class="text-primary">
@@ -140,7 +147,7 @@
                                         @foreach ($data as $d)
                                             <tr class="text-center">
                                                 <td scope="row">{{ $d->tahun }}</td>
-                                                <td>{{ number_format($d->jumlah, 2, '.', ',')  }}</td>
+                                                <td>{{ number_format($d->jumlah, 2, '.', ',') }}</td>
                                                 {{-- <td>{{ $d->Jumlah }}</td> --}}
                                                 <td><a class="btn btn-success btn-sm"
                                                         href="{{ url('bil-bulanan', [$d->tahun]) }}"
@@ -707,3 +714,8 @@
         });
     </script>
 @endpush
+
+@section('script')
+{!! $chart->script() !!}
+{!! $chart2->script() !!}
+@endsection

@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "alkoumi/laravel-hijri-date": "^1.0",
         "barryvdh/laravel-dompdf": "^0.8.7",
+        "consoletvs/charts": "6.*",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0"
@@ -54,6 +55,10 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true,
+            "symfony/thanks": true
+        }
     }
 }

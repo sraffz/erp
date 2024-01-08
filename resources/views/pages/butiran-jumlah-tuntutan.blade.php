@@ -32,7 +32,7 @@
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr class="text-center">
-                                        <th style="width: 50%"><strong>Jenis Tuntuan / Permohonan</strong></th>
+                                        <th style="width: 50%"><strong>Jenis Tuntutan / Permohonan</strong></th>
                                         <th><strong>Jumlah Permohonan</strong></th>
                                     </tr>
                                 </thead>

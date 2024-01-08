@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/fetchhospitalklinik', 'PageController@fetchhospitalklinik')->name('fetchhospitalklinik');
     Route::get('/fetchpembekal', 'PageController@fetchpembekal')->name('fetchpembekal');
     Route::get('/halaman-utama', 'HomeController@index')->name('halaman-utama');
+    
     Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
     Route::get('{page}/{id}', ['as' => 'page.withid', 'uses' => 'PageController@withid']);
     

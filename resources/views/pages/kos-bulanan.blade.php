@@ -487,7 +487,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr class="text-center">
-                                        <th>Jenis Tuntuan / Permohonan</th>
+                                        <th>Jenis Tuntutan / Permohonan</th>
                                         <th>Kos (RM)</th>
                                     </tr>
                                 </thead>

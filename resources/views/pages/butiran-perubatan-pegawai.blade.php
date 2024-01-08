@@ -310,7 +310,7 @@
                                             class="form-control" name="baucer" value="{{ $bp->noRujukanKewangan }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="hargatuntutan">Harga Tuntuan (RM)</label>
+                                        <label for="hargatuntutan">Harga Tuntutan (RM)</label>
                                         <input onkeyup="this.value = this.value.toUpperCase();" type="number"
                                             class="form-control" name="hargatuntutan" value="{{ $bp->jumlahTuntutan }}"
                                             required>
