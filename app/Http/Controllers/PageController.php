@@ -11,6 +11,8 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 use App\Kategori_penyakit;
 
+use App\Charts\SampleChart;
+
 use Carbon\Carbon;
 
 class PageController extends Controller
@@ -33,6 +35,7 @@ class PageController extends Controller
         $pentadbir = DB::table('users')->whereNotIn('level', ['superadmin'])->get();
         $kategorituntutan = DB::table('kategorituntutan')->get();
         $kos_bulanan = DB::table('jumlah_kos_bulanan')->get();
+
 
         $jabatan = DB::table('jabatan')->get();
         $jawatan = DB::table('jawatan')->get();
@@ -108,6 +111,8 @@ class PageController extends Controller
                 ->where('pesara', 'Tidak')
                 ->orderBy('bulan', 'asc')
                 ->get();
+
+                // dd( $kos_bulanan_pegawai);
             $kos_bulanan_pesara = DB::table('jumlah_kos_bulanan_status')
                 ->where('Tahun', $id)
                 ->where('pesara', 'Ya')

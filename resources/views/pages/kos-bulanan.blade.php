@@ -27,136 +27,370 @@
                             </p>
                         </div>
                         <div class="card-body">
+                            <div class="row">
+                                @php
+                                    // use App\Charts\SampleChart;
+
+                       
+                                    // foreach ($jumlah_kos as $jk) {
+                                    //     $jumlah =$jk->jumlah;
+                                    // }
+                                    // $chart2 = new SampleChart;
+                                    // $chart2->labels(['Pegawai', 'Pesara', 'Jumlah']);
+                                    // $chart2->dataset('Jumlah Keseluruhan', 'polarArea', [$jumlah_kos_pegawai, $jumlah_kos_pesara, $jumlah])->options([
+                                    //     'borderColor' => 'white',
+                                    //     'fill' => false,
+                                    //     'backgroundColor' => [
+                                    //     '#F34848',
+                                    //     '#EACF46',
+                                    //     '#8336b6']
+                                    // ]);
+
+                                    $pesara1 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '1')->pluck('jumlah')->first();
+                                    if ($pesara1 == null) {
+                                        $pesara1 = 0;
+                                    }else {
+                                        $pesara1 = $pesara1;
+                                    }
+                                    $pesara2 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '2')->pluck('jumlah')->first();
+                                    if ($pesara2 == null) {
+                                        $pesara2 = 0;
+                                    }else {
+                                        $pesara2 = $pesara2;
+                                    }
+                                    $pesara3 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '3')->pluck('jumlah')->first();
+                                    if ($pesara3 == null) {
+                                        $pesara3 = 0;
+                                    }else {
+                                        $pesara3 = $pesara3;
+                                    }
+                                    $pesara4 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '4')->pluck('jumlah')->first();
+                                    if ($pesara4 == null) {
+                                        $pesara4 = 0;
+                                    }else {
+                                        $pesara4 = $pesara4;
+                                    }
+                                    $pesara5 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '5')->pluck('jumlah')->first();
+                                    if ($pesara5 == null) {
+                                        $pesara5 = 0;
+                                    }else {
+                                        $pesara5 = $pesara5;
+                                    }
+                                    $pesara6 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '6')->pluck('jumlah')->first();
+                                    if ($pesara6 == null) {
+                                        $pesara6 = 0;
+                                    }else {
+                                        $pesara6 = $pesara6;
+                                    }
+                                    $pesara7 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '7')->pluck('jumlah')->first();
+                                    if ($pesara7 == null) {
+                                        $pesara7 = 0;
+                                    }else {
+                                        $pesara7 = $pesara7;
+                                    }
+                                    $pesara8 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '8')->pluck('jumlah')->first();
+                                    if ($pesara8 == null) {
+                                        $pesara8 = 0;
+                                    }else {
+                                        $pesara8 = $pesara8;
+                                    }
+                                    $pesara9 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '9')->pluck('jumlah')->first();
+                                    if ($pesara9 == null) {
+                                        $pesara9 = 0;
+                                    }else {
+                                        $pesara9 = $pesara9;
+                                    }
+                                    $pesara10 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '10')->pluck('jumlah')->first();
+                                    if ($pesara10 == null) {
+                                        $pesara10 = 0;
+                                    }else {
+                                        $pesara10 = $pesara10;
+                                    }
+                                    $pesara11 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '11')->pluck('jumlah')->first();
+                                    if ($pesara11 == null) {
+                                        $pesara11 = 0;
+                                    }else {
+                                        $pesara11 = $pesara11;
+                                    }
+                                    $pesara12 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Ya')->where('bulan', '12')->pluck('jumlah')->first();
+                                    if ($pesara12 == null) {
+                                        $pesara12 = 0;
+                                    }else {
+                                        $pesara12 = $pesara12;
+                                    }
+
+                                    //pegawai
+                                    $pegawai1 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '1')->pluck('jumlah')->first();
+                                    if ($pegawai1 == null) {
+                                        $pegawai1 = 0;
+                                    }else {
+                                        $pegawai1 = $pegawai1;
+                                    }
+                                    $pegawai2 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '2')->pluck('jumlah')->first();
+                                    if ($pegawai2 == null) {
+                                        $pegawai2 = 0;
+                                    }else {
+                                        $pegawai2 = $pegawai2;
+                                    }
+                                    $pegawai3 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '3')->pluck('jumlah')->first();
+                                    if ($pegawai3 == null) {
+                                        $pegawai3 = 0;
+                                    }else {
+                                        $pegawai3 = $pegawai3;
+                                    }
+                                    $pegawai4 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '4')->pluck('jumlah')->first();
+                                    if ($pegawai4 == null) {
+                                        $pegawai4 = 0;
+                                    }else {
+                                        $pegawai4 = $pegawai4;
+                                    }
+                                    $pegawai5 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '5')->pluck('jumlah')->first();
+                                    if ($pegawai5 == null) {
+                                        $pegawai5 = 0;
+                                    }else {
+                                        $pegawai5 = $pegawai5;
+                                    }
+                                    $pegawai6 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '6')->pluck('jumlah')->first();
+                                    if ($pegawai6 == null) {
+                                        $pegawai6 = 0;
+                                    }else {
+                                        $pegawai6 = $pegawai6;
+                                    }
+                                    $pegawai7 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '7')->pluck('jumlah')->first();
+                                    if ($pegawai7 == null) {
+                                        $pegawai7 = 0;
+                                    }else {
+                                        $pegawai7 = $pegawai7;
+                                    }
+                                    $pegawai8 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '8')->pluck('jumlah')->first();
+                                    if ($pegawai8 == null) {
+                                        $pegawai8 = 0;
+                                    }else {
+                                        $pegawai8 = $pegawai8;
+                                    }
+                                    $pegawai9 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '9')->pluck('jumlah')->first();
+                                    if ($pegawai9 == null) {
+                                        $pegawai9 = 0;
+                                    }else {
+                                        $pegawai9 = $pegawai9;
+                                    }
+                                    $pegawai10 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '10')->pluck('jumlah')->first();
+                                    if ($pegawai10 == null) {
+                                        $pegawai10 = 0;
+                                    }else {
+                                        $pegawai10 = $pegawai10;
+                                    }
+                                    $pegawai11 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '11')->pluck('jumlah')->first();
+                                    if ($pegawai11 == null) {
+                                        $pegawai11 = 0;
+                                    }else {
+                                        $pegawai11 = $pegawai11;
+                                    }
+                                    $pegawai12 = DB::table('jumlah_kos_bulanan_status')->where('Tahun', $id)->where('pesara', 'Tidak')->where('bulan', '12')->pluck('jumlah')->first();
+                                    if ($pegawai12 == null) {
+                                        $pegawai12 = 0;
+                                    }else {
+                                        $pegawai12 = $pegawai12;
+                                    }
+
+                                    // jumlah
+                                    $jumlah1 = $pesara1 + $pegawai1;
+                                    $jumlah2 = $pesara2 + $pegawai2;
+                                    $jumlah3 = $pesara3 + $pegawai3;
+                                    $jumlah4 = $pesara4 + $pegawai4;
+                                    $jumlah5 = $pesara5 + $pegawai5;
+                                    $jumlah6 = $pesara6 + $pegawai6;
+                                    $jumlah7 = $pesara7 + $pegawai7;
+                                    $jumlah8 = $pesara8 + $pegawai8;
+                                    $jumlah9 = $pesara9 + $pegawai9;
+                                    $jumlah10 = $pesara10 + $pegawai10;
+                                    $jumlah11 = $pesara11 + $pegawai11;
+                                    $jumlah12 = $pesara12 + $pegawai12;
+
+
+                                    // // dd($pesara4);
+                                    // $chart = new SampleChart;
+                                    // $chart->labels(['Januari', 'Februari', 'Mac','April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember']);
+                                    // $chart->dataset('Pegawai', 'line', [$pegawai1,$pegawai2,$pegawai3,$pegawai4,$pegawai5,$pegawai6,$pegawai7,$pegawai8,$pegawai9,$pegawai10,$pegawai11,$pegawai12])->options([
+                                    //     'borderColor' => '#EACF46',
+                                    //     'fill' => false,
+                                    // ]);
+                                    // $chart->dataset('Pesara', 'line', [$pesara1,$pesara2,$pesara3,$pesara4,$pesara5,$pesara6,$pesara7,$pesara8,$pesara9,$pesara10,$pesara11,$pesara12])->options([
+                                    //     'borderColor' => '#F34848',
+                                    //     'fill' => false,
+                                    // ]);
+                                    // $chart->dataset('Jumlah', 'line', [$jumlah1,$jumlah2,$jumlah3,$jumlah4,$jumlah5,$jumlah6,$jumlah7,$jumlah8,$jumlah9,$jumlah10,$jumlah11,$jumlah12])->options([
+                                    //     'borderColor' => '#8336b6',
+                                    //     'fill' => false,
+                                    // ]);
+                                @endphp
+                                {{-- <div class="col-md-4"><div class="ct-chart">{!! $chart2->container() !!}</div></div>
+                                <div class="col-md-8"><div class="ct-chart">{!! $chart->container() !!}</div></div>                                --}}
+                            </div>
+                            <hr>
                             <table class="table table-striped">
                                 <thead>
                                     <tr class="text-center">
                                         <th>Bulan</th>
-                                        <th>Kos (RM)</th>
+                                        <th>Pegawai (RM)</th>
+                                        <th>Pesara (RM)</th>
+                                        <th>Jumlah (RM)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="text-center">
                                         <td scope="row">JANUARI</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '1')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai1, 2, '.', ',')  }}
                                         </td>
+                                        <td>
+                                            {{ number_format($pesara1, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah1, 2, '.', ',')  }}
+                                        </td>
+                                        
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">FEBRUARI</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '2')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai2, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara2, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah2, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">MAC</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '3')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai3, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara3, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah3, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">APRIL</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '4')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai4, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara4, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah4, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">MEI</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '5')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai5, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara5, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah5, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">JUN</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '6')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai6, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara6, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah6, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">JULAI</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '7')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai7, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara7, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah7, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">OGOS</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '8')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai8, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara8, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah8, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">SEPTEMBER</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '9')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai9, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara9, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah9, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">OKTOBER</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '10')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai10, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara10, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah10, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">NOVEMBER</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '11')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai11, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara11, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah11, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">DISEMBER</td>
                                         <td>
-                                            @foreach ($kos_bulanan as $d)
-                                                @if ($d->bulan == '12')
-                                                    {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                @endif
-                                            @endforeach
+                                            {{ number_format($pegawai12, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($pesara12, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah12, 2, '.', ',')  }}
                                         </td>
                                     </tr>
                                     <tr class="text-center">
                                         <td scope="row">JUMLAH</td>
+                                        <td>
+                                            {{ number_format($jumlah_kos_pegawai, 2, '.', ',')  }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($jumlah_kos_pesara, 2, '.', ',')  }}
+                                        </td>
                                         <td>
                                             @foreach ($jumlah_kos as $jk)
                                                 {{ number_format($jk->jumlah, 2, '.', ',')  }}
@@ -173,360 +407,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-warning">
-                            {{-- <div class="ct-chart" id="websiteViewsChart"></div> --}}
-                            <h4 class="card-title">Kos Tanggungan Rawatan Pegawai</h4>
-                            <p class="card-category">Jadual kos tanggungan keseluruhan pegawai mengikut tahun.</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>Bulan</th>
-                                            <th>Kos (RM)</th>
-                                            {{-- <th></th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td scope="row">JANUARI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '1')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">FEBRUARI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '2')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">MAC</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '3')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">APRIL</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '4')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">MEI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '5')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">JUN</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '6')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">JULAI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '7')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">OGOS</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '8')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">SEPTEMBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '9')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">OKTOBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '10')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">NOVEMBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '11')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">DISEMBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pegawai as $d)
-                                                    @if ($d->bulan == '12')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">JUMLAH</td>
-                                            <td>
-                                                {{ number_format($jumlah_kos_pegawai, 2, '.', ',')  }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-danger">
-                            {{-- <div class="ct-chart" id="completedTasksChart"></div> --}}
-                            <h4 class="card-title">Kos Tanggungan Rawatan Pesara</h4>
-                            <p class="card-category">Jadual kos tanggungan keseluruhan pesara mengikut tahun.</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>Bulan</th>
-                                            <th>Kos (RM)</th>
-                                            {{-- <th></th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="text-center">
-                                            <td scope="row">JANUARI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '1')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">FEBRUARI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '2')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">MAC</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '3')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">APRIL</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '4')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">MEI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '5')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">JUN</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '6')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">JULAI</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '7')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">OGOS</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '8')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">SEPTEMBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '9')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">OKTOBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '10')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">NOVEMBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '11')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">DISEMBER</td>
-                                            <td>
-                                                @foreach ($kos_bulanan_pesara as $d)
-                                                    @if ($d->bulan == '12')
-                                                        {{ number_format($d->jumlah, 2, '.', ',')  }}
-                                                    @endif
-                                                @endforeach
-                                            </td>
-                                        </tr>
-                                        <tr class="text-center">
-                                            <td scope="row">JUMLAH</td>
-                                            <td>
-                                                {{ number_format($jumlah_kos_pesara, 2, '.', ',')  }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-primary">
-                            <h4 class="card-title">Kos Tanggungan Rawatan Mengikut Jenis Permohonan</h4>
-                            <p class="card-category">
-                            </p>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>Jenis Tuntutan / Permohonan</th>
-                                        <th>Kos (RM)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-center">
-                                        <td scope="row">Ubatan</td>
-                                        <td> </td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td scope="row">Peralatan</td>
-                                        <td> </td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td scope="row">Rawatan Jantung (IJN)</td>
-                                        <td> </td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td scope="row">Rawatan Heamodialisis</td>
-                                        <td> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 @endsection
 
 @push('js')
-    <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/js/demos.js
-            md.initDashboardPageCharts();
-        });
-    </script>
+
 @endpush
+
+@section('script')
+{{-- {!! $chart->script() !!}
+{!! $chart2->script() !!} --}}
+ @endsection

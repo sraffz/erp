@@ -84,7 +84,7 @@ class HomeController extends Controller
 
         $chart2 = new SampleChart;
         $chart2->labels($graphdata->pluck('tahun'));
-        $chart2->dataset('Bil Rawatan', 'doughnut', $graphdata->pluck('jumlah'))->options([
+        $chart2->dataset('Bil Rawatan', 'line', $graphdata->pluck('jumlah'))->options([
             'borderColor' => '#126444',
             'backgroundColor' => [
                 'rgb(255, 99, 132)',
@@ -92,7 +92,9 @@ class HomeController extends Controller
                 'rgb(255, 205, 86)',
                 'rgb(201, 203, 207)',
                 'rgb(54, 162, 235)'
-              ]
+            ],
+            'hoverOffset' => 4,
+            'fill' => false,
         ]);
 
         // return dd($tahunumur);

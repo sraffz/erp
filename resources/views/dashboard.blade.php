@@ -83,33 +83,36 @@
                             </p>
                         </div>
                         <div class="card-body">
-                            <div class="">
-                                <div class="ct-chart" id=" ">{!! $chart->container() !!}</div>
-                            </div>
-                            <hr>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered  display1">
-                                    <thead class="text-primary">
-                                        <tr class="text-center">
-                                            <th style="width: 50%">Tahun</th>
-                                            <th>Kos (RM)</th>
-                                            <th style="width: 5%"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($kos as $d)
-                                            <tr class="text-center">
-                                                <td scope="row">{{ $d->tahun }}</td>
-                                                <td>{{ number_format($d->jumlah, 2, '.', ',') }}</td>
-                                                {{-- <td>{{ $d->Jumlah }}</td> --}}
-                                                <td><a class="btn btn-primary btn-sm"
-                                                        href="{{ url('kos-bulanan', [$d->tahun]) }}"
-                                                        role="button">Butiran</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                            <div class="row">
+                                {{-- <div class="col-md-6">
+                                    <div class="ct-chart" id=" ">{!! $chart->container() !!}</div>
+                                </div> --}}
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered  display1">
+                                            <thead class="text-primary">
+                                                <tr class="text-center">
+                                                    <th style="width: 50%">Tahun</th>
+                                                    <th>Kos (RM)</th>
+                                                    <th style="width: 5%"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($kos as $d)
+                                                    <tr class="text-center">
+                                                        <td scope="row">{{ $d->tahun }}</td>
+                                                        <td>{{ number_format($d->jumlah, 2, '.', ',') }}</td>
+                                                        {{-- <td>{{ $d->Jumlah }}</td> --}}
+                                                        <td><a class="btn btn-primary btn-sm"
+                                                                href="{{ url('kos-bulanan', [$d->tahun]) }}"
+                                                                role="button">Butiran</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -130,33 +133,36 @@
                             </p>
                         </div>
                         <div class="card-body">
-                            <div class="">
-                                <div class="ct-chart" id=" ">{!! $chart2->container() !!}</div>
-                            </div>
-                            <hr>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered  display1">
-                                    <thead class="text-primary">
-                                        <tr class="text-center">
-                                            <th style="width: 50%">Tahun</th>
-                                            <th>Kos (RM)</th>
-                                            <th style="width: 5%"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $d)
+                            <div class="row">
+                                {{-- <div class="col-md-6">
+                                    <div class="ct-chart" id=" ">{!! $chart2->container() !!}</div>
+                                </div> --}}
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered  display1">
+                                        <thead class="text-primary">
                                             <tr class="text-center">
-                                                <td scope="row">{{ $d->tahun }}</td>
-                                                <td>{{ number_format($d->jumlah, 2, '.', ',') }}</td>
-                                                {{-- <td>{{ $d->Jumlah }}</td> --}}
-                                                <td><a class="btn btn-success btn-sm"
-                                                        href="{{ url('bil-bulanan', [$d->tahun]) }}"
-                                                        role="button">Butiran</a>
-                                                </td>
+                                                <th style="width: 50%">Tahun</th>
+                                                <th>Kos (RM)</th>
+                                                <th style="width: 5%"></th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($data as $d)
+                                                <tr class="text-center">
+                                                    <td scope="row">{{ $d->tahun }}</td>
+                                                    <td>{{ number_format($d->jumlah, 2, '.', ',') }}</td>
+                                                    {{-- <td>{{ $d->Jumlah }}</td> --}}
+                                                    <td><a class="btn btn-success btn-sm"
+                                                            href="{{ url('bil-bulanan', [$d->tahun]) }}"
+                                                            role="button">Butiran</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -716,6 +722,6 @@
 @endpush
 
 @section('script')
-{!! $chart->script() !!}
-{!! $chart2->script() !!}
+{{-- {!! $chart->script() !!}
+{!! $chart2->script() !!} --}}
 @endsection
